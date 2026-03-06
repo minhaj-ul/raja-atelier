@@ -9,7 +9,7 @@ export const PRODUCTS = [
   {
     id: 2, name: "Ivory Silk Blouse", category: "Tops", price: 148,
     rating: 4.6, reviews: 89, badge: "New",
-    image: "https://images.unsplash.com/photo-1594938298603-c8148c4b4a3e?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&q=80",
     description: "Luxurious 100% silk blouse in warm ivory. Features delicate button detailing and a relaxed drape that transitions effortlessly from day to evening wear.",
     tags: ["silk", "elegant", "workwear"],
   },
@@ -44,7 +44,7 @@ export const PRODUCTS = [
   {
     id: 7, name: "Sage Pleated Skirt", category: "Bottoms", price: 172,
     rating: 4.5, reviews: 44, badge: "New",
-    image: "https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=600&q=80",
     description: "Midi-length pleated skirt in muted sage green. Fluid, movement-catching fabric that drapes with effortless sophistication.",
     tags: ["pleated", "midi", "spring"],
   },
