@@ -2,7 +2,7 @@
 
 A frontend-only luxury e-commerce storefront built with React and Vite. Fully responsive across mobile, tablet, and desktop.
 
-🔗 **Live Site:** [https://maison-atelier.netlify.app](https://maison-atelier.netlify.app)
+🔗 **Live Site:** [maison-atelier.netlify.app](https://maison-atelier.netlify.app)
 
 ---
 
@@ -17,18 +17,24 @@ A frontend-only luxury e-commerce storefront built with React and Vite. Fully re
 - Fully responsive — mobile, tablet, and desktop
 - Toast notifications on add-to-cart
 
+---
+
 ## Tech Stack
 
-- **React** — UI components and state management
-- **Vite** — development server and build tool
-- **CSS-in-JS** — all styles written in a single global stylesheet injected via `<style>` tag
-- **Google Fonts** — Cormorant Garamond + Jost
+| **Technologys**  | **Purpose**                                                                 |
+| ---------------- | --------------------------------------------------------------------------- |
+| **React**        | UI components and state management                                          |
+| **Vite**         | development server and build tool                                           |
+| **CSS-in-JS**    | all styles written in a single global stylesheet injected via `<style>` tag |
+| **Google Fonts** | Cormorant Garamond + Jost                                                   |
+
+---
 
 ## Getting Started
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/maison-atelier.git
+git clone https://github.com/mihahaj-ul/maison-atelier.git
 
 # Navigate into the project
 cd maison-atelier
@@ -38,6 +44,8 @@ npm install
 
 # Start the development server
 npm run dev
-```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+# Open your browser at
+http://localhost:5173
+
+```
