@@ -44,7 +44,7 @@ export const PRODUCTS = [
   {
     id: 7, name: "Sage Pleated Skirt", category: "Bottoms", price: 172,
     rating: 4.5, reviews: 44, badge: "New",
-    image: "https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=600&q=80",
+    image: "https://plus.unsplash.com/premium_photo-1747221475978-9ae575741a96?w=600&q=80",
     description: "Midi-length pleated skirt in muted sage green. Fluid, movement-catching fabric that drapes with effortless sophistication.",
     tags: ["pleated", "midi", "spring"],
   },
