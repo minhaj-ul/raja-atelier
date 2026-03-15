@@ -1,10 +1,9 @@
-import { useState, useMemo, useEffect } from "react";
-
+import { Routes, Route } from 'react-router-dom'
+import { useState, useMemo, useEffect, useRef } from "react";
 import globalStyles from "./styles/global";
 import { useWidth } from "./hooks/useWidth";
 import { PRODUCTS, CATEGORIES } from "./data/products";
 import { Icon, IC } from "./utils/icons";
-
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import ProductCard from "./components/ProductCard";
@@ -13,8 +12,8 @@ import Detail from "./components/Detail";
 import FilterSheet from "./components/FilterSheet";
 import Footer from "./components/Footer";
 
-export default function App() {
-  const vw = useWidth();
+function HomePage() {
+   const vw = useWidth();
   const isMobile = vw < 640;
   const isTablet = vw >= 640 && vw < 1024;
 
@@ -349,3 +348,14 @@ export default function App() {
     </>
   );
 }
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/product/:id" element={<div className="p-8">Product Page — coming soon</div>} />
+    </Routes>
+  )
+}
+
+export default App
