@@ -6,6 +6,7 @@ import ProductPage from "./pages/ProductPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import FAQPage from "./pages/FAQPage";
+import WishlistPage from "./pages/WishlistPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
 export default function App() {
@@ -41,6 +42,16 @@ export default function App() {
       <Route path="/about" element={<AboutPage />} />
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/faq" element={<FAQPage />} />
+      <Route
+        path="/wishlist"
+        element={
+          <WishlistPage
+            wishlist={wishlist}
+            onRemoveFromWishlist={removeFromWishlist}
+            onAddToCart={addToCart}
+          />
+        }
+      />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
