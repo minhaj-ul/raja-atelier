@@ -1,9 +1,23 @@
 import { useRef } from "react";
-import { Search, X, ShoppingBag } from "lucide-react";
+import { Search, X, ShoppingBag, Heart, Menu } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import { Link } from "react-router-dom";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
+import { useState } from "react";
+
+const NAV_LINKS = [
+  { label: "Shop", to: "/" },
+  { label: "About", to: "/about" },
+  { label: "Contact", to: "/contact" },
+  { label: "FAQ", to: "/faq" },
+];
 
 export default function Header({
   isMobile,
@@ -12,9 +26,11 @@ export default function Header({
   mobSearch,
   setMobSearch,
   cartCount,
+  wishlistCount,
   onCartOpen,
 }) {
   const mobInputRef = useRef(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleMobSearchToggle = () => {
     setMobSearch((s) => !s);
@@ -43,9 +59,24 @@ export default function Header({
             </span>
           </Link>
 
-          {/* Desktop search */}
+          {/* Desktop nav links */}
           {!isMobile && (
-            <div className="flex items-center gap-2 bg-stone-200 border border-stone-300 px-4 py-2 w-72 md:w-80 shrink-0">
+            <nav className="flex items-center gap-6">
+              {NAV_LINKS.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className="text-xs uppercase tracking-widest text-stone-600 hover:text-amber-600 transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          )}
+
+          {/* Desktop search bar */}
+          {!isMobile && (
+            <div className="flex items-center gap-2 bg-stone-200 border border-stone-300 px-4 py-2 w-56 shrink-0">
               <Search size={14} className="text-stone-500 shrink-0" />
               <Input
                 type="search"
@@ -68,7 +99,7 @@ export default function Header({
           )}
 
           {/* Right icons */}
-          <div className="flex items-center gap-1 md:gap-3">
+          <div className="flex items-center gap-1 md:gap-2">
             {/* Mobile search toggle */}
             {isMobile && (
               <Button
@@ -84,6 +115,22 @@ export default function Header({
                 )}
               </Button>
             )}
+
+            {/* Wishlist */}
+            <Link to="/wishlist">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="relative hover:bg-stone-200"
+              >
+                <Heart size={isMobile ? 20 : 22} className="text-stone-950" />
+                {wishlistCount > 0 && (
+                  <span className="absolute top-0.5 right-0.5 bg-amber-600 text-stone-50 w-4 h-4 rounded-full text-[9px] flex items-center justify-center font-medium">
+                    {wishlistCount}
+                  </span>
+                )}
+              </Button>
+            </Link>
 
             {/* Cart */}
             <Button
@@ -102,6 +149,18 @@ export default function Header({
                 </span>
               )}
             </Button>
+
+            {/* Mobile menu */}
+            {isMobile && (
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hover:bg-stone-200"
+                onClick={() => setMenuOpen(true)}
+              >
+                <Menu size={20} className="text-stone-950" />
+              </Button>
+            )}
           </div>
         </div>
       </div>
@@ -136,6 +195,44 @@ export default function Header({
           )}
         </div>
       </div>
+
+      {/* Mobile nav menu sheet */}
+      <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
+        <SheetContent side="left" className="bg-stone-50 border-stone-300 w-72">
+          <SheetHeader className="mb-8">
+            <SheetTitle className="font-display font-light text-2xl italic text-left">
+              MAISON{" "}
+              <span className="text-amber-600 text-sm not-italic tracking-widest">
+                Atelier
+              </span>
+            </SheetTitle>
+          </SheetHeader>
+          <nav className="flex flex-col gap-1">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                onClick={() => setMenuOpen(false)}
+                className="text-sm uppercase tracking-widest text-stone-600 hover:text-amber-600 hover:bg-stone-100 transition-colors py-3 px-2 border-b border-stone-200"
+              >
+                {link.label}
+              </Link>
+            ))}
+            <Link
+              to="/wishlist"
+              onClick={() => setMenuOpen(false)}
+              className="text-sm uppercase tracking-widest text-stone-600 hover:text-amber-600 hover:bg-stone-100 transition-colors py-3 px-2 border-b border-stone-200 flex items-center gap-2"
+            >
+              <Heart size={14} /> Wishlist
+              {wishlistCount > 0 && (
+                <span className="ml-auto bg-amber-600 text-stone-50 w-5 h-5 rounded-full text-[10px] flex items-center justify-center">
+                  {wishlistCount}
+                </span>
+              )}
+            </Link>
+          </nav>
+        </SheetContent>
+      </Sheet>
     </header>
   );
 }
