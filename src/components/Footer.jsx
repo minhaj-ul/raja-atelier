@@ -1,46 +1,49 @@
+import { Separator } from "@/components/ui/separator";
 import { CATEGORIES } from "../data/products";
 
 const LINKS = [
-  { title: "Shop",    items: CATEGORIES.slice(1) },
-  { title: "Help",    items: ["Sizing Guide", "Returns", "Shipping", "Contact"] },
+  { title: "Shop", items: CATEGORIES.slice(1) },
+  { title: "Help", items: ["Sizing Guide", "Returns", "Shipping", "Contact"] },
   { title: "Company", items: ["About", "Sustainability", "Careers", "Press"] },
 ];
 
 export default function Footer({ isMobile, isTablet }) {
   return (
-    <footer style={{ background: "var(--ink)", color: "#a09890", borderTop: "3px solid var(--gold)" }}>
-      <div style={{
-        maxWidth: 1360, margin: "0 auto",
-        padding: isMobile ? "36px 18px 24px" : "46px 28px 26px",
-        display: "grid",
-        gridTemplateColumns: isMobile ? "1fr 1fr" : isTablet ? "repeat(2,1fr)" : "repeat(4,1fr)",
-        gap: isMobile ? 24 : 34,
-      }}>
-        {/* Brand blurb */}
-        <div style={{ gridColumn: isMobile ? "1/-1" : "auto" }}>
-          <div style={{ fontFamily: "var(--fd)", fontSize: 21, fontWeight: 300, color: "var(--paper)", marginBottom: 9 }}>
-            <span style={{ fontStyle: "italic" }}>MAISON</span>
-            <span style={{ fontSize: 9, letterSpacing: ".3em", color: "var(--gold)", marginLeft: 6 }}>Atelier</span>
+    <footer className="bg-stone-950 text-stone-400 border-t-4 border-amber-600">
+      {/* Main grid */}
+      <div
+        className={`
+        max-w-340 mx-auto px-5 md:px-7
+        pt-10 pb-7
+        grid gap-6 md:gap-9
+        ${isMobile ? "grid-cols-2" : isTablet ? "grid-cols-2" : "grid-cols-4"}
+      `}
+      >
+        {/* Brand */}
+        <div className={isMobile ? "col-span-2" : ""}>
+          <div className="font-display text-xl font-light text-stone-100 mb-2.5">
+            <span className="italic">MAISON</span>
+            <span className="text-[9px] tracking-[0.3em] text-amber-600 ml-1.5">
+              Atelier
+            </span>
           </div>
-          <p style={{ fontSize: 12, lineHeight: 1.7, fontWeight: 300, maxWidth: 210 }}>
+          <p className="text-xs leading-relaxed font-light max-w-52">
             Thoughtfully curated fashion for those who dress with intention.
           </p>
         </div>
 
         {/* Link columns */}
-        {LINKS.map(col => (
+        {LINKS.map((col) => (
           <div key={col.title}>
-            <h4 style={{ fontSize: 9, letterSpacing: ".2em", textTransform: "uppercase", color: "var(--gold)", marginBottom: 13 }}>
+            <h4 className="text-[9px] tracking-[0.2em] uppercase text-amber-600 mb-3.5">
               {col.title}
             </h4>
-            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 9 }}>
-              {col.items.map(item => (
+            <ul className="flex flex-col gap-2.5">
+              {col.items.map((item) => (
                 <li key={item}>
                   <a
                     href="#"
-                    style={{ fontSize: 12, color: "#a09890", textDecoration: "none", transition: "color .2s" }}
-                    onMouseEnter={e => e.target.style.color = "#f5f2ed"}
-                    onMouseLeave={e => e.target.style.color = "#a09890"}
+                    className="text-xs text-stone-400 hover:text-stone-100 transition-colors duration-200"
                   >
                     {item}
                   </a>
@@ -51,10 +54,14 @@ export default function Footer({ isMobile, isTablet }) {
         ))}
       </div>
 
+      <Separator className="bg-stone-800 max-w-340 mx-auto" />
+
       {/* Bottom bar */}
-      <div style={{ borderTop: "1px solid #2a2820", maxWidth: 1360, margin: "0 auto", padding: isMobile ? "14px 18px" : "16px 28px", display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 8 }}>
-        <p style={{ fontSize: 10, letterSpacing: ".06em" }}>© 2026 Maison Atelier. All rights reserved.</p>
-        <p style={{ fontSize: 10, letterSpacing: ".06em" }}>Free demo project</p>
+      <div className="max-w-340 mx-auto px-5 md:px-7 py-4 flex justify-between flex-wrap gap-2">
+        <p className="text-[10px] tracking-wide">
+          © 2026 Maison Atelier. All rights reserved.
+        </p>
+        <p className="text-[10px] tracking-wide">Free demo project</p>
       </div>
     </footer>
   );
