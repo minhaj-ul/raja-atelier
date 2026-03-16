@@ -1,3 +1,14 @@
+import { useState } from "react";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { useNavigate } from "react-router-dom";
 import { Heart, ShoppingBag, Trash2, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,6 +22,7 @@ export default function WishlistPage({
   onAddToCart,
 }) {
   const navigate = useNavigate();
+  const [pendingDelete, setPendingDelete] = useState(null);
 
   return (
     <div className="bg-stone-100 min-h-screen">
@@ -107,7 +119,7 @@ export default function WishlistPage({
                         variant="outline"
                         size="icon"
                         className="rounded-none border-stone-300 hover:bg-red-50 hover:text-red-500 hover:border-red-200 h-9 w-9 transition-colors"
-                        onClick={() => onRemoveFromWishlist(product.id)}
+                        onClick={() => setPendingDelete(product)}
                       >
                         <Trash2 size={14} />
                       </Button>
@@ -136,6 +148,41 @@ export default function WishlistPage({
           </>
         )}
       </section>
+
+      {/* Delete confirmation */}
+      <AlertDialog
+        open={!!pendingDelete}
+        onOpenChange={(open) => !open && setPendingDelete(null)}
+      >
+        <AlertDialogContent className="rounded-none bg-stone-50 border-stone-300 max-w-sm">
+          <AlertDialogHeader>
+            <AlertDialogTitle className="font-display font-normal text-2xl text-stone-950">
+              Remove from wishlist?
+            </AlertDialogTitle>
+            <AlertDialogDescription className="text-sm text-stone-500 font-light">
+              Are you sure you want to remove{" "}
+              <span className="text-stone-950 font-normal">
+                {pendingDelete?.name}
+              </span>{" "}
+              from your wishlist?
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter className="gap-2">
+            <AlertDialogCancel className="rounded-none border-stone-300 text-stone-950 hover:bg-stone-200 text-xs uppercase tracking-widest">
+              Keep it
+            </AlertDialogCancel>
+            <AlertDialogAction
+              className="rounded-none bg-red-600 hover:bg-red-700 text-stone-50 text-xs uppercase tracking-widest"
+              onClick={() => {
+                onRemoveFromWishlist(pendingDelete.id);
+                setPendingDelete(null);
+              }}
+            >
+              Remove
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

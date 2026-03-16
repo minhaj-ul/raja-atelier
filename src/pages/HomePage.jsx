@@ -19,6 +19,7 @@ export default function HomePage({
   onRemove,
   onToggleWishlist,
   isWished,
+  wishlistCount,
 }) {
   const vw = useWidth();
   const isMobile = vw < 640;
@@ -76,6 +77,7 @@ export default function HomePage({
         mobSearch={mobSearch}
         setMobSearch={setMobSearch}
         cartCount={cartCount}
+        wishlistCount={wishlistCount}
         onCartOpen={() => setCartOpen(true)}
       />
 

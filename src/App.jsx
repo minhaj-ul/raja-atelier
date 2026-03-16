@@ -32,6 +32,7 @@ export default function App() {
             onRemove={removeItem}
             onToggleWishlist={toggleWishlist}
             isWished={isWished}
+            wishlistCount={wishlistCount}
           />
         }
       />
