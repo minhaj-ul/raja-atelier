@@ -1,42 +1,11 @@
 import { useState } from "react";
-import { Mail, MapPin, Phone, Send, Clock } from "lucide-react";
+import { MapPin, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
 import { toast } from "sonner";
-
-const CONTACT_INFO = [
-  {
-    icon: MapPin,
-    title: "Visit Us",
-    lines: ["12 Rue du Faubourg", "Paris, France 75008"],
-  },
-  {
-    icon: Phone,
-    title: "Call Us",
-    lines: ["+33 1 23 45 67 89", "Mon–Fri, 9am–6pm CET"],
-  },
-  {
-    icon: Mail,
-    title: "Email Us",
-    lines: ["hello@maisonatelier.com", "We reply within 24 hours"],
-  },
-  {
-    icon: Clock,
-    title: "Opening Hours",
-    lines: ["Mon–Sat: 10am – 7pm", "Sunday: 12pm – 5pm"],
-  },
-];
-
-const SUBJECTS = [
-  "General Enquiry",
-  "Order Issue",
-  "Returns & Exchanges",
-  "Sizing Help",
-  "Press & Collaboration",
-  "Other",
-];
+import { CONTACT_INFO, SUBJECTS } from "../data/contact";
 
 export default function ContactPage() {
   const [form, setForm] = useState({
