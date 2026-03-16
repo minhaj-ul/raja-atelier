@@ -1,97 +1,134 @@
 import { useRef } from "react";
-import { Icon, IC } from "../utils/icons";
+import { Search, X, ShoppingBag } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
 
-export default function Header({ isMobile, search, setSearch, mobSearch, setMobSearch, cartCount, onCartOpen }) {
+export default function Header({
+  isMobile,
+  search,
+  setSearch,
+  mobSearch,
+  setMobSearch,
+  cartCount,
+  onCartOpen,
+}) {
   const mobInputRef = useRef(null);
 
   const handleMobSearchToggle = () => {
-    setMobSearch(s => !s);
+    setMobSearch((s) => !s);
     setTimeout(() => mobInputRef.current?.focus(), 50);
   };
 
   return (
-    <header
-      style={{
-        position: "sticky", top: 0, zIndex: 40,
-        background: "rgba(245,242,237,.93)",
-        backdropFilter: "blur(12px)",
-        borderBottom: "1px solid var(--border)",
-      }}
-    >
+    <header className="sticky top-0 z-40 bg-stone-100/90 backdrop-blur-md border-b border-stone-300">
       {/* Promo bar */}
-      <div style={{ background: "var(--ink)", color: "var(--paper)", textAlign: "center", padding: "7px 16px", fontSize: 10, letterSpacing: ".18em", textTransform: "uppercase" }}>
+      <div className="bg-stone-950 text-stone-100 text-center py-1.5 px-4 text-[10px] tracking-[0.18em] uppercase">
         Free Shipping on Orders Over $250
       </div>
 
-      <div style={{ maxWidth: 1360, margin: "0 auto", padding: isMobile ? "0 13px" : "0 28px" }}>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: isMobile ? 56 : 66, gap: 12 }}>
-
+      <div className="max-w-340 mx-auto px-4 md:px-7">
+        <div className="flex items-center justify-between gap-3 h-14 md:h-16">
           {/* Logo */}
-          <div style={{ fontFamily: "var(--fd)", fontSize: isMobile ? 20 : 26, fontWeight: 300, letterSpacing: ".05em", flexShrink: 0 }}>
-            <span style={{ fontStyle: "italic" }}>MAISON</span>
-            <span style={{ fontSize: 9, letterSpacing: ".3em", textTransform: "uppercase", display: "block", lineHeight: 1, color: "var(--gold)", marginTop: -1 }}>
+          <div className="font-display shrink-0">
+            <span className="italic text-xl md:text-2xl font-light tracking-wide">
+              MAISON
+            </span>
+            <span className="block text-[9px] tracking-[0.3em] uppercase text-amber-600 leading-none -mt-0.5">
               Atelier
             </span>
           </div>
 
-          {/* Desktop search bar */}
+          {/* Desktop search */}
           {!isMobile && (
-            <div style={{ display: "flex", alignItems: "center", gap: 9, background: "var(--cream)", border: "1px solid var(--border)", padding: "9px 15px", width: 320, flexShrink: 0 }}>
-              <Icon d={IC.search} size={14} stroke="var(--muted)" />
-              <input
+            <div className="flex items-center gap-2 bg-stone-200 border border-stone-300 px-4 py-2 w-72 md:w-80 shrink-0">
+              <Search size={14} className="text-stone-500 shrink-0" />
+              <Input
                 type="search"
                 placeholder="Search pieces…"
                 value={search}
-                onChange={e => setSearch(e.target.value)}
+                onChange={(e) => setSearch(e.target.value)}
+                className="border-0 bg-transparent p-0 h-auto text-sm font-light shadow-none focus-visible:ring-0 text-stone-950 placeholder:text-stone-500"
               />
               {search && (
-                <button onClick={() => setSearch("")} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--muted)", padding: 2 }}>
-                  <Icon d={IC.close} size={12} />
-                </button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-4 w-4 p-0 hover:bg-transparent"
+                  onClick={() => setSearch("")}
+                >
+                  <X size={12} className="text-stone-500" />
+                </Button>
               )}
             </div>
           )}
 
           {/* Right icons */}
-          <div style={{ display: "flex", alignItems: "center", gap: isMobile ? 2 : 10 }}>
+          <div className="flex items-center gap-1 md:gap-3">
             {/* Mobile search toggle */}
             {isMobile && (
-              <button onClick={handleMobSearchToggle} style={{ background: "none", border: "none", cursor: "pointer", padding: 8, color: "var(--ink)" }}>
-                <Icon d={mobSearch ? IC.close : IC.search} size={20} />
-              </button>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hover:bg-stone-200"
+                onClick={handleMobSearchToggle}
+              >
+                {mobSearch ? (
+                  <X size={20} className="text-stone-950" />
+                ) : (
+                  <Search size={20} className="text-stone-950" />
+                )}
+              </Button>
             )}
+
             {/* Cart */}
-            <button
+            <Button
+              variant="ghost"
+              size="icon"
+              className="relative hover:bg-stone-200"
               onClick={onCartOpen}
-              style={{ background: "none", border: "none", cursor: "pointer", padding: 8, position: "relative" }}
             >
-              <Icon d={IC.bag} size={isMobile ? 20 : 22} stroke="var(--ink)" />
+              <ShoppingBag
+                size={isMobile ? 20 : 22}
+                className="text-stone-950"
+              />
               {cartCount > 0 && (
-                <span style={{ position: "absolute", top: 2, right: 2, background: "var(--gold)", color: "var(--white)", width: 15, height: 15, borderRadius: "50%", fontSize: 9, display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 500 }}>
+                <span className="absolute top-0.5 right-0.5 bg-amber-600 text-stone-50 w-4 h-4 rounded-full text-[9px] flex items-center justify-center font-medium">
                   {cartCount}
                 </span>
               )}
-            </button>
+            </Button>
           </div>
         </div>
       </div>
 
+      <Separator className="bg-stone-300" />
+
       {/* Mobile expanding search */}
-      <div className={`mob-search${mobSearch ? " open" : ""}`}>
-        <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "0 14px", height: 54 }}>
-          <Icon d={IC.search} size={16} stroke="var(--muted)" />
-          <input
+      <div
+        className={`overflow-hidden transition-all duration-300 bg-stone-200 ${
+          mobSearch ? "max-h-16 border-b border-stone-300" : "max-h-0"
+        }`}
+      >
+        <div className="flex items-center gap-3 px-4 h-14">
+          <Search size={16} className="text-stone-500 shrink-0" />
+          <Input
             ref={mobInputRef}
             type="search"
             placeholder="Search pieces…"
             value={search}
-            onChange={e => setSearch(e.target.value)}
-            style={{ fontSize: 15 }}
+            onChange={(e) => setSearch(e.target.value)}
+            className="border-0 bg-transparent p-0 h-auto text-base font-light shadow-none focus-visible:ring-0 text-stone-950 placeholder:text-stone-500"
           />
           {search && (
-            <button onClick={() => setSearch("")} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--muted)", padding: 2, flexShrink: 0 }}>
-              <Icon d={IC.close} size={14} />
-            </button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-5 w-5 p-0 hover:bg-transparent shrink-0"
+              onClick={() => setSearch("")}
+            >
+              <X size={14} className="text-stone-500" />
+            </Button>
           )}
         </div>
       </div>
