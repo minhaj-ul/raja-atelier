@@ -3,6 +3,7 @@ import { useCart } from "./hooks/useCart";
 import { useWishlist } from "./hooks/useWishlist";
 import HomePage from "./pages/HomePage";
 import ProductPage from "./pages/ProductPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 export default function App() {
   const { cart, cartCount, addToCart, updateQty, removeItem } = useCart();
@@ -34,6 +35,7 @@ export default function App() {
         path="/product/:id"
         element={<ProductPage onAddToCart={addToCart} />}
       />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }
