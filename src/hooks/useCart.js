@@ -1,8 +1,8 @@
 import { useState } from "react";
+import { toast } from "sonner";
 
 export function useCart() {
   const [cart, setCart] = useState([]);
-  const [toast, setToast] = useState(null);
 
   const cartCount = cart.reduce((s, i) => s + i.qty, 0);
 
@@ -13,8 +13,7 @@ export function useCart() {
         ? prev.map((i) => (i.id === product.id ? { ...i, qty: i.qty + 1 } : i))
         : [...prev, { ...product, qty: 1 }];
     });
-    setToast(`${product.name} added to bag`);
-    setTimeout(() => setToast(null), 2500);
+    toast.success(`${product.name} added to bag`);
   };
 
   const updateQty = (id, qty) => {
@@ -31,7 +30,6 @@ export function useCart() {
 
   return {
     cart,
-    toast,
     cartCount,
     addToCart,
     updateQty,
