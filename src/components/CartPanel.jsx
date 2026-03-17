@@ -150,7 +150,7 @@ export default function CartPanel({
                 className="w-full rounded-none bg-stone-950 hover:bg-amber-600 text-stone-50 uppercase tracking-widest text-xs py-5 gap-2"
                 onClick={() => {
                   onClose();
-                  navigate("/order-confirmation");
+                  navigate("/checkout");
                 }}
               >
                 Checkout

@@ -7,6 +7,7 @@ import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import FAQPage from "./pages/FAQPage";
 import WishlistPage from "./pages/WishlistPage";
+import CheckoutPage from "./pages/CheckoutPage";
 import OrderConfirmationPage from "./pages/OrderConfirmationPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
@@ -54,6 +55,10 @@ export default function App() {
             onAddToCart={addToCart}
           />
         }
+      />
+      <Route
+        path="/checkout"
+        element={<CheckoutPage cart={cart} onClearCart={clearCart} />}
       />
       <Route
         path="/order-confirmation"
