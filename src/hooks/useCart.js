@@ -28,11 +28,16 @@ export function useCart() {
     setCart((prev) => prev.filter((i) => i.id !== id));
   };
 
+  const clearCart = () => {
+    setCart([]);
+  };
+
   return {
     cart,
     cartCount,
     addToCart,
     updateQty,
     removeItem,
+    clearCart,
   };
 }

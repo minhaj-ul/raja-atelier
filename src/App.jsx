@@ -7,10 +7,12 @@ import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import FAQPage from "./pages/FAQPage";
 import WishlistPage from "./pages/WishlistPage";
+import OrderConfirmationPage from "./pages/OrderConfirmationPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
 export default function App() {
-  const { cart, cartCount, addToCart, updateQty, removeItem } = useCart();
+  const { cart, cartCount, addToCart, updateQty, removeItem, clearCart } =
+    useCart();
   const {
     wishlist,
     wishlistCount,
@@ -52,6 +54,10 @@ export default function App() {
             onAddToCart={addToCart}
           />
         }
+      />
+      <Route
+        path="/order-confirmation"
+        element={<OrderConfirmationPage cart={cart} onClearCart={clearCart} />}
       />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

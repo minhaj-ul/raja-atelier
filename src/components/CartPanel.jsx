@@ -19,6 +19,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
+import { useNavigate } from "react-router-dom";
 
 export default function CartPanel({
   cart,
@@ -37,6 +38,8 @@ export default function CartPanel({
     onRemove(pendingDelete.id);
     setPendingDelete(null);
   };
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -143,7 +146,13 @@ export default function CartPanel({
               <p className="text-[11px] text-stone-500 mb-4">
                 Shipping & taxes at checkout
               </p>
-              <Button className="w-full rounded-none bg-stone-950 hover:bg-amber-600 text-stone-50 uppercase tracking-widest text-xs py-5 gap-2">
+              <Button
+                className="w-full rounded-none bg-stone-950 hover:bg-amber-600 text-stone-50 uppercase tracking-widest text-xs py-5 gap-2"
+                onClick={() => {
+                  onClose();
+                  navigate("/order-confirmation");
+                }}
+              >
                 Checkout
                 <ArrowRight size={14} />
               </Button>
