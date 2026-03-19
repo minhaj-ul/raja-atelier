@@ -1,7 +1,8 @@
 import { useState, useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Filter, X } from "lucide-react";
+import { Search, X, SlidersHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { useWidth } from "../hooks/useWidth";
 import { PRODUCTS, CATEGORIES } from "../data/products";
 import Header from "../components/Header";
@@ -30,12 +31,7 @@ export default function HomePage({
   const [category, setCategory] = useState("All");
   const [sortBy, setSortBy] = useState("default");
   const [cartOpen, setCartOpen] = useState(false);
-  const [mobSearch, setMobSearch] = useState(false);
   const [filterOpen, setFilterOpen] = useState(false);
-  const handleBuyNow = (product) => {
-    onAddToCart(product);
-    setCartOpen(true);
-  };
 
   const filtered = useMemo(() => {
     let list = PRODUCTS;
@@ -65,6 +61,13 @@ export default function HomePage({
     };
   }, [cartOpen, filterOpen]);
 
+  const handleBuyNow = (product) => {
+    onAddToCart(product);
+    setCartOpen(true);
+  };
+
+  const hasFilters = search || category !== "All" || sortBy !== "default";
+
   const cols = isMobile
     ? "grid-cols-2"
     : isTablet
@@ -73,13 +76,9 @@ export default function HomePage({
 
   return (
     <div className="min-h-screen bg-stone-100">
-      {/* Header */}
+      {/* Header — no search props needed anymore */}
       <Header
         isMobile={isMobile}
-        search={search}
-        setSearch={setSearch}
-        mobSearch={mobSearch}
-        setMobSearch={setMobSearch}
         cartCount={cartCount}
         wishlistCount={wishlistCount}
         onCartOpen={() => setCartOpen(true)}
@@ -93,39 +92,56 @@ export default function HomePage({
         id="col"
         className={`max-w-340 mx-auto ${isMobile ? "px-3 py-7" : isTablet ? "px-5 py-11" : "px-7 py-14"}`}
       >
-        {/* Filter bar — desktop only */}
+        {/* ── Filter bar — desktop ─────────────────────────────── */}
         {!isMobile && !isTablet && (
-          <div className="flex flex-wrap items-center justify-between gap-3 mb-9 pb-5 border-b border-stone-300">
-            <div className="flex items-center gap-2 flex-1 overflow-x-auto scrollbar-none">
-              <span className="text-[10px] tracking-[0.15em] uppercase text-stone-500 shrink-0">
-                Filter:
-              </span>
-              {CATEGORIES.map((c) => (
-                <Button
-                  key={c}
-                  variant="outline"
-                  onClick={() => setCategory(c)}
-                  className={`
-            rounded-none text-xs uppercase tracking-widest h-8 px-4 shrink-0
-            ${
-              category === c
-                ? "bg-stone-950 text-stone-50 border-stone-950 hover:bg-stone-950 hover:text-stone-50"
-                : "bg-transparent text-stone-950 border-stone-300 hover:bg-stone-200"
-            }
-          `}
+          <div className="flex items-center gap-3 mb-9 pb-5 border-b border-stone-300">
+            {/* Search */}
+            <div className="flex items-center gap-2 bg-stone-50 border border-stone-300 px-3 py-2 flex-1 max-w-72">
+              <Search size={14} className="text-stone-400 shrink-0" />
+              <Input
+                type="search"
+                placeholder="Search pieces…"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="border-0 bg-transparent p-0 h-auto text-sm font-light shadow-none focus-visible:ring-0 text-stone-950 placeholder:text-stone-400"
+              />
+              {search && (
+                <button
+                  onClick={() => setSearch("")}
+                  className="text-stone-400 hover:text-stone-950 transition-colors shrink-0"
                 >
-                  {c}
-                </Button>
-              ))}
+                  <X size={13} />
+                </button>
+              )}
             </div>
-            <div className="flex items-center gap-3 shrink-0">
-              <span className="text-xs text-stone-500 whitespace-nowrap">
-                {filtered.length} pieces
+
+            {/* Category dropdown */}
+            <div className="flex items-center gap-2 shrink-0">
+              <span className="text-[10px] tracking-widest uppercase text-stone-500">
+                Category
+              </span>
+              <select
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                className="border border-stone-300 bg-stone-50 py-2 pl-3 pr-8 text-xs font-sans text-stone-950 cursor-pointer outline-none appearance-none focus:ring-1 focus:ring-amber-600"
+              >
+                {CATEGORIES.map((c) => (
+                  <option key={c} value={c}>
+                    {c}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Sort dropdown */}
+            <div className="flex items-center gap-2 shrink-0">
+              <span className="text-[10px] tracking-widest uppercase text-stone-500">
+                Sort
               </span>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="border border-stone-300 bg-stone-50 py-1.5 pl-3 pr-7 text-xs font-sans text-stone-950 cursor-pointer outline-none appearance-none"
+                className="border border-stone-300 bg-stone-50 py-2 pl-3 pr-8 text-xs font-sans text-stone-950 cursor-pointer outline-none appearance-none focus:ring-1 focus:ring-amber-600"
               >
                 <option value="default">Featured</option>
                 <option value="price-asc">Price: Low to High</option>
@@ -133,22 +149,89 @@ export default function HomePage({
                 <option value="rating">Top Rated</option>
               </select>
             </div>
+
+            {/* Result count + clear */}
+            <div className="flex items-center gap-3 ml-auto shrink-0">
+              <span className="text-xs text-stone-500">
+                {filtered.length} pieces
+              </span>
+              {hasFilters && (
+                <button
+                  onClick={() => {
+                    setSearch("");
+                    setCategory("All");
+                    setSortBy("default");
+                  }}
+                  className="text-[10px] uppercase tracking-widest text-amber-600 hover:text-amber-700 transition-colors flex items-center gap-1"
+                >
+                  <X size={11} /> Clear
+                </button>
+              )}
+            </div>
           </div>
         )}
 
-        {/* Filter button — tablet & mobile */}
+        {/* ── Filter bar — tablet & mobile ────────────────────── */}
         {(isMobile || isTablet) && (
-          <div className="flex items-center justify-between mb-5 pb-4 border-b border-stone-300">
-            <p className="text-xs text-stone-500 tracking-wide">
-              {filtered.length} pieces
-            </p>
+          <div className="flex items-center gap-2 mb-6 pb-5 border-b border-stone-300">
+            {/* Search */}
+            <div className="flex items-center gap-2 bg-stone-50 border border-stone-300 px-3 py-2 flex-1">
+              <Search size={14} className="text-stone-400 shrink-0" />
+              <Input
+                type="search"
+                placeholder="Search pieces…"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="border-0 bg-transparent p-0 h-auto text-sm font-light shadow-none focus-visible:ring-0 text-stone-950 placeholder:text-stone-400"
+              />
+              {search && (
+                <button
+                  onClick={() => setSearch("")}
+                  className="text-stone-400 hover:text-stone-950 transition-colors shrink-0"
+                >
+                  <X size={13} />
+                </button>
+              )}
+            </div>
+
+            {/* Filter & Sort button */}
             <Button
               variant="outline"
               onClick={() => setFilterOpen(true)}
-              className="rounded-none text-xs uppercase tracking-widest h-8 px-4 border-stone-300 hover:bg-stone-200 gap-2"
+              className={`
+                rounded-none uppercase tracking-widest text-xs h-9 px-3 shrink-0 gap-1.5 border-stone-300
+                ${hasFilters ? "border-amber-600 text-amber-600" : "hover:bg-stone-200"}
+              `}
             >
-              <Filter size={13} /> Filter & Sort
+              <SlidersHorizontal size={13} />
+              {!isMobile && "Filter & Sort"}
+              {hasFilters && (
+                <span className="bg-amber-600 text-stone-50 w-4 h-4 rounded-full text-[9px] flex items-center justify-center ml-0.5">
+                  !
+                </span>
+              )}
             </Button>
+          </div>
+        )}
+
+        {/* Result count — tablet & mobile */}
+        {(isMobile || isTablet) && (
+          <div className="flex items-center justify-between mb-4">
+            <p className="text-xs text-stone-500 tracking-wide">
+              {filtered.length} pieces
+            </p>
+            {hasFilters && (
+              <button
+                onClick={() => {
+                  setSearch("");
+                  setCategory("All");
+                  setSortBy("default");
+                }}
+                className="text-[10px] uppercase tracking-widest text-amber-600 hover:text-amber-700 transition-colors flex items-center gap-1"
+              >
+                <X size={11} /> Clear filters
+              </button>
+            )}
           </div>
         )}
 
