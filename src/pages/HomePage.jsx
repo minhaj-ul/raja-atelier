@@ -32,6 +32,10 @@ export default function HomePage({
   const [cartOpen, setCartOpen] = useState(false);
   const [mobSearch, setMobSearch] = useState(false);
   const [filterOpen, setFilterOpen] = useState(false);
+  const handleBuyNow = (product) => {
+    onAddToCart(product);
+    setCartOpen(true);
+  };
 
   const filtered = useMemo(() => {
     let list = PRODUCTS;
@@ -175,6 +179,7 @@ export default function HomePage({
                 onView={(product) => navigate(`/product/${product.id}`)}
                 onAddToCart={onAddToCart}
                 onToggleWishlist={onToggleWishlist}
+                onBuyNow={handleBuyNow}
                 isWished={isWished(p.id)}
                 delay={i * 45}
               />

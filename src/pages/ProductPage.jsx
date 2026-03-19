@@ -7,6 +7,7 @@ import {
   Plus,
   Check,
   Heart,
+  Zap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -124,6 +125,7 @@ export default function ProductPage({ onAddToCart }) {
 
             {/* Qty + Add */}
             <div className="flex items-center gap-3 mb-4 flex-wrap">
+              {/* Qty selector */}
               <div className="flex items-center border border-stone-300">
                 <Button
                   variant="ghost"
@@ -144,8 +146,9 @@ export default function ProductPage({ onAddToCart }) {
                 </Button>
               </div>
 
+              {/* Add to bag */}
               <Button
-                className="flex-1 rounded-none bg-stone-950 hover:bg-amber-600 text-stone-50 uppercase tracking-widest text-xs py-5 gap-2 min-w-36"
+                className="flex-1 rounded-none bg-stone-950 hover:bg-stone-800 text-stone-50 uppercase tracking-widest text-xs py-5 gap-2 min-w-36"
                 onClick={handleAdd}
               >
                 {added ? (
@@ -183,6 +186,18 @@ export default function ProductPage({ onAddToCart }) {
                 </TooltipContent>
               </Tooltip>
             </div>
+
+            {/* Buy Now button */}
+            <Button
+              className="w-full rounded-none bg-amber-600 hover:bg-amber-700 text-stone-50 uppercase tracking-widest text-xs py-5 gap-2 mb-4"
+              onClick={() => {
+                for (let i = 0; i < qty; i++) onAddToCart(product);
+                navigate("/checkout");
+              }}
+            >
+              <Zap size={14} />
+              Buy Now — ৳{(product.price * qty).toLocaleString()}
+            </Button>
 
             <p className="text-[11px] text-stone-500 tracking-wide">
               Free shipping on orders over ৳250 · Easy returns

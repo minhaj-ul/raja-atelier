@@ -1,4 +1,4 @@
-import { ShoppingBag, Heart } from "lucide-react";
+import { ShoppingBag, Heart, Zap } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Badge from "./Badge";
@@ -9,6 +9,7 @@ export default function ProductCard({
   onView,
   onAddToCart,
   onToggleWishlist,
+  onBuyNow,
   isWished,
   delay = 0,
 }) {
@@ -63,21 +64,40 @@ export default function ProductCard({
             ({product.reviews})
           </span>
         </div>
-        <div className="flex items-center justify-between">
-          <span className="text-xl text-stone-950">
-            ৳{product.price.toLocaleString()}
-          </span>
-          <Button
-            size="sm"
-            className="rounded-none bg-stone-950 hover:bg-amber-600 text-stone-50 uppercase tracking-widest text-[11px] h-8 px-3 gap-1.5"
-            onClick={(e) => {
-              e.stopPropagation();
-              onAddToCart(product);
-            }}
-          >
-            <ShoppingBag size={13} />
-            Add
-          </Button>
+        <p className="text-xl font-medium text-stone-950 mb-3">
+          ৳{product.price.toLocaleString()}
+        </p>
+
+        {/* Action buttons */}
+        <div className="flex flex-col gap-2">
+          <div className="flex gap-2">
+            {/* Add to cart */}
+            <Button
+              size="sm"
+              variant="outline"
+              className="flex-1 rounded-none border-stone-950 text-stone-950 hover:bg-stone-950 hover:text-stone-50 uppercase tracking-widest text-[11px] h-8 gap-1.5"
+              onClick={(e) => {
+                e.stopPropagation();
+                onAddToCart(product);
+              }}
+            >
+              <ShoppingBag size={12} />
+              Add
+            </Button>
+
+            {/* Buy now */}
+            <Button
+              size="sm"
+              className="flex-1 rounded-none bg-amber-600 hover:bg-amber-700 text-stone-50 uppercase tracking-widest text-[11px] h-8 gap-1.5"
+              onClick={(e) => {
+                e.stopPropagation();
+                onBuyNow(product);
+              }}
+            >
+              <Zap size={12} />
+              Buy
+            </Button>
+          </div>
         </div>
       </CardContent>
     </Card>
