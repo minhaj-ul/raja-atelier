@@ -32,6 +32,7 @@ export default function HomePage({
   const [sortBy, setSortBy] = useState("default");
   const [cartOpen, setCartOpen] = useState(false);
   const [filterOpen, setFilterOpen] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(12);
 
   const filtered = useMemo(() => {
     let list = PRODUCTS;
@@ -60,6 +61,10 @@ export default function HomePage({
       document.body.style.overflow = "";
     };
   }, [cartOpen, filterOpen]);
+
+  useEffect(() => {
+    setVisibleCount(12);
+  }, [search, category, sortBy]);
 
   const hasFilters = search || category !== "All" || sortBy !== "default";
 
@@ -247,21 +252,51 @@ export default function HomePage({
             </Button>
           </div>
         ) : (
-          <div
-            className={`grid ${cols} ${isMobile ? "gap-3" : isTablet ? "gap-5" : "gap-6"}`}
-          >
-            {filtered.map((p, i) => (
-              <ProductCard
-                key={p.id}
-                product={p}
-                onView={(product) => navigate(`/product/${product.id}`)}
-                onAddToCart={onAddToCart}
-                onToggleWishlist={onToggleWishlist}
-                isWished={isWished(p.id)}
-                delay={i * 45}
-              />
-            ))}
-          </div>
+          <>
+            {/* Grid */}
+            <div
+              className={`grid ${cols} ${isMobile ? "gap-3" : isTablet ? "gap-5" : "gap-6"}`}
+            >
+              {filtered.slice(0, visibleCount).map((p, i) => (
+                <ProductCard
+                  key={p.id}
+                  product={p}
+                  onView={(product) => navigate(`/product/${product.id}`)}
+                  onAddToCart={onAddToCart}
+                  onToggleWishlist={onToggleWishlist}
+                  isWished={isWished(p.id)}
+                  delay={i * 45}
+                />
+              ))}
+            </div>
+
+            {/* Load more */}
+            {visibleCount < filtered.length && (
+              <div className="flex flex-col items-center gap-3 mt-12">
+                <p className="text-xs text-stone-400 tracking-wide">
+                  Showing {Math.min(visibleCount, filtered.length)} of{" "}
+                  {filtered.length} pieces
+                </p>
+                <Button
+                  variant="outline"
+                  className="rounded-none border-stone-300 text-stone-950 hover:bg-stone-950 hover:text-stone-50 uppercase tracking-widest text-xs px-10 py-5 gap-2 transition-colors duration-200"
+                  onClick={() => setVisibleCount((c) => c + 12)}
+                >
+                  Load More
+                </Button>
+              </div>
+            )}
+
+            {/* End of results */}
+            {visibleCount >= filtered.length && filtered.length > 12 && (
+              <div className="flex flex-col items-center gap-2 mt-12">
+                <p className="text-xs text-stone-400 tracking-wide">
+                  All {filtered.length} pieces loaded
+                </p>
+                <div className="w-12 h-px bg-amber-600" />
+              </div>
+            )}
+          </>
         )}
       </main>
 
