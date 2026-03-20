@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Search, X, SlidersHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,12 +11,12 @@ import NewArrivals from "../components/home/NewArrivals";
 import FeaturedCategories from "../components/home/FeaturedCategories";
 import Bestsellers from "../components/home/Bestsellers";
 import ProductCard from "../components/ProductCard";
-import CartPanel from "../components/CartPanel";
-import FilterSheet from "../components/FilterSheet";
 import InstagramBanner from "../components/home/InstagramBanner";
 import Testimonials from "../components/home/Testimonials";
 import Newsletter from "../components/home/Newsletter";
 import Footer from "../components/Footer";
+import CartPanel from "../components/CartPanel";
+import FilterSheet from "../components/FilterSheet";
 
 export default function HomePage({
   cart,
@@ -80,9 +80,23 @@ export default function HomePage({
       ? "grid-cols-3"
       : "grid-cols-4";
 
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const cat = params.get("category");
+    if (cat) {
+      setCategory(cat);
+      setVisibleCount(12);
+      setTimeout(() => {
+        document.getElementById("col")?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  }, [location.search]);
+
   return (
     <div className="min-h-screen bg-stone-100">
-      {/* Header — no search props needed anymore */}
+      {/* Header */}
       <Header
         isMobile={isMobile}
         cartCount={cartCount}

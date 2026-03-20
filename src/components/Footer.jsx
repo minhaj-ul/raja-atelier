@@ -7,7 +7,7 @@ const LINKS = [
     title: "Shop",
     items: CATEGORIES.slice(1).map((cat) => ({
       label: cat,
-      to: "/",
+      to: `/?category=${encodeURIComponent(cat)}`,
     })),
   },
   {
@@ -53,7 +53,8 @@ export default function Footer({ isMobile, isTablet }) {
             </span>
           </Link>
           <p className="text-xs leading-relaxed font-light max-w-52">
-            Thoughtfully curated fashion for those who dress with intention.
+            Thoughtfully curated luxury menswear for the modern Bangladeshi
+            gentleman.
           </p>
         </div>
 
@@ -82,10 +83,11 @@ export default function Footer({ isMobile, isTablet }) {
       <Separator className="bg-stone-800 max-w-340 mx-auto" />
 
       {/* Bottom bar */}
-      <div className="max-w-340 mx-auto px-5 md:px-7 py-4 flex justify-end">
+      <div className="max-w-340 mx-auto px-5 md:px-7 py-4 flex justify-between flex-wrap gap-2">
         <p className="text-[10px] tracking-wide">
           © 2026 RAJA Atelier. All rights reserved.
         </p>
+        <p className="text-[10px] tracking-wide">Made in Bangladesh 🇧🇩</p>
       </div>
     </footer>
   );
