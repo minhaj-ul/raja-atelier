@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useWidth } from "../hooks/useWidth";
-import Header from "./Header";
-import Footer from "./Footer";
-import CartPanel from "./CartPanel";
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
+import CartPanel from "../components/shared/CartPanel";
 
 export default function Layout({
   children,

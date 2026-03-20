@@ -5,18 +5,18 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useWidth } from "../hooks/useWidth";
 import { PRODUCTS, CATEGORIES } from "../data/products";
-import Header from "../components/Header";
-import Hero from "../components/Hero";
+import Header from "../components/layout/Header";
+import Hero from "../components/layout/Hero";
 import NewArrivals from "../components/home/NewArrivals";
 import FeaturedCategories from "../components/home/FeaturedCategories";
 import Bestsellers from "../components/home/Bestsellers";
-import ProductCard from "../components/ProductCard";
+import ProductCard from "../components/shared/ProductCard";
 import InstagramBanner from "../components/home/InstagramBanner";
 import Testimonials from "../components/home/Testimonials";
 import Newsletter from "../components/home/Newsletter";
-import Footer from "../components/Footer";
-import CartPanel from "../components/CartPanel";
-import FilterSheet from "../components/FilterSheet";
+import Footer from "../components/layout/Footer";
+import CartPanel from "../components/shared/CartPanel";
+import FilterSheet from "../components/shared/FilterSheet";
 
 export default function HomePage({
   cart,

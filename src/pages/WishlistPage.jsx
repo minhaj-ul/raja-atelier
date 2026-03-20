@@ -10,11 +10,10 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { useNavigate } from "react-router-dom";
-import { Heart, ShoppingBag, Trash2, ArrowRight } from "lucide-react";
+import { Heart, ShoppingBag, Trash2, ArrowRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import Stars from "../components/Stars";
-import Badge from "../components/Badge";
+import Badge from "../components/shared/Badge";
 
 export default function WishlistPage({
   wishlist,
@@ -95,7 +94,19 @@ export default function WishlistPage({
                       {product.name}
                     </h3>
                     <div className="flex items-center gap-1.5 mb-3">
-                      <Stars rating={product.rating} />
+                      <div className="flex items-center gap-0.5">
+                        {[1, 2, 3, 4, 5].map((i) => (
+                          <Star
+                            key={i}
+                            size={11}
+                            className={
+                              i <= Math.round(product.rating)
+                                ? "fill-amber-600 stroke-amber-600"
+                                : "fill-stone-200 stroke-stone-200"
+                            }
+                          />
+                        ))}
+                      </div>
                       <span className="text-[11px] text-stone-500">
                         ({product.reviews})
                       </span>

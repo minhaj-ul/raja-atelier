@@ -1,4 +1,4 @@
-import { X, Check, SlidersHorizontal } from "lucide-react";
+import { Check, SlidersHorizontal } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { CATEGORIES } from "../data/products";
+import { CATEGORIES } from "../../data/products";
 
 export default function FilterSheet({
   category,

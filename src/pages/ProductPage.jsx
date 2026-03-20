@@ -8,6 +8,7 @@ import {
   Check,
   Heart,
   Zap,
+  Star,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -16,8 +17,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import Badge from "../components/Badge";
-import Stars from "../components/Stars";
+import Badge from "../components/shared/Badge";
 import { PRODUCTS } from "../data/products";
 
 export default function ProductPage({ onAddToCart }) {
@@ -97,7 +97,19 @@ export default function ProductPage({ onAddToCart }) {
 
             {/* Rating */}
             <div className="flex items-center gap-2.5 mb-5">
-              <Stars rating={product.rating} />
+              <div className="flex items-center gap-0.5">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <Star
+                    key={i}
+                    size={11}
+                    className={
+                      i <= Math.round(product.rating)
+                        ? "fill-amber-600 stroke-amber-600"
+                        : "fill-stone-200 stroke-stone-200"
+                    }
+                  />
+                ))}
+              </div>
               <span className="text-xs text-stone-500">
                 {product.rating} · {product.reviews} reviews
               </span>
