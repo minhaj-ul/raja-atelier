@@ -6,16 +6,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
+import ConfirmDialog from "./ConfirmDialog";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
@@ -163,36 +154,20 @@ export default function CartPanel({
       </Sheet>
 
       {/* Delete confirmation modal */}
-      <AlertDialog
+      <ConfirmDialog
         open={!!pendingDelete}
         onOpenChange={(open) => !open && setPendingDelete(null)}
-      >
-        <AlertDialogContent className="rounded-none bg-stone-50 border-stone-300 max-w-sm">
-          <AlertDialogHeader>
-            <AlertDialogTitle className="font-display font-normal text-2xl text-stone-950">
-              Remove item?
-            </AlertDialogTitle>
-            <AlertDialogDescription className="text-sm text-stone-500 font-light">
-              Are you sure you want to remove{" "}
-              <span className="text-stone-950 font-normal">
-                {pendingDelete?.name}
-              </span>{" "}
-              from your bag?
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter className="gap-2">
-            <AlertDialogCancel className="rounded-none border-stone-300 text-stone-950 hover:bg-stone-200 text-xs uppercase tracking-widest">
-              Keep it
-            </AlertDialogCancel>
-            <AlertDialogAction
-              className="rounded-none bg-red-600 hover:bg-red-700 text-stone-50 text-xs uppercase tracking-widest"
-              onClick={handleDeleteConfirm}
-            >
-              Remove
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+        title="Remove item?"
+        description={
+          pendingDelete
+            ? `Are you sure you want to remove ${pendingDelete.name} from your bag?`
+            : ""
+        }
+        confirmLabel="Remove"
+        cancelLabel="Keep it"
+        variant="danger"
+        onConfirm={handleDeleteConfirm}
+      />
     </>
   );
 }

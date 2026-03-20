@@ -1,14 +1,5 @@
 import { useState } from "react";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
+import ConfirmDialog from "../components/shared/ConfirmDialog";
 import { useNavigate } from "react-router-dom";
 import { Heart, ShoppingBag, Trash2, ArrowRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -161,39 +152,23 @@ export default function WishlistPage({
       </section>
 
       {/* Delete confirmation */}
-      <AlertDialog
+      <ConfirmDialog
         open={!!pendingDelete}
         onOpenChange={(open) => !open && setPendingDelete(null)}
-      >
-        <AlertDialogContent className="rounded-none bg-stone-50 border-stone-300 max-w-sm">
-          <AlertDialogHeader>
-            <AlertDialogTitle className="font-display font-normal text-2xl text-stone-950">
-              Remove from wishlist?
-            </AlertDialogTitle>
-            <AlertDialogDescription className="text-sm text-stone-500 font-light">
-              Are you sure you want to remove{" "}
-              <span className="text-stone-950 font-normal">
-                {pendingDelete?.name}
-              </span>{" "}
-              from your wishlist?
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter className="gap-2">
-            <AlertDialogCancel className="rounded-none border-stone-300 text-stone-950 hover:bg-stone-200 text-xs uppercase tracking-widest">
-              Keep it
-            </AlertDialogCancel>
-            <AlertDialogAction
-              className="rounded-none bg-red-600 hover:bg-red-700 text-stone-50 text-xs uppercase tracking-widest"
-              onClick={() => {
-                onRemoveFromWishlist(pendingDelete.id);
-                setPendingDelete(null);
-              }}
-            >
-              Remove
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+        title="Remove from wishlist?"
+        description={
+          pendingDelete
+            ? `Are you sure you want to remove ${pendingDelete.name} from your wishlist?`
+            : ""
+        }
+        confirmLabel="Remove"
+        cancelLabel="Keep it"
+        variant="danger"
+        onConfirm={() => {
+          onRemoveFromWishlist(pendingDelete.id);
+          setPendingDelete(null);
+        }}
+      />
     </div>
   );
 }
