@@ -1,8 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "sonner";
 
+const CART_KEY = "raja_atelier_cart";
+
+function loadCart() {
+  try {
+    const saved = localStorage.getItem(CART_KEY);
+    return saved ? JSON.parse(saved) : [];
+  } catch {
+    return [];
+  }
+}
+
 export function useCart() {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(loadCart);
+
+  // Sync to localStorage whenever cart changes
+  useEffect(() => {
+    try {
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    } catch {
+      // localStorage not available
+    }
+  }, [cart]);
 
   const cartCount = cart.reduce((s, i) => s + i.qty, 0);
 
