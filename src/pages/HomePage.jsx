@@ -10,10 +10,11 @@ import Hero from "../components/Hero";
 import NewArrivals from "../components/home/NewArrivals";
 import FeaturedCategories from "../components/home/FeaturedCategories";
 import Bestsellers from "../components/home/Bestsellers";
-import Testimonials from "../components/home/Testimonials";
 import ProductCard from "../components/ProductCard";
 import CartPanel from "../components/CartPanel";
 import FilterSheet from "../components/FilterSheet";
+import Testimonials from "../components/home/Testimonials";
+import Newsletter from "../components/home/Newsletter";
 import Footer from "../components/Footer";
 
 export default function HomePage({
@@ -319,6 +320,9 @@ export default function HomePage({
 
       {/* Testimonials */}
       <Testimonials />
+
+      {/* Newsletter */}
+      <Newsletter />
 
       {/* Footer */}
       <Footer isMobile={isMobile} isTablet={isTablet} />
