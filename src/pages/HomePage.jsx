@@ -10,6 +10,7 @@ import Hero from "../components/Hero";
 import NewArrivals from "../components/home/NewArrivals";
 import FeaturedCategories from "../components/home/FeaturedCategories";
 import Bestsellers from "../components/home/Bestsellers";
+import Testimonials from "../components/home/Testimonials";
 import ProductCard from "../components/ProductCard";
 import CartPanel from "../components/CartPanel";
 import FilterSheet from "../components/FilterSheet";
@@ -315,6 +316,9 @@ export default function HomePage({
           </>
         )}
       </main>
+
+      {/* Testimonials */}
+      <Testimonials />
 
       {/* Footer */}
       <Footer isMobile={isMobile} isTablet={isTablet} />
