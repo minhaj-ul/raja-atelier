@@ -8,6 +8,7 @@ import { PRODUCTS, CATEGORIES } from "../data/products";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import NewArrivals from "../components/home/NewArrivals";
+import FeaturedCategories from "../components/home/FeaturedCategories";
 import ProductCard from "../components/ProductCard";
 import CartPanel from "../components/CartPanel";
 import FilterSheet from "../components/FilterSheet";
@@ -94,6 +95,9 @@ export default function HomePage({
         onToggleWishlist={onToggleWishlist}
         isWished={isWished}
       />
+
+      {/* Featured Categories */}
+      <FeaturedCategories />
 
       {/* Collection */}
       <main
