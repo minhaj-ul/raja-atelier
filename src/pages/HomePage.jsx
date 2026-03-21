@@ -39,6 +39,7 @@ export default function HomePage({
   const [cartOpen, setCartOpen] = useState(false);
   const [filterOpen, setFilterOpen] = useState(false);
   const [visibleCount, setVisibleCount] = useState(12);
+  const [badgeFilter, setBadgeFilter] = useState(null);
 
   const filtered = useMemo(() => {
     let list = PRODUCTS;
