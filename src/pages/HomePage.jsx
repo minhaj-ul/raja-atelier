@@ -44,6 +44,9 @@ export default function HomePage({
   const filtered = useMemo(() => {
     let list = PRODUCTS;
     if (category !== "All") list = list.filter((p) => p.category === category);
+    if (badgeFilter === "new") list = list.filter((p) => p.badge === "New");
+    if (badgeFilter === "bestseller")
+      list = list.filter((p) => p.badge === "Bestseller");
     if (search.trim()) {
       const q = search.toLowerCase();
       list = list.filter(
@@ -60,7 +63,7 @@ export default function HomePage({
     if (sortBy === "rating")
       list = [...list].sort((a, b) => b.rating - a.rating);
     return list;
-  }, [search, category, sortBy]);
+  }, [search, category, sortBy, badgeFilter]);
 
   useEffect(() => {
     document.body.style.overflow = cartOpen || filterOpen ? "hidden" : "";
