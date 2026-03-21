@@ -82,15 +82,20 @@ export default function HomePage({
 
   const location = useLocation();
 
+  // Read category from URL search params
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const cat = params.get("category");
-    if (cat) {
+    if (cat && cat !== category) {
       setCategory(cat);
       setVisibleCount(12);
+    } else if (!cat) {
+      setCategory("All");
+    }
+    if (cat) {
       setTimeout(() => {
         document.getElementById("col")?.scrollIntoView({ behavior: "smooth" });
-      }, 100);
+      }, 150);
     }
   }, [location.search]);
 

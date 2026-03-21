@@ -19,10 +19,7 @@ export default function FeaturedCategories() {
   const navigate = useNavigate();
 
   const handleCategoryClick = (cat) => {
-    navigate(`/?category=${encodeURIComponent(cat)}`);
-    setTimeout(() => {
-      document.getElementById("col")?.scrollIntoView({ behavior: "smooth" });
-    }, 100);
+    navigate(`/?category=${encodeURIComponent(cat)}`, { replace: true });
   };
 
   return (
