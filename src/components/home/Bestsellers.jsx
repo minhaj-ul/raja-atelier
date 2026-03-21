@@ -26,7 +26,7 @@ export default function Bestsellers({ onAddToCart }) {
         </div>
         <Button
           variant="ghost"
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/?filter=bestseller", { replace: true })}
           className="rounded-none text-xs uppercase tracking-widest text-stone-500 hover:text-amber-600 hover:bg-transparent gap-1.5 hidden md:flex"
         >
           View All <ArrowRight size={13} />
@@ -90,7 +90,7 @@ export default function Bestsellers({ onAddToCart }) {
       <div className="flex justify-center mt-8 md:hidden">
         <Button
           variant="outline"
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/?filter=bestseller", { replace: true })}
           className="rounded-none border-stone-300 text-stone-950 hover:bg-stone-950 hover:text-stone-50 uppercase tracking-widest text-xs px-8 py-5 gap-2"
         >
           View All <ArrowRight size={13} />
