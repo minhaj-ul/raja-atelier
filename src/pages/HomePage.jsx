@@ -74,7 +74,7 @@ export default function HomePage({
 
   useEffect(() => {
     setVisibleCount(12);
-  }, [search, category, sortBy]);
+  }, [search, category, sortBy, badgeFilter]);
 
   const hasFilters = search || category !== "All" || sortBy !== "default";
 
