@@ -90,13 +90,22 @@ export default function HomePage({
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const cat = params.get("category");
-    if (cat && cat !== category) {
-      setCategory(cat);
-      setVisibleCount(12);
-    } else if (!cat) {
-      setCategory("All");
-    }
+    const filter = params.get("filter");
+
     if (cat) {
+      setCategory(cat);
+      setBadgeFilter(null);
+    } else if (filter) {
+      setBadgeFilter(filter);
+      setCategory("All");
+    } else {
+      setCategory("All");
+      setBadgeFilter(null);
+    }
+
+    setVisibleCount(12);
+
+    if (cat || filter) {
       setTimeout(() => {
         document.getElementById("col")?.scrollIntoView({ behavior: "smooth" });
       }, 150);
