@@ -36,6 +36,7 @@ export default function App() {
     logout,
     updateProfile,
     forgotPassword,
+    changePassword,
   } = useAuth();
   const { placeOrder, getUserOrders } = useOrders();
 
@@ -169,6 +170,7 @@ export default function App() {
               user={user}
               onLogout={logout}
               onUpdateProfile={updateProfile}
+              onChangePassword={changePassword}
               getUserOrders={getUserOrders}
               wishlist={wishlist}
               onRemoveFromWishlist={removeFromWishlist}
