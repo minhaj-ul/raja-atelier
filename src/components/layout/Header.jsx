@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { ShoppingBag, Heart, Menu } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { ShoppingBag, Heart, Menu, User, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -9,6 +9,14 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const NAV_LINKS = [
   { label: "Shop", to: "/" },
@@ -22,8 +30,12 @@ export default function Header({
   cartCount,
   wishlistCount,
   onCartOpen,
+  user,
+  onLogout,
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   return (
     <header className="sticky top-0 z-40 bg-stone-100/90 backdrop-blur-md border-b border-stone-300">
@@ -98,6 +110,68 @@ export default function Header({
               )}
             </Button>
 
+            {/* User account */}
+            {user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="relative hover:bg-stone-200 rounded-full"
+                  >
+                    <div className="w-7 h-7 rounded-full bg-amber-600 flex items-center justify-center">
+                      <span className="text-stone-50 text-xs font-medium">
+                        {user.name?.charAt(0).toUpperCase()}
+                      </span>
+                    </div>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  align="end"
+                  className="rounded-none border-stone-300 bg-stone-50 w-48"
+                >
+                  <DropdownMenuLabel className="font-normal">
+                    <p className="text-xs font-medium text-stone-950">
+                      {user.name}
+                    </p>
+                    <p className="text-[10px] text-stone-400 truncate">
+                      {user.email}
+                    </p>
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator className="bg-stone-200" />
+                  <DropdownMenuItem
+                    className="text-xs uppercase tracking-widest cursor-pointer hover:text-amber-600 gap-2"
+                    onClick={() => navigate("/account")}
+                  >
+                    <User size={13} /> My Account
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    className="text-xs uppercase tracking-widest cursor-pointer hover:text-amber-600 gap-2"
+                    onClick={() => navigate("/wishlist")}
+                  >
+                    <Heart size={13} /> Wishlist
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator className="bg-stone-200" />
+                  <DropdownMenuItem
+                    className="text-xs uppercase tracking-widest cursor-pointer text-red-500 hover:text-red-600 gap-2"
+                    onClick={onLogout}
+                  >
+                    <LogOut size={13} /> Sign Out
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Link to="/login">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="hover:bg-stone-200"
+                >
+                  <User size={isMobile ? 20 : 22} className="text-stone-950" />
+                </Button>
+              </Link>
+            )}
+
             {/* Mobile menu */}
             {isMobile && (
               <Button
@@ -149,6 +223,34 @@ export default function Header({
                 </span>
               )}
             </Link>
+            {user ? (
+              <>
+                <Link
+                  to="/account"
+                  onClick={() => setMenuOpen(false)}
+                  className="text-sm uppercase tracking-widests text-stone-600 hover:text-amber-600 hover:bg-stone-100 transition-colors py-3 px-2 border-b border-stone-200 flex items-center gap-2"
+                >
+                  <User size={14} /> My Account
+                </Link>
+                <button
+                  onClick={() => {
+                    onLogout();
+                    setMenuOpen(false);
+                  }}
+                  className="text-sm uppercase tracking-widests text-red-500 hover:text-red-600 hover:bg-red-50 transition-colors py-3 px-2 border-b border-stone-200 flex items-center gap-2 w-full text-left"
+                >
+                  <LogOut size={14} /> Sign Out
+                </button>
+              </>
+            ) : (
+              <Link
+                to="/login"
+                onClick={() => setMenuOpen(false)}
+                className="text-sm uppercase tracking-widests text-stone-600 hover:text-amber-600 hover:bg-stone-100 transition-colors py-3 px-2 border-b border-stone-200 flex items-center gap-2"
+              >
+                <User size={14} /> Sign In
+              </Link>
+            )}
           </nav>
         </SheetContent>
       </Sheet>
