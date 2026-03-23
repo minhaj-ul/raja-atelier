@@ -3,6 +3,7 @@ import { Mail, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import Spinner from "../shared/Spinner";
 
 export default function Newsletter() {
   const [email, setEmail] = useState("");
