@@ -4,17 +4,22 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { toast } from "sonner";
+import Spinner from "../shared/Spinner";
 
 export default function ProfileTab({ user, onUpdateProfile }) {
   const [editing, setEditing] = useState(false);
+  const [saving, setSaving] = useState(false);
   const [form, setForm] = useState({
     name: user?.name || "",
     phone: user?.phone || "",
     address: user?.address || "",
   });
 
-  const handleSave = () => {
+  const handleSave = async () => {
+    setSaving(true);
+    await new Promise((r) => setTimeout(r, 600));
     onUpdateProfile(form);
+    setSaving(false);
     setEditing(false);
     toast.success("Profile updated successfully");
   };
@@ -54,9 +59,18 @@ export default function ProfileTab({ user, onUpdateProfile }) {
             </Button>
             <Button
               onClick={handleSave}
+              disabled={saving}
               className="rounded-none bg-amber-600 hover:bg-amber-700 text-stone-50 uppercase tracking-widest text-xs gap-1.5"
             >
-              <Check size={13} /> Save
+              {saving ? (
+                <>
+                  <Spinner size={13} className="text-stone-50" /> Saving…
+                </>
+              ) : (
+                <>
+                  <Check size={13} /> Save
+                </>
+              )}
             </Button>
           </div>
         )}
