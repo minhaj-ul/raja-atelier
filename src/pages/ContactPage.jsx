@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import { CONTACT_INFO, SUBJECTS } from "../data/contact";
 import Layout from "../layouts/Layout";
 import PageTitle from "../components/shared/PageTitle";
+import Spinner from "../components/shared/Spinner";
 
 export default function ContactPage({
   user,
@@ -198,7 +199,9 @@ export default function ContactPage({
                   className="rounded-none bg-stone-950 hover:bg-amber-600 text-stone-50 uppercase tracking-widest text-xs py-5 gap-2 mt-2"
                 >
                   {loading ? (
-                    "Sending…"
+                    <>
+                      <Spinner size={14} /> Sending…
+                    </>
                   ) : (
                     <>
                       <Send size={13} /> Send Message
