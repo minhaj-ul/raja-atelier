@@ -4,6 +4,7 @@ import { Mail, ArrowLeft, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import PageTitle from "../components/shared/PageTitle";
+import Spinner from "../components/shared/Spinner";
 
 export default function ForgotPasswordPage({ onForgotPassword }) {
   const [email, setEmail] = useState("");
@@ -83,7 +84,9 @@ export default function ForgotPasswordPage({ onForgotPassword }) {
                   className="w-full rounded-none bg-stone-950 hover:bg-amber-600 text-stone-50 uppercase tracking-widest text-xs py-5 gap-2"
                 >
                   {loading ? (
-                    "Sending…"
+                    <>
+                      <Spinner size={14} /> Sending…
+                    </>
                   ) : (
                     <>
                       <Mail size={14} /> Send Reset Link
