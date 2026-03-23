@@ -52,7 +52,7 @@ export default function RegisterPage({ onRegister }) {
       toast.success(`Welcome to RAJA Atelier, ${result.user.name}!`);
       const redirect = sessionStorage.getItem("raja_redirect_after_login");
       sessionStorage.removeItem("raja_redirect_after_login");
-      navigate(redirect || "/account");
+      navigate(redirect || "/");
     } else {
       setError(result.error);
     }
