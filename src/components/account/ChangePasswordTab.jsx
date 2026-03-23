@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { toast } from "sonner";
+import Spinner from "../shared/Spinner";
 
 export default function ChangePasswordTab({ onChangePassword }) {
   const [form, setForm] = useState({
@@ -215,7 +216,9 @@ export default function ChangePasswordTab({ onChangePassword }) {
           className="w-full mt-4 rounded-none bg-stone-950 hover:bg-amber-600 text-stone-50 uppercase tracking-widest text-xs py-5 gap-2"
         >
           {loading ? (
-            "Updating…"
+            <>
+              <Spinner size={13} className="text-stone-50" /> Updating…
+            </>
           ) : (
             <>
               <Lock size={13} /> Update Password
