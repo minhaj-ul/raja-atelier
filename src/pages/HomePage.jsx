@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Search, X, SlidersHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -18,6 +18,7 @@ import Footer from "../components/layout/Footer";
 import CartPanel from "../components/shared/CartPanel";
 import FilterSheet from "../components/shared/FilterSheet";
 import PageTitle from "../components/shared/PageTitle";
+import Spinner from "../components/shared/Spinner";
 
 export default function HomePage({
   cart,
@@ -43,6 +44,7 @@ export default function HomePage({
   const [filterOpen, setFilterOpen] = useState(false);
   const [visibleCount, setVisibleCount] = useState(12);
   const [badgeFilter, setBadgeFilter] = useState(null);
+  const [productsLoading, setProductsLoading] = useState(true);
 
   const filtered = useMemo(() => {
     let list = PRODUCTS;
@@ -77,6 +79,18 @@ export default function HomePage({
 
   useEffect(() => {
     setVisibleCount(12);
+  }, [search, category, sortBy, badgeFilter]);
+
+  useEffect(() => {
+    setProductsLoading(true);
+    const timer = setTimeout(() => setProductsLoading(false), 600);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    setProductsLoading(true);
+    const timer = setTimeout(() => setProductsLoading(false), 400);
+    return () => clearTimeout(timer);
   }, [search, category, sortBy, badgeFilter]);
 
   const hasFilters =
@@ -298,7 +312,14 @@ export default function HomePage({
         )}
 
         {/* Product grid */}
-        {filtered.length === 0 ? (
+        {productsLoading ? (
+          <div className="flex flex-col items-center justify-center py-24 gap-4">
+            <Spinner size={28} />
+            <p className="text-xs uppercase tracking-widest text-stone-400">
+              Loading collection…
+            </p>
+          </div>
+        ) : filtered.length === 0 ? (
           <div className="text-center py-20 text-stone-500">
             <p className="font-display text-2xl italic mb-2">No pieces found</p>
             <p className="text-sm mb-5">Try adjusting your search or filters</p>
