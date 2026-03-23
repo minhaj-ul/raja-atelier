@@ -1,4 +1,4 @@
-import { User, Package, Heart, LogOut } from "lucide-react";
+import { User, Package, Heart, LogOut, Lock } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 
@@ -6,6 +6,7 @@ const TABS = [
   { id: "profile", label: "Profile", icon: User },
   { id: "orders", label: "Orders", icon: Package },
   { id: "wishlist", label: "Wishlist", icon: Heart },
+  { id: "password", label: "Password", icon: Lock },
 ];
 
 export default function AccountSidebar({
@@ -37,7 +38,6 @@ export default function AccountSidebar({
               `}
             >
               <Icon size={15} />
-              {tab.label}
               {tab.id === "orders" && orderCount > 0 && (
                 <span className="absolute top-1.5 right-1.5 bg-amber-600 text-stone-50 w-4 h-4 rounded-full text-[9px] flex items-center justify-center">
                   {orderCount}
