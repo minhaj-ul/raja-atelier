@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { useCart } from "./hooks/useCart";
 import { useWishlist } from "./hooks/useWishlist";
+import { useAuth } from "./hooks/useAuth";
 import HomePage from "./pages/HomePage";
 import ProductPage from "./pages/ProductPage";
 import AboutPage from "./pages/AboutPage";
@@ -9,7 +10,12 @@ import FAQPage from "./pages/FAQPage";
 import WishlistPage from "./pages/WishlistPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import OrderConfirmationPage from "./pages/OrderConfirmationPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+import AccountPage from "./pages/AccountPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import ProtectedRoute from "./components/shared/ProtectedRoute";
 
 export default function App() {
   const { cart, cartCount, addToCart, updateQty, removeItem, clearCart } =
@@ -21,6 +27,18 @@ export default function App() {
     toggleWishlist,
     removeFromWishlist,
   } = useWishlist();
+  const {
+    user,
+    isLoggedIn,
+    loading,
+    login,
+    register,
+    logout,
+    updateProfile,
+    forgotPassword,
+  } = useAuth();
+
+  const headerProps = { user, onLogout: logout };
 
   return (
     <Routes>
@@ -36,16 +54,26 @@ export default function App() {
             onToggleWishlist={toggleWishlist}
             isWished={isWished}
             wishlistCount={wishlistCount}
+            user={user}
+            onLogout={logout}
           />
         }
       />
       <Route
         path="/product/:id"
-        element={<ProductPage onAddToCart={addToCart} />}
+        element={
+          <ProductPage onAddToCart={addToCart} user={user} onLogout={logout} />
+        }
       />
-      <Route path="/about" element={<AboutPage />} />
-      <Route path="/contact" element={<ContactPage />} />
-      <Route path="/faq" element={<FAQPage />} />
+      <Route
+        path="/about"
+        element={<AboutPage user={user} onLogout={logout} />}
+      />
+      <Route
+        path="/contact"
+        element={<ContactPage user={user} onLogout={logout} />}
+      />
+      <Route path="/faq" element={<FAQPage user={user} onLogout={logout} />} />
       <Route
         path="/wishlist"
         element={
@@ -53,16 +81,55 @@ export default function App() {
             wishlist={wishlist}
             onRemoveFromWishlist={removeFromWishlist}
             onAddToCart={addToCart}
+            user={user}
+            onLogout={logout}
           />
         }
       />
       <Route
         path="/checkout"
-        element={<CheckoutPage cart={cart} onClearCart={clearCart} />}
+        element={
+          <ProtectedRoute isLoggedIn={isLoggedIn}>
+            <CheckoutPage
+              cart={cart}
+              onClearCart={clearCart}
+              user={user}
+              onLogout={logout}
+            />
+          </ProtectedRoute>
+        }
       />
       <Route
         path="/order-confirmation"
-        element={<OrderConfirmationPage cart={cart} onClearCart={clearCart} />}
+        element={
+          <OrderConfirmationPage
+            cart={cart}
+            onClearCart={clearCart}
+            user={user}
+            onLogout={logout}
+          />
+        }
+      />
+      <Route
+        path="/account"
+        element={
+          <ProtectedRoute isLoggedIn={isLoggedIn}>
+            <AccountPage
+              user={user}
+              onLogout={logout}
+              onUpdateProfile={updateProfile}
+            />
+          </ProtectedRoute>
+        }
+      />
+      <Route path="/login" element={<LoginPage onLogin={login} />} />
+      <Route
+        path="/register"
+        element={<RegisterPage onRegister={register} />}
+      />
+      <Route
+        path="/forgot-password"
+        element={<ForgotPasswordPage onForgotPassword={forgotPassword} />}
       />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
