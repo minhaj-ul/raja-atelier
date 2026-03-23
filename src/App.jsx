@@ -82,6 +82,11 @@ export default function App() {
             onAddToCart={addToCart}
             user={user}
             onLogout={logout}
+            cart={cart}
+            cartCount={cartCount}
+            onUpdateQty={updateQty}
+            onRemove={removeItem}
+            wishlistCount={wishlistCount}
           />
         }
       />

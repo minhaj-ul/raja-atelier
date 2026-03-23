@@ -13,12 +13,25 @@ export default function WishlistPage({
   onAddToCart,
   user,
   onLogout,
+  cart,
+  cartCount,
+  onUpdateQty,
+  onRemove,
+  wishlistCount,
 }) {
   const navigate = useNavigate();
   const [pendingDelete, setPendingDelete] = useState(null);
 
   return (
-    <Layout user={user} onLogout={onLogout}>
+    <Layout
+      user={user}
+      onLogout={onLogout}
+      cart={cart}
+      cartCount={cartCount}
+      onUpdateQty={onUpdateQty}
+      onRemove={onRemove}
+      wishlistCount={wishlistCount}
+    >
       <div className="bg-stone-100 min-h-screen">
         {/* Hero */}
         <section className="bg-stone-950 text-stone-100 px-5 md:px-7 py-16 md:py-24 text-center">
