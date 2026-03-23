@@ -15,13 +15,10 @@ function loadWishlist() {
 export function useWishlist() {
   const [wishlist, setWishlist] = useState(loadWishlist);
 
-  // Sync to localStorage whenever wishlist changes
   useEffect(() => {
     try {
       localStorage.setItem(WISHLIST_KEY, JSON.stringify(wishlist));
-    } catch {
-      // localStorage not available
-    }
+    } catch {}
   }, [wishlist]);
 
   const isWished = (productId) =>

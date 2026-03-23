@@ -22,7 +22,6 @@ export default function CartPanel({
   const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
   const count = cart.reduce((s, i) => s + i.qty, 0);
 
-  // Track which item is pending deletion
   const [pendingDelete, setPendingDelete] = useState(null);
 
   const handleDeleteConfirm = () => {
@@ -33,7 +32,7 @@ export default function CartPanel({
   const navigate = useNavigate();
 
   return (
-    <>
+    <div>
       <Sheet open onOpenChange={onClose}>
         <SheetContent
           side={isMobile ? "bottom" : "right"}
@@ -167,6 +166,6 @@ export default function CartPanel({
         variant="danger"
         onConfirm={handleDeleteConfirm}
       />
-    </>
+    </div>
   );
 }

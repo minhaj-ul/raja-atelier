@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import Badge from "../components/shared/Badge";
 import Layout from "../layouts/Layout";
+import PageTitle from "../components/shared/PageTitle";
 
 export default function WishlistPage({
   wishlist,
@@ -33,6 +34,8 @@ export default function WishlistPage({
       wishlistCount={wishlistCount}
     >
       <div className="bg-stone-100 min-h-screen">
+        <PageTitle title="Wishlist" />
+
         {/* Hero */}
         <section className="bg-stone-950 text-stone-100 px-5 md:px-7 py-16 md:py-24 text-center">
           <p className="text-[10px] tracking-[0.4em] uppercase text-amber-600 mb-4">

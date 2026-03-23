@@ -2,12 +2,15 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft, SearchX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import PageTitle from "../components/shared/PageTitle";
 
 export default function NotFoundPage() {
   const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-stone-100 flex flex-col items-center justify-center px-5 text-center">
+      <PageTitle title="Page Not Found" />
+
       {/* 404 */}
       <p className="font-display text-[120px] md:text-[180px] font-light leading-none text-stone-200 select-none">
         404

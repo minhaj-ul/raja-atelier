@@ -20,6 +20,7 @@ import {
 import Badge from "../components/shared/Badge";
 import { PRODUCTS } from "../data/products";
 import Layout from "../layouts/Layout";
+import PageTitle from "../components/shared/PageTitle";
 
 export default function ProductPage({ onAddToCart, user, onLogout }) {
   const { id } = useParams();
@@ -33,7 +34,6 @@ export default function ProductPage({ onAddToCart, user, onLogout }) {
   const [added, setAdded] = useState(false);
   const [wished, setWished] = useState(false);
 
-  // If product not found
   if (!product) {
     return (
       <div className="min-h-screen bg-stone-100 flex flex-col items-center justify-center gap-4 text-stone-500">
@@ -55,7 +55,6 @@ export default function ProductPage({ onAddToCart, user, onLogout }) {
     setTimeout(() => setAdded(false), 2000);
   };
 
-  // Related products (same category, exclude current)
   const related = PRODUCTS.filter(
     (p) => p.category === product.category && p.id !== product.id,
   ).slice(0, 4);
@@ -63,6 +62,8 @@ export default function ProductPage({ onAddToCart, user, onLogout }) {
   return (
     <Layout user={user} onLogout={onLogout}>
       <div className="min-h-screen bg-stone-100">
+        <PageTitle title={product.name} />
+
         {/* Back button */}
         <div className="max-w-340 mx-auto px-5 md:px-7 pt-6 pb-2">
           <Button
@@ -226,6 +227,7 @@ export default function ProductPage({ onAddToCart, user, onLogout }) {
         {related.length > 0 && (
           <div className="max-w-340 mx-auto px-5 md:px-7 py-10">
             <Separator className="bg-stone-300 mb-10" />
+
             <p className="text-[10px] tracking-[0.3em] uppercase text-amber-600 mb-2">
               You may also like
             </p>

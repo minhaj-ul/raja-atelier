@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Mail, ArrowLeft, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import PageTitle from "../components/shared/PageTitle";
 
 export default function ForgotPasswordPage({ onForgotPassword }) {
   const [email, setEmail] = useState("");
@@ -24,6 +25,8 @@ export default function ForgotPasswordPage({ onForgotPassword }) {
 
   return (
     <div className="min-h-screen bg-stone-100 flex items-center justify-center px-4 py-16">
+      <PageTitle title="Forgot Password" />
+
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">

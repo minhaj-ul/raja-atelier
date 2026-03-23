@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { toast } from "sonner";
+import PageTitle from "../components/shared/PageTitle";
 
 export default function LoginPage({ onLogin }) {
   const navigate = useNavigate();
@@ -42,6 +43,8 @@ export default function LoginPage({ onLogin }) {
 
   return (
     <div className="min-h-screen bg-stone-100 flex items-center justify-center px-4 py-16">
+      <PageTitle title="Sign In" />
+
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">

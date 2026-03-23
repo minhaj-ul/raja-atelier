@@ -17,7 +17,7 @@ export default function AccountSidebar({
 }) {
   return (
     <>
-      {/* ── Mobile: horizontal pills ── */}
+      {/* Mobile: horizontal pills */}
       <div className="flex md:hidden gap-2 mb-6">
         {TABS.map((tab) => {
           const Icon = tab.icon;
@@ -53,7 +53,7 @@ export default function AccountSidebar({
         })}
       </div>
 
-      {/* ── Desktop: vertical sidebar ── */}
+      {/* Desktop: vertical sidebar */}
       <nav className="hidden md:flex flex-col gap-1">
         {TABS.map((tab) => {
           const Icon = tab.icon;
@@ -98,7 +98,7 @@ export default function AccountSidebar({
         </button>
       </nav>
 
-      {/* ── Mobile: sign out button ── */}
+      {/* Mobile: sign out button */}
       <Button
         variant="outline"
         onClick={onLogout}

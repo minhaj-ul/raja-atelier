@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { PRODUCTS } from "../../data/products";
 
-// Get one representative product image per category
 const CATEGORY_DATA = Object.values(
   PRODUCTS.reduce((acc, product) => {
     if (!acc[product.category]) {

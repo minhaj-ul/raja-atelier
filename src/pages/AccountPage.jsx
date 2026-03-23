@@ -6,6 +6,7 @@ import AccountSidebar from "../components/account/AccountSidebar";
 import ProfileTab from "../components/account/ProfileTab";
 import OrdersTab from "../components/account/OrdersTab";
 import WishlistTab from "../components/account/WishlistTab";
+import PageTitle from "../components/shared/PageTitle";
 
 export default function AccountPage({
   user,
@@ -30,6 +31,8 @@ export default function AccountPage({
   return (
     <Layout user={user} onLogout={onLogout}>
       <div className="min-h-screen bg-stone-100">
+        <PageTitle title="My Account" />
+
         {/* Hero */}
         <section className="bg-stone-950 text-stone-100 px-5 md:px-7 py-14 md:py-20">
           <div className="max-w-340 mx-auto">

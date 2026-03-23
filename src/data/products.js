@@ -1,5 +1,5 @@
 export const PRODUCTS = [
-  // ── Suits & Blazers ──────────────────────────────────────────
+  // Suits & Blazers
   {
     id: 1,
     name: "Dhaka Midnight Suit",
@@ -85,7 +85,7 @@ export const PRODUCTS = [
     tags: ["blazer", "check", "plaid", "smart-casual"],
   },
 
-  // ── Shirts ───────────────────────────────────────────────────
+  // Shirts
   {
     id: 7,
     name: "Muslin White Dress Shirt",
@@ -171,7 +171,7 @@ export const PRODUCTS = [
     tags: ["shirt", "tuxedo", "black", "formal"],
   },
 
-  // ── Trousers & Chinos ─────────────────────────────────────────
+  // Trousers & Chinos
   {
     id: 13,
     name: "Charcoal Wool Dress Trousers",
@@ -243,7 +243,7 @@ export const PRODUCTS = [
     tags: ["trousers", "linen", "cream", "summer"],
   },
 
-  // ── Outerwear & Coats ─────────────────────────────────────────
+  // Outerwear & Coats
   {
     id: 18,
     name: "Dhaka Wool Overcoat",
@@ -301,7 +301,7 @@ export const PRODUCTS = [
     tags: ["jacket", "quilted", "navy", "lightweight"],
   },
 
-  // ── Footwear ─────────────────────────────────────────────────
+  // Footwear
   {
     id: 22,
     name: "Dhaka Oxford Shoes",
@@ -387,7 +387,7 @@ export const PRODUCTS = [
     tags: ["monk-strap", "suede", "burgundy", "formal"],
   },
 
-  // ── Accessories ───────────────────────────────────────────────
+  // Accessories
   {
     id: 28,
     name: "Dhaka Gold Chronograph",
@@ -473,7 +473,7 @@ export const PRODUCTS = [
     tags: ["watch", "dress", "bronze", "minimal"],
   },
 
-  // ── Ties & Pocket Squares ─────────────────────────────────────
+  // Ties & Pocket Squares
   {
     id: 34,
     name: "Rajshahi Silk Tie - Navy",
@@ -531,7 +531,7 @@ export const PRODUCTS = [
     tags: ["tie", "pocket-square", "set", "burgundy"],
   },
 
-  // ── Knitwear & Sweaters ───────────────────────────────────────
+  // Knitwear & Sweaters
   {
     id: 38,
     name: "Cashmere Crewneck - Camel",
@@ -589,7 +589,7 @@ export const PRODUCTS = [
     tags: ["polo-sweater", "silk-cotton", "navy", "smart"],
   },
 
-  // ── Casual Wear ───────────────────────────────────────────────
+  // Casual Wear
   {
     id: 42,
     name: "Bengal Linen T-Shirt",
@@ -661,7 +661,7 @@ export const PRODUCTS = [
     tags: ["sweatshirt", "cotton", "slate", "casual"],
   },
 
-  // ── Formal Wear ───────────────────────────────────────────────
+  // Formal Wear
   {
     id: 47,
     name: "Midnight Tuxedo",

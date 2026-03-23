@@ -9,6 +9,7 @@ import ShippingStep from "../components/checkout/ShippingStep";
 import PaymentStep from "../components/checkout/PaymentStep";
 import ReviewStep from "../components/checkout/ReviewStep";
 import OrderSummary from "../components/checkout/OrderSummary";
+import PageTitle from "../components/shared/PageTitle";
 
 export default function CheckoutPage({
   cart,
@@ -42,7 +43,6 @@ export default function CheckoutPage({
   const [promoInput, setPromoInput] = useState("");
   const [appliedPromo, setAppliedPromo] = useState(null);
 
-  // ── Calculations ───────────────────────────────────────────────
   const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
   const shippingCost =
     appliedPromo?.type === "freeship" ? 0 : selectedShipping?.price || 0;
@@ -52,7 +52,6 @@ export default function CheckoutPage({
       : 0;
   const total = subtotal + shippingCost - discount;
 
-  // ── Handlers ───────────────────────────────────────────────────
   const handleShippingChange = (key, val) =>
     setShipping((prev) => ({ ...prev, [key]: val }));
 
@@ -136,7 +135,6 @@ export default function CheckoutPage({
     }, 1500);
   };
 
-  // ── Empty cart guard ───────────────────────────────────────────
   if (cart.length === 0 && step === 0) {
     return (
       <div className="min-h-screen bg-stone-100 flex flex-col items-center justify-center gap-4 text-stone-500">
@@ -153,6 +151,8 @@ export default function CheckoutPage({
 
   return (
     <div className="bg-stone-100 min-h-screen">
+      <PageTitle title="Checkout" />
+
       {/* Top bar */}
       <div className="bg-stone-950 text-stone-100 text-center py-1.5 px-4 text-[10px] tracking-[0.18em] uppercase">
         RAJA Atelier — Secure Checkout

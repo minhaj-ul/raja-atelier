@@ -3,8 +3,8 @@ import { CheckCircle, Package, ArrowRight, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { ORDER_STEPS } from "../data/orderConfirmation";
+import PageTitle from "../components/shared/PageTitle";
 
-// Generate a random order number
 const ORDER_NUMBER = `MA-${Math.floor(100000 + Math.random() * 900000)}`;
 const ORDER_DATE = new Date().toLocaleDateString("en-GB", {
   day: "numeric",
@@ -32,6 +32,8 @@ export default function OrderConfirmationPage({ cart, onClearCart }) {
 
   return (
     <div className="bg-stone-100 min-h-screen">
+      <PageTitle title="Order Confirmed" />
+
       {/* Hero */}
       <section className="bg-stone-950 text-stone-100 px-5 md:px-7 py-16 md:py-24 text-center">
         <CheckCircle

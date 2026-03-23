@@ -6,11 +6,7 @@ import { PRODUCTS } from "../../data/products";
 
 const NEW_ARRIVALS = PRODUCTS.filter((p) => p.badge === "New").slice(0, 4);
 
-export default function NewArrivals({
-  onAddToCart,
-  onToggleWishlist,
-  isWished,
-}) {
+export default function NewArrivals() {
   const navigate = useNavigate();
 
   return (

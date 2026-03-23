@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { VALUES, TEAM } from "../data/about";
 import Layout from "../layouts/Layout";
+import PageTitle from "../components/shared/PageTitle";
 
 export default function AboutPage({ user, onLogout }) {
   const navigate = useNavigate();
@@ -11,6 +12,8 @@ export default function AboutPage({ user, onLogout }) {
   return (
     <Layout user={user} onLogout={onLogout}>
       <div className="bg-stone-100">
+        <PageTitle title="About Us" />
+
         {/* Hero */}
         <section className="relative bg-stone-950 text-stone-100 px-5 md:px-7 py-20 md:py-32 text-center overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(184,148,63,0.08),transparent_60%)] pointer-events-none" />

@@ -17,6 +17,7 @@ import Newsletter from "../components/home/Newsletter";
 import Footer from "../components/layout/Footer";
 import CartPanel from "../components/shared/CartPanel";
 import FilterSheet from "../components/shared/FilterSheet";
+import PageTitle from "../components/shared/PageTitle";
 
 export default function HomePage({
   cart,
@@ -89,7 +90,6 @@ export default function HomePage({
 
   const location = useLocation();
 
-  // Read category from URL search params
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const cat = params.get("category");
@@ -117,6 +117,8 @@ export default function HomePage({
 
   return (
     <div className="min-h-screen bg-stone-100">
+      <PageTitle title="Luxury Menswear" />
+
       {/* Header */}
       <Header
         isMobile={isMobile}
@@ -148,7 +150,7 @@ export default function HomePage({
         id="col"
         className={`max-w-340 mx-auto ${isMobile ? "px-3 py-7" : isTablet ? "px-5 py-11" : "px-7 py-14"}`}
       >
-        {/* ── Filter bar — desktop ─────────────────────────────── */}
+        {/* Filter bar — desktop */}
         {!isMobile && !isTablet && (
           <div className="flex items-center gap-3 mb-9 pb-5 border-b border-stone-300">
             {/* Search */}
@@ -229,7 +231,7 @@ export default function HomePage({
           </div>
         )}
 
-        {/* ── Filter bar — tablet & mobile ────────────────────── */}
+        {/* Filter bar — tablet & mobile */}
         {(isMobile || isTablet) && (
           <div className="flex items-center gap-2 mb-6 pb-5 border-b border-stone-300">
             {/* Search */}

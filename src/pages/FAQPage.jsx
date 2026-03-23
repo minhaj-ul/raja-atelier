@@ -11,6 +11,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { FAQS } from "../data/faq";
 import Layout from "../layouts/Layout";
+import PageTitle from "../components/shared/PageTitle";
 
 export default function FAQPage({ user, onLogout }) {
   const navigate = useNavigate();
@@ -19,6 +20,8 @@ export default function FAQPage({ user, onLogout }) {
   return (
     <Layout user={user} onLogout={onLogout}>
       <div className="bg-stone-100">
+        <PageTitle title="FAQ" />
+
         {/* Hero */}
         <section className="bg-stone-950 text-stone-100 px-5 md:px-7 py-16 md:py-24 text-center">
           <p className="text-[10px] tracking-[0.4em] uppercase text-amber-600 mb-4">

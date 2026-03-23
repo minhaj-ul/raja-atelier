@@ -8,7 +8,6 @@ export default function Layout({
   children,
   cart,
   cartCount,
-  onAddToCart,
   onUpdateQty,
   onRemove,
   wishlistCount,

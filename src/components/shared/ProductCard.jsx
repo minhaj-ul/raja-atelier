@@ -18,7 +18,7 @@ export default function ProductCard({
       style={{ animationDelay: `${delay}ms` }}
       onClick={() => onView(product)}
     >
-      {/* ── Image ─────────────────────────────────────────────── */}
+      {/* Image */}
       <div className="relative overflow-hidden">
         {product.badge && <Badge text={product.badge} />}
         <img
@@ -29,7 +29,7 @@ export default function ProductCard({
         />
       </div>
 
-      {/* ── Info ──────────────────────────────────────────────── */}
+      {/* Info */}
       <CardContent className="flex flex-col gap-1.5 px-3 pt-3 pb-2 flex-1">
         {/* Category */}
         <p className="text-[9px] tracking-[0.18em] uppercase text-amber-600 font-medium">
@@ -69,7 +69,7 @@ export default function ProductCard({
 
       <Separator className="bg-stone-200 mx-3" />
 
-      {/* ── Action buttons ─────────────────────────────────────── */}
+      {/* Action buttons */}
       <CardFooter className="px-3 py-2.5 flex items-stretch gap-2">
         {/* Add to cart */}
         <Button

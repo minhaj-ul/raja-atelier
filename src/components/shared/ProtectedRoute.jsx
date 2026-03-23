@@ -7,7 +7,6 @@ export default function ProtectedRoute({ isLoggedIn, children }) {
 
   useEffect(() => {
     if (!isLoggedIn) {
-      // Save the page user was trying to visit
       sessionStorage.setItem("raja_redirect_after_login", location.pathname);
       navigate("/login");
     }

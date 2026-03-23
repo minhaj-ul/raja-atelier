@@ -87,7 +87,7 @@ export default function Footer({ isMobile, isTablet }) {
         <p className="text-[10px] tracking-wide">
           © 2026 RAJA Atelier. All rights reserved.
         </p>
-        <p className="text-[10px] tracking-wide">Made in Bangladesh 🇧🇩</p>
+        <p className="text-[10px] tracking-wide">Made in Bangladesh</p>
       </div>
     </footer>
   );

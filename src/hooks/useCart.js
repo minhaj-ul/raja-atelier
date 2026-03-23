@@ -15,13 +15,10 @@ function loadCart() {
 export function useCart() {
   const [cart, setCart] = useState(loadCart);
 
-  // Sync to localStorage whenever cart changes
   useEffect(() => {
     try {
       localStorage.setItem(CART_KEY, JSON.stringify(cart));
-    } catch {
-      // localStorage not available
-    }
+    } catch {}
   }, [cart]);
 
   const cartCount = cart.reduce((s, i) => s + i.qty, 0);

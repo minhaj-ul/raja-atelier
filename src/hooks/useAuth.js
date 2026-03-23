@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 const AUTH_KEY = "raja_atelier_auth";
 const USERS_KEY = "raja_atelier_users";
 
-// Demo credential pre-loaded
 const DEMO_USERS = [
   {
     id: "demo_001",
@@ -21,7 +20,6 @@ function loadUsers() {
   try {
     const saved = localStorage.getItem(USERS_KEY);
     if (saved) return JSON.parse(saved);
-    // First time — seed demo user
     localStorage.setItem(USERS_KEY, JSON.stringify(DEMO_USERS));
     return DEMO_USERS;
   } catch {
@@ -64,7 +62,7 @@ export function useAuth() {
   const login = async (email, password) => {
     setLoading(true);
     setError(null);
-    await new Promise((r) => setTimeout(r, 800)); // simulate API
+    await new Promise((r) => setTimeout(r, 800));
     const users = loadUsers();
     const found = users.find(
       (u) =>
@@ -87,7 +85,7 @@ export function useAuth() {
   const register = async (data) => {
     setLoading(true);
     setError(null);
-    await new Promise((r) => setTimeout(r, 800)); // simulate API
+    await new Promise((r) => setTimeout(r, 800));
     const users = loadUsers();
     const exists = users.find(
       (u) => u.email.toLowerCase() === data.email.toLowerCase(),
@@ -143,7 +141,6 @@ export function useAuth() {
       (u) => u.email.toLowerCase() === email.toLowerCase(),
     );
     setLoading(false);
-    // Always return success for security (don't reveal if email exists)
     return { success: true };
   };
 
