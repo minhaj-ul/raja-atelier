@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
@@ -8,6 +9,7 @@ import OrdersTab from "../components/account/OrdersTab";
 import WishlistTab from "../components/account/WishlistTab";
 import PageTitle from "../components/shared/PageTitle";
 import ChangePasswordTab from "../components/account/ChangePasswordTab";
+import Spinner from "../components/shared/Spinner";
 
 export default function AccountPage({
   user,
@@ -34,6 +36,12 @@ export default function AccountPage({
     toast.success("You have been signed out");
     navigate("/");
   };
+
+  const [profileLoading, setProfileLoading] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => setProfileLoading(false), 200);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <Layout
@@ -87,9 +95,14 @@ export default function AccountPage({
             {/* Main content */}
             <div className="md:col-span-3">
               {/* ProfileTab */}
-              {activeTab === "profile" && (
-                <ProfileTab user={user} onUpdateProfile={onUpdateProfile} />
-              )}
+              {activeTab === "profile" &&
+                (profileLoading ? (
+                  <div className="flex justify-center py-16">
+                    <Spinner size={22} />
+                  </div>
+                ) : (
+                  <ProfileTab user={user} onUpdateProfile={onUpdateProfile} />
+                ))}
 
               {/* Orders Tab */}
               {activeTab === "orders" && <OrdersTab orders={userOrders} />}
