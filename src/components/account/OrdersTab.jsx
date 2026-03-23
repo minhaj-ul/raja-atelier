@@ -1,10 +1,18 @@
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Package, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import OrderCard from "./OrderCard";
+import Spinner from "../shared/Spinner";
 
 export default function OrdersTab({ orders }) {
   const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 400);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div>
@@ -21,7 +29,11 @@ export default function OrdersTab({ orders }) {
       </div>
 
       {/* Empty state */}
-      {orders.length === 0 ? (
+      {loading ? (
+        <div className="flex justify-center py-16">
+          <Spinner size={22} />
+        </div>
+      ) : orders.length === 0 ? (
         <div className="bg-stone-50 border border-stone-300 p-10 flex flex-col items-center gap-4 text-stone-400">
           <Package size={40} strokeWidth={1} />
           <p className="font-display text-lg italic">No orders yet</p>
