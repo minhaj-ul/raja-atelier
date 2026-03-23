@@ -27,6 +27,8 @@ export default function HomePage({
   onToggleWishlist,
   isWished,
   wishlistCount,
+  user,
+  onLogout,
 }) {
   const vw = useWidth();
   const isMobile = vw < 640;
@@ -121,6 +123,8 @@ export default function HomePage({
         cartCount={cartCount}
         wishlistCount={wishlistCount}
         onCartOpen={() => setCartOpen(true)}
+        user={user}
+        onLogout={onLogout}
       />
 
       {/* Hero */}
