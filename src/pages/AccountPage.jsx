@@ -7,11 +7,13 @@ import ProfileTab from "../components/account/ProfileTab";
 import OrdersTab from "../components/account/OrdersTab";
 import WishlistTab from "../components/account/WishlistTab";
 import PageTitle from "../components/shared/PageTitle";
+import ChangePasswordTab from "../components/account/ChangePasswordTab";
 
 export default function AccountPage({
   user,
   onLogout,
   onUpdateProfile,
+  onChangePassword,
   getUserOrders,
   wishlist,
   onRemoveFromWishlist,
@@ -84,18 +86,26 @@ export default function AccountPage({
 
             {/* Main content */}
             <div className="md:col-span-3">
+              {/* ProfileTab */}
               {activeTab === "profile" && (
                 <ProfileTab user={user} onUpdateProfile={onUpdateProfile} />
               )}
 
+              {/* Orders Tab */}
               {activeTab === "orders" && <OrdersTab orders={userOrders} />}
 
+              {/* Wishlist Tab */}
               {activeTab === "wishlist" && (
                 <WishlistTab
                   wishlist={wishlist}
                   onRemoveFromWishlist={onRemoveFromWishlist}
                   onAddToCart={onAddToCart}
                 />
+              )}
+
+              {/* Change Password Tab */}
+              {activeTab === "password" && (
+                <ChangePasswordTab onChangePassword={onChangePassword} />
               )}
             </div>
           </div>
