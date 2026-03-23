@@ -10,7 +10,7 @@ export const FAQS = [
       {
         question: "Do you offer free delivery?",
         answer:
-          "Yes! We offer free standard delivery on all orders over $5,000. Orders below this amount have a flat delivery fee of $150.",
+          "Yes! We offer free standard delivery on all orders over ৳5,000. Orders below this amount have a flat delivery fee of ৳150.",
       },
       {
         question: "Can I track my order?",

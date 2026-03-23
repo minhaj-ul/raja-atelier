@@ -4,7 +4,7 @@ export const SHIPPING_METHODS = [
     label: "Standard Delivery",
     description: "3–5 business days",
     price: 0,
-    note: "Free on orders over $5000",
+    note: "Free on orders over ৳5,000",
   },
   {
     id: "express",

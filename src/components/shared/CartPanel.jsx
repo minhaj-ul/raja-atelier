@@ -35,7 +35,6 @@ export default function CartPanel({
   return (
     <>
       <Sheet open onOpenChange={onClose}>
-        x
         <SheetContent
           side={isMobile ? "bottom" : "right"}
           className={`

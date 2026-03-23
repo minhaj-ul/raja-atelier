@@ -12,6 +12,8 @@ export default function Layout({
   onUpdateQty,
   onRemove,
   wishlistCount,
+  user,
+  onLogout,
 }) {
   const vw = useWidth();
   const isMobile = vw < 640;
@@ -27,6 +29,8 @@ export default function Layout({
         cartCount={cartCount}
         wishlistCount={wishlistCount}
         onCartOpen={() => setCartOpen(true)}
+        user={user}
+        onLogout={onLogout}
       />
 
       {/* Page content */}

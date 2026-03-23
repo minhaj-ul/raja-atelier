@@ -95,7 +95,7 @@ export default function ContactPage({ user, onLogout }) {
                 <div className="text-center text-stone-400">
                   <MapPin size={28} className="mx-auto mb-2 text-amber-600" />
                   <p className="text-xs tracking-wide">
-                    12 Rue du Faubourg, Paris
+                    House 12, Road 6, Banani, Dhaka
                   </p>
                 </div>
               </div>
