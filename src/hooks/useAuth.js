@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const AUTH_KEY = "raja_atelier_auth";
 const USERS_KEY = "raja_atelier_users";
@@ -144,6 +144,23 @@ export function useAuth() {
     return { success: true };
   };
 
+  const changePassword = async (currentPassword, newPassword) => {
+    setLoading(true);
+    await new Promise((r) => setTimeout(r, 800));
+    const users = loadUsers();
+    const found = users.find((u) => u.id === user.id);
+    if (!found || found.password !== currentPassword) {
+      setLoading(false);
+      return { success: false, error: "Current password is incorrect" };
+    }
+    const updatedUsers = users.map((u) =>
+      u.id === user.id ? { ...u, password: newPassword } : u,
+    );
+    saveUsers(updatedUsers);
+    setLoading(false);
+    return { success: true };
+  };
+
   return {
     user,
     isLoggedIn,
@@ -155,5 +172,6 @@ export function useAuth() {
     logout,
     updateProfile,
     forgotPassword,
+    changePassword,
   };
 }
