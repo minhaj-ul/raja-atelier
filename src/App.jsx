@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { useCart } from "./hooks/useCart";
 import { useWishlist } from "./hooks/useWishlist";
 import { useAuth } from "./hooks/useAuth";
+import { useOrders } from "./hooks/useOrders";
 import HomePage from "./pages/HomePage";
 import ProductPage from "./pages/ProductPage";
 import AboutPage from "./pages/AboutPage";
@@ -30,15 +31,13 @@ export default function App() {
   const {
     user,
     isLoggedIn,
-    loading,
     login,
     register,
     logout,
     updateProfile,
     forgotPassword,
   } = useAuth();
-
-  const headerProps = { user, onLogout: logout };
+  const { placeOrder, getUserOrders } = useOrders();
 
   return (
     <Routes>
@@ -93,6 +92,7 @@ export default function App() {
             <CheckoutPage
               cart={cart}
               onClearCart={clearCart}
+              onPlaceOrder={placeOrder}
               user={user}
               onLogout={logout}
             />
@@ -118,6 +118,7 @@ export default function App() {
               user={user}
               onLogout={logout}
               onUpdateProfile={updateProfile}
+              getUserOrders={getUserOrders}
             />
           </ProtectedRoute>
         }
