@@ -1,9 +1,23 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { User, Package, Heart, LogOut, Edit, Check, X } from "lucide-react";
+import {
+  User,
+  Package,
+  Heart,
+  LogOut,
+  Edit,
+  Check,
+  X,
+  ChevronDown,
+  ChevronUp,
+  ShoppingBag,
+  MapPin,
+  CreditCard,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import Layout from "../layouts/Layout";
 
@@ -13,7 +27,182 @@ const TABS = [
   { id: "wishlist", label: "Wishlist", icon: Heart },
 ];
 
-export default function AccountPage({ user, onLogout, onUpdateProfile }) {
+const STATUS_STYLES = {
+  confirmed: "bg-blue-100 text-blue-700 hover:bg-blue-100",
+  dispatched: "bg-amber-100 text-amber-700 hover:bg-amber-100",
+  delivered: "bg-green-100 text-green-700 hover:bg-green-100",
+  cancelled: "bg-red-100 text-red-700 hover:bg-red-100",
+};
+
+// ── Single order card ──────────────────────────────────────────
+function OrderCard({ order }) {
+  const [expanded, setExpanded] = useState(false);
+
+  const date = new Date(order.date).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+  const delivery = new Date(order.estimatedDelivery).toLocaleDateString(
+    "en-GB",
+    {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    },
+  );
+
+  return (
+    <div className="bg-stone-50 border border-stone-300">
+      {/* Order header */}
+      <div
+        className="flex flex-wrap items-center justify-between gap-3 p-4 md:p-5 cursor-pointer hover:bg-stone-100 transition-colors"
+        onClick={() => setExpanded((e) => !e)}
+      >
+        <div className="flex flex-col gap-0.5">
+          <div className="flex items-center gap-2 flex-wrap">
+            <p className="text-sm font-medium text-stone-950">{order.id}</p>
+            <Badge
+              className={`rounded-none text-[9px] tracking-widest uppercase ${STATUS_STYLES[order.status] || STATUS_STYLES.confirmed}`}
+            >
+              {order.status}
+            </Badge>
+          </div>
+          <p className="text-xs text-stone-400">{date}</p>
+        </div>
+
+        <div className="flex items-center gap-4">
+          <div className="text-right">
+            <p className="text-sm font-semibold text-stone-950">
+              ৳{order.total.toLocaleString()}
+            </p>
+            <p className="text-xs text-stone-400">
+              {order.items.reduce((s, i) => s + i.qty, 0)} items
+            </p>
+          </div>
+          {expanded ? (
+            <ChevronUp size={16} className="text-stone-400 shrink-0" />
+          ) : (
+            <ChevronDown size={16} className="text-stone-400 shrink-0" />
+          )}
+        </div>
+      </div>
+
+      {/* Expanded details */}
+      {expanded && (
+        <div className="border-t border-stone-200">
+          {/* Items */}
+          <div className="p-4 md:p-5 flex flex-col gap-0">
+            <p className="text-[10px] tracking-widest uppercase text-amber-600 mb-3">
+              Items Ordered
+            </p>
+            {order.items.map((item) => (
+              <div key={item.id}>
+                <div className="flex gap-3 py-3">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-12 h-16 object-cover shrink-0"
+                  />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-[9px] tracking-widest uppercase text-amber-600 mb-0.5">
+                      {item.category}
+                    </p>
+                    <p className="font-display text-sm leading-snug text-stone-950">
+                      {item.name}
+                    </p>
+                    <p className="text-xs text-stone-400 mt-0.5">
+                      Qty: {item.qty}
+                    </p>
+                  </div>
+                  <p className="text-sm font-medium text-stone-950 shrink-0">
+                    ৳{(item.price * item.qty).toLocaleString()}
+                  </p>
+                </div>
+                <Separator className="bg-stone-100" />
+              </div>
+            ))}
+
+            {/* Totals */}
+            <div className="flex flex-col gap-1.5 pt-3">
+              <div className="flex justify-between text-xs text-stone-500">
+                <span>Subtotal</span>
+                <span>৳{order.subtotal.toLocaleString()}</span>
+              </div>
+              <div className="flex justify-between text-xs text-stone-500">
+                <span>Shipping</span>
+                <span>
+                  {order.shippingCost === 0 ? "Free" : `৳${order.shippingCost}`}
+                </span>
+              </div>
+              {order.discount > 0 && (
+                <div className="flex justify-between text-xs text-amber-600">
+                  <span>Discount</span>
+                  <span>-৳{order.discount.toLocaleString()}</span>
+                </div>
+              )}
+              <Separator className="bg-stone-200 my-1" />
+              <div className="flex justify-between text-sm font-semibold text-stone-950">
+                <span>Total</span>
+                <span>৳{order.total.toLocaleString()}</span>
+              </div>
+            </div>
+          </div>
+
+          <Separator className="bg-stone-200" />
+
+          {/* Shipping + Payment info */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-0">
+            <div className="p-4 md:p-5">
+              <div className="flex items-center gap-1.5 mb-2">
+                <MapPin size={13} className="text-amber-600" />
+                <p className="text-[10px] tracking-widest uppercase text-amber-600">
+                  Delivery Address
+                </p>
+              </div>
+              <p className="text-xs text-stone-600 font-light leading-relaxed">
+                {order.shipping.firstName} {order.shipping.lastName}
+                <br />
+                {order.shipping.address1}
+                {order.shipping.address2 && `, ${order.shipping.address2}`}
+                <br />
+                {order.shipping.city}, {order.shipping.postalCode}
+                <br />
+                {order.shipping.country}
+              </p>
+            </div>
+
+            <div className="p-4 md:p-5 sm:border-l border-t sm:border-t-0 border-stone-200">
+              <div className="flex items-center gap-1.5 mb-2">
+                <CreditCard size={13} className="text-amber-600" />
+                <p className="text-[10px] tracking-widests uppercase text-amber-600">
+                  Payment
+                </p>
+              </div>
+              <p className="text-xs text-stone-600 font-light">
+                Card ending in {order.paymentLast4}
+              </p>
+              <p className="text-xs text-stone-600 font-light mt-1">
+                {order.selectedShipping?.label}
+              </p>
+              <p className="text-xs text-stone-400 mt-1">
+                Est. delivery: {delivery}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── Account Page ───────────────────────────────────────────────
+export default function AccountPage({
+  user,
+  onLogout,
+  onUpdateProfile,
+  getUserOrders,
+}) {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("profile");
   const [editing, setEditing] = useState(false);
@@ -22,6 +211,8 @@ export default function AccountPage({ user, onLogout, onUpdateProfile }) {
     phone: user?.phone || "",
     address: user?.address || "",
   });
+
+  const userOrders = getUserOrders ? getUserOrders(user?.id) : [];
 
   const handleLogout = () => {
     onLogout();
@@ -51,7 +242,6 @@ export default function AccountPage({ user, onLogout, onUpdateProfile }) {
         <section className="bg-stone-950 text-stone-100 px-5 md:px-7 py-14 md:py-20">
           <div className="max-w-340 mx-auto">
             <div className="flex items-center gap-5">
-              {/* Avatar */}
               <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-amber-600 flex items-center justify-center shrink-0">
                 <span className="font-display text-2xl md:text-3xl font-light text-stone-50">
                   {user?.name?.charAt(0).toUpperCase()}
@@ -83,24 +273,28 @@ export default function AccountPage({ user, onLogout, onUpdateProfile }) {
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id)}
                       className={`
-                      flex items-center gap-2.5 px-4 py-3 text-xs uppercase tracking-widest
-                      transition-all shrink-0 border-b-2 md:border-b-0 md:border-l-2
-                      ${
-                        activeTab === tab.id
-                          ? "border-amber-600 text-amber-600 bg-amber-50"
-                          : "border-transparent text-stone-500 hover:text-stone-950 hover:bg-stone-200"
-                      }
-                    `}
+                        flex items-center gap-2.5 px-4 py-3 text-xs uppercase tracking-widest
+                        transition-all shrink-0 border-b-2 md:border-b-0 md:border-l-2
+                        ${
+                          activeTab === tab.id
+                            ? "border-amber-600 text-amber-600 bg-amber-50"
+                            : "border-transparent text-stone-500 hover:text-stone-950 hover:bg-stone-200"
+                        }
+                      `}
                     >
                       <Icon size={14} />
                       {tab.label}
+                      {tab.id === "orders" && userOrders.length > 0 && (
+                        <span className="ml-auto bg-amber-600 text-stone-50 w-5 h-5 rounded-full text-[10px] flex items-center justify-center shrink-0">
+                          {userOrders.length}
+                        </span>
+                      )}
                     </button>
                   );
                 })}
 
                 <Separator className="bg-stone-200 my-2 hidden md:block" />
 
-                {/* Logout */}
                 <button
                   onClick={handleLogout}
                   className="flex items-center gap-2.5 px-4 py-3 text-xs uppercase tracking-widest text-red-500 hover:bg-red-50 transition-colors shrink-0 border-b-2 md:border-b-0 md:border-l-2 border-transparent"
@@ -148,7 +342,6 @@ export default function AccountPage({ user, onLogout, onUpdateProfile }) {
                   </div>
 
                   <div className="bg-stone-50 border border-stone-300 p-6 flex flex-col gap-5">
-                    {/* Name */}
                     <div>
                       <label className="text-[10px] tracking-widests uppercase text-stone-500 mb-1.5 block">
                         Full Name
@@ -167,10 +360,7 @@ export default function AccountPage({ user, onLogout, onUpdateProfile }) {
                         </p>
                       )}
                     </div>
-
                     <Separator className="bg-stone-200" />
-
-                    {/* Email — not editable */}
                     <div>
                       <label className="text-[10px] tracking-widests uppercase text-stone-500 mb-1.5 block">
                         Email Address
@@ -182,10 +372,7 @@ export default function AccountPage({ user, onLogout, onUpdateProfile }) {
                         Email cannot be changed
                       </p>
                     </div>
-
                     <Separator className="bg-stone-200" />
-
-                    {/* Phone */}
                     <div>
                       <label className="text-[10px] tracking-widests uppercase text-stone-500 mb-1.5 block">
                         Phone Number
@@ -209,10 +396,7 @@ export default function AccountPage({ user, onLogout, onUpdateProfile }) {
                         </p>
                       )}
                     </div>
-
                     <Separator className="bg-stone-200" />
-
-                    {/* Address */}
                     <div>
                       <label className="text-[10px] tracking-widests uppercase text-stone-500 mb-1.5 block">
                         Delivery Address
@@ -236,10 +420,7 @@ export default function AccountPage({ user, onLogout, onUpdateProfile }) {
                         </p>
                       )}
                     </div>
-
                     <Separator className="bg-stone-200" />
-
-                    {/* Member since */}
                     <div>
                       <label className="text-[10px] tracking-widests uppercase text-stone-500 mb-1.5 block">
                         Member Since
@@ -255,23 +436,43 @@ export default function AccountPage({ user, onLogout, onUpdateProfile }) {
               {/* ── Orders Tab ── */}
               {activeTab === "orders" && (
                 <div>
-                  <h2 className="font-display font-light text-2xl text-stone-950 mb-6">
-                    My Orders
-                  </h2>
-                  <div className="bg-stone-50 border border-stone-300 p-10 flex flex-col items-center gap-4 text-stone-400">
-                    <Package size={40} strokeWidth={1} />
-                    <p className="font-display text-lg italic">No orders yet</p>
-                    <p className="text-xs font-light text-center">
-                      Your order history will appear here after you make a
-                      purchase.
-                    </p>
-                    <Button
-                      onClick={() => navigate("/")}
-                      className="rounded-none bg-stone-950 hover:bg-amber-600 text-stone-50 uppercase tracking-widest text-xs px-8 py-5 mt-2"
-                    >
-                      Start Shopping
-                    </Button>
+                  <div className="flex items-center justify-between mb-6">
+                    <h2 className="font-display font-light text-2xl text-stone-950">
+                      My Orders
+                    </h2>
+                    {userOrders.length > 0 && (
+                      <p className="text-xs text-stone-400">
+                        {userOrders.length}{" "}
+                        {userOrders.length === 1 ? "order" : "orders"}
+                      </p>
+                    )}
                   </div>
+
+                  {userOrders.length === 0 ? (
+                    <div className="bg-stone-50 border border-stone-300 p-10 flex flex-col items-center gap-4 text-stone-400">
+                      <Package size={40} strokeWidth={1} />
+                      <p className="font-display text-lg italic">
+                        No orders yet
+                      </p>
+                      <p className="text-xs font-light text-center">
+                        Your order history will appear here after you make a
+                        purchase.
+                      </p>
+                      <Button
+                        onClick={() => navigate("/")}
+                        className="rounded-none bg-stone-950 hover:bg-amber-600 text-stone-50 uppercase tracking-widest text-xs px-8 py-5 mt-2 gap-2"
+                      >
+                        <ShoppingBag size={13} />
+                        Start Shopping
+                      </Button>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col gap-4">
+                      {userOrders.map((order) => (
+                        <OrderCard key={order.id} order={order} />
+                      ))}
+                    </div>
+                  )}
                 </div>
               )}
 
