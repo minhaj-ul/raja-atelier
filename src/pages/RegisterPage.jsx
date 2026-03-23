@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { toast } from "sonner";
 import PageTitle from "../components/shared/PageTitle";
+import Spinner from "../components/shared/Spinner";
 
 export default function RegisterPage({ onRegister }) {
   const navigate = useNavigate();
@@ -210,7 +211,9 @@ export default function RegisterPage({ onRegister }) {
               className="w-full rounded-none bg-stone-950 hover:bg-amber-600 text-stone-50 uppercase tracking-widest text-xs py-5 gap-2 mt-2"
             >
               {loading ? (
-                "Creating account…"
+                <>
+                  <Spinner size={14} /> Creating account…
+                </>
               ) : (
                 <>
                   <UserPlus size={14} /> Create Account
