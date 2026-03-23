@@ -119,6 +119,9 @@ export default function App() {
               onLogout={logout}
               onUpdateProfile={updateProfile}
               getUserOrders={getUserOrders}
+              wishlist={wishlist}
+              onRemoveFromWishlist={removeFromWishlist}
+              onAddToCart={addToCart}
             />
           </ProtectedRoute>
         }
