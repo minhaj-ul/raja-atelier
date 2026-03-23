@@ -1,13 +1,21 @@
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { PRODUCTS } from "../../data/products";
+import Spinner from "../shared/Spinner";
 
 const NEW_ARRIVALS = PRODUCTS.filter((p) => p.badge === "New").slice(0, 4);
 
 export default function NewArrivals() {
   const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 500);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <section className="max-w-340 mx-auto px-5 md:px-7 py-14 md:py-20">
@@ -31,38 +39,44 @@ export default function NewArrivals() {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
-        {NEW_ARRIVALS.map((product) => (
-          <div
-            key={product.id}
-            className="group cursor-pointer"
-            onClick={() => navigate(`/product/${product.id}`)}
-          >
-            {/* Image */}
-            <div className="relative overflow-hidden mb-3">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full aspect-3/4 object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <span className="absolute top-2.5 left-2.5 bg-amber-600 text-stone-50 text-[9px] tracking-widest uppercase px-2.5 py-1">
-                New
-              </span>
-            </div>
+      {loading ? (
+        <div className="flex justify-center py-16">
+          <Spinner size={24} />
+        </div>
+      ) : (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+          {NEW_ARRIVALS.map((product) => (
+            <div
+              key={product.id}
+              className="group cursor-pointer"
+              onClick={() => navigate(`/product/${product.id}`)}
+            >
+              {/* Image */}
+              <div className="relative overflow-hidden mb-3">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full aspect-3/4 object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <span className="absolute top-2.5 left-2.5 bg-amber-600 text-stone-50 text-[9px] tracking-widest uppercase px-2.5 py-1">
+                  New
+                </span>
+              </div>
 
-            {/* Info */}
-            <p className="text-[9px] tracking-widest uppercase text-amber-600 mb-1">
-              {product.category}
-            </p>
-            <h3 className="font-display text-base md:text-lg font-normal leading-snug text-stone-950 group-hover:text-amber-600 transition-colors line-clamp-2 mb-1">
-              {product.name}
-            </h3>
-            <p className="text-sm font-semibold text-stone-950">
-              ৳{product.price.toLocaleString()}
-            </p>
-          </div>
-        ))}
-      </div>
+              {/* Info */}
+              <p className="text-[9px] tracking-widest uppercase text-amber-600 mb-1">
+                {product.category}
+              </p>
+              <h3 className="font-display text-base md:text-lg font-normal leading-snug text-stone-950 group-hover:text-amber-600 transition-colors line-clamp-2 mb-1">
+                {product.name}
+              </h3>
+              <p className="text-sm font-semibold text-stone-950">
+                ৳{product.price.toLocaleString()}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* Mobile view all */}
       <div className="flex justify-center mt-8 md:hidden">
