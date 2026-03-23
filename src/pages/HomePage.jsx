@@ -18,6 +18,7 @@ import Footer from "../components/layout/Footer";
 import CartPanel from "../components/shared/CartPanel";
 import FilterSheet from "../components/shared/FilterSheet";
 import PageTitle from "../components/shared/PageTitle";
+import PageLoader from "../components/shared/PageLoader";
 import Spinner from "../components/shared/Spinner";
 
 export default function HomePage({
@@ -44,6 +45,7 @@ export default function HomePage({
   const [filterOpen, setFilterOpen] = useState(false);
   const [visibleCount, setVisibleCount] = useState(12);
   const [badgeFilter, setBadgeFilter] = useState(null);
+  const [appLoading, setAppLoading] = useState(true);
   const [productsLoading, setProductsLoading] = useState(true);
 
   const filtered = useMemo(() => {
@@ -88,6 +90,11 @@ export default function HomePage({
   }, []);
 
   useEffect(() => {
+    const timer = setTimeout(() => setAppLoading(false), 800);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
     setProductsLoading(true);
     const timer = setTimeout(() => setProductsLoading(false), 400);
     return () => clearTimeout(timer);
@@ -128,6 +135,8 @@ export default function HomePage({
       }, 150);
     }
   }, [location.search]);
+
+  if (appLoading) return <PageLoader message="Loading collection…" />;
 
   return (
     <div className="min-h-screen bg-stone-100">
