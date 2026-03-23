@@ -201,7 +201,7 @@ export default function CheckoutPage({
               )}
 
               {/* Navigation buttons */}
-              <div className="flex justify-between mt-8 pt-6 border-t border-stone-200">
+              <div className="flex flex-col-reverse sm:flex-row justify-between gap-3 mt-8 pt-6 border-t border-stone-200">
                 {step > 0 ? (
                   <Button
                     variant="outline"
