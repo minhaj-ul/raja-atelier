@@ -22,7 +22,16 @@ import { PRODUCTS } from "../data/products";
 import Layout from "../layouts/Layout";
 import PageTitle from "../components/shared/PageTitle";
 
-export default function ProductPage({ onAddToCart, user, onLogout }) {
+export default function ProductPage({
+  onAddToCart,
+  user,
+  onLogout,
+  cart,
+  cartCount,
+  onUpdateQty,
+  onRemove,
+  wishlistCount,
+}) {
   const { id } = useParams();
   const navigate = useNavigate();
   useEffect(() => {
@@ -60,7 +69,15 @@ export default function ProductPage({ onAddToCart, user, onLogout }) {
   ).slice(0, 4);
 
   return (
-    <Layout user={user} onLogout={onLogout}>
+    <Layout
+      user={user}
+      onLogout={onLogout}
+      cart={cart}
+      cartCount={cartCount}
+      onUpdateQty={onUpdateQty}
+      onRemove={onRemove}
+      wishlistCount={wishlistCount}
+    >
       <div className="min-h-screen bg-stone-100">
         <PageTitle title={product.name} />
 

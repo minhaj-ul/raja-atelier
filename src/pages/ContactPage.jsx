@@ -9,7 +9,15 @@ import { CONTACT_INFO, SUBJECTS } from "../data/contact";
 import Layout from "../layouts/Layout";
 import PageTitle from "../components/shared/PageTitle";
 
-export default function ContactPage({ user, onLogout }) {
+export default function ContactPage({
+  user,
+  onLogout,
+  cart,
+  cartCount,
+  onUpdateQty,
+  onRemove,
+  wishlistCount,
+}) {
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -37,7 +45,15 @@ export default function ContactPage({ user, onLogout }) {
   };
 
   return (
-    <Layout user={user} onLogout={onLogout}>
+    <Layout
+      user={user}
+      onLogout={onLogout}
+      cart={cart}
+      cartCount={cartCount}
+      onUpdateQty={onUpdateQty}
+      onRemove={onRemove}
+      wishlistCount={wishlistCount}
+    >
       <div className="bg-stone-100">
         <PageTitle title="Contact Us" />
 

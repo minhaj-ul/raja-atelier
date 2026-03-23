@@ -59,20 +59,62 @@ export default function App() {
         }
       />
       <Route
-        path="/product/:id"
+        path="/about"
         element={
-          <ProductPage onAddToCart={addToCart} user={user} onLogout={logout} />
+          <AboutPage
+            user={user}
+            onLogout={logout}
+            cart={cart}
+            cartCount={cartCount}
+            onUpdateQty={updateQty}
+            onRemove={removeItem}
+            wishlistCount={wishlistCount}
+          />
         }
       />
       <Route
-        path="/about"
-        element={<AboutPage user={user} onLogout={logout} />}
+        path="/contact"
+        element={
+          <ContactPage
+            user={user}
+            onLogout={logout}
+            cart={cart}
+            cartCount={cartCount}
+            onUpdateQty={updateQty}
+            onRemove={removeItem}
+            wishlistCount={wishlistCount}
+          />
+        }
       />
       <Route
-        path="/contact"
-        element={<ContactPage user={user} onLogout={logout} />}
+        path="/faq"
+        element={
+          <FAQPage
+            user={user}
+            onLogout={logout}
+            cart={cart}
+            cartCount={cartCount}
+            onUpdateQty={updateQty}
+            onRemove={removeItem}
+            wishlistCount={wishlistCount}
+          />
+        }
       />
-      <Route path="/faq" element={<FAQPage user={user} onLogout={logout} />} />
+      <Route
+        path="/product/:id"
+        element={
+          <ProductPage
+            onAddToCart={addToCart}
+            user={user}
+            onLogout={logout}
+            cart={cart}
+            cartCount={cartCount}
+            onUpdateQty={updateQty}
+            onRemove={removeItem}
+            wishlistCount={wishlistCount}
+          />
+        }
+      />
       <Route
         path="/wishlist"
         element={
@@ -112,6 +154,10 @@ export default function App() {
             onClearCart={clearCart}
             user={user}
             onLogout={logout}
+            cartCount={cartCount}
+            onUpdateQty={updateQty}
+            onRemove={removeItem}
+            wishlistCount={wishlistCount}
           />
         }
       />
@@ -127,6 +173,11 @@ export default function App() {
               wishlist={wishlist}
               onRemoveFromWishlist={removeFromWishlist}
               onAddToCart={addToCart}
+              cart={cart}
+              cartCount={cartCount}
+              onUpdateQty={updateQty}
+              onRemove={removeItem}
+              wishlistCount={wishlistCount}
             />
           </ProtectedRoute>
         }

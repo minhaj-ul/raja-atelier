@@ -13,12 +13,28 @@ import { FAQS } from "../data/faq";
 import Layout from "../layouts/Layout";
 import PageTitle from "../components/shared/PageTitle";
 
-export default function FAQPage({ user, onLogout }) {
+export default function FAQPage({
+  user,
+  onLogout,
+  cart,
+  cartCount,
+  onUpdateQty,
+  onRemove,
+  wishlistCount,
+}) {
   const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState(FAQS[0].category);
 
   return (
-    <Layout user={user} onLogout={onLogout}>
+    <Layout
+      user={user}
+      onLogout={onLogout}
+      cart={cart}
+      cartCount={cartCount}
+      onUpdateQty={onUpdateQty}
+      onRemove={onRemove}
+      wishlistCount={wishlistCount}
+    >
       <div className="bg-stone-100">
         <PageTitle title="FAQ" />
 

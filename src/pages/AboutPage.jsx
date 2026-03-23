@@ -6,11 +6,27 @@ import { VALUES, TEAM } from "../data/about";
 import Layout from "../layouts/Layout";
 import PageTitle from "../components/shared/PageTitle";
 
-export default function AboutPage({ user, onLogout }) {
+export default function AboutPage({
+  user,
+  onLogout,
+  cart,
+  cartCount,
+  onUpdateQty,
+  onRemove,
+  wishlistCount,
+}) {
   const navigate = useNavigate();
 
   return (
-    <Layout user={user} onLogout={onLogout}>
+    <Layout
+      user={user}
+      onLogout={onLogout}
+      cart={cart}
+      cartCount={cartCount}
+      onUpdateQty={onUpdateQty}
+      onRemove={onRemove}
+      wishlistCount={wishlistCount}
+    >
       <div className="bg-stone-100">
         <PageTitle title="About Us" />
 

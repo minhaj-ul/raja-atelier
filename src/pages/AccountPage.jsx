@@ -16,6 +16,11 @@ export default function AccountPage({
   wishlist,
   onRemoveFromWishlist,
   onAddToCart,
+  cart,
+  cartCount,
+  onUpdateQty,
+  onRemove,
+  wishlistCount,
 }) {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("profile");
@@ -29,7 +34,15 @@ export default function AccountPage({
   };
 
   return (
-    <Layout user={user} onLogout={onLogout}>
+    <Layout
+      user={user}
+      onLogout={onLogout}
+      cart={cart}
+      cartCount={cartCount}
+      onUpdateQty={onUpdateQty}
+      onRemove={onRemove}
+      wishlistCount={wishlistCount}
+    >
       <div className="min-h-screen bg-stone-100">
         <PageTitle title="My Account" />
 
