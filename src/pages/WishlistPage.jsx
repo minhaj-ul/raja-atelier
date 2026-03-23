@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ConfirmDialog from "../components/shared/ConfirmDialog";
 import { useNavigate } from "react-router-dom";
 import { Heart, ShoppingBag, Trash2, ArrowRight, Star } from "lucide-react";
@@ -7,6 +7,7 @@ import { Separator } from "@/components/ui/separator";
 import Badge from "../components/shared/Badge";
 import Layout from "../layouts/Layout";
 import PageTitle from "../components/shared/PageTitle";
+import Spinner from "../components/shared/Spinner";
 
 export default function WishlistPage({
   wishlist,
@@ -22,6 +23,12 @@ export default function WishlistPage({
 }) {
   const navigate = useNavigate();
   const [pendingDelete, setPendingDelete] = useState(null);
+
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 400);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <Layout
@@ -54,7 +61,11 @@ export default function WishlistPage({
         {/* Content */}
         <section className="max-w-340 mx-auto px-5 md:px-7 py-16 md:py-24">
           {/* Empty state */}
-          {wishlist.length === 0 ? (
+          {loading ? (
+            <div className="flex justify-center py-24">
+              <Spinner size={24} />
+            </div>
+          ) : wishlist.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-20 gap-5 text-stone-500">
               <Heart size={48} strokeWidth={1} className="text-stone-300" />
               <p className="font-display text-2xl italic">
