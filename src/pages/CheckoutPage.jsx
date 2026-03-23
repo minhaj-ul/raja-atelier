@@ -10,6 +10,7 @@ import PaymentStep from "../components/checkout/PaymentStep";
 import ReviewStep from "../components/checkout/ReviewStep";
 import OrderSummary from "../components/checkout/OrderSummary";
 import PageTitle from "../components/shared/PageTitle";
+import Spinner from "../components/shared/Spinner";
 
 export default function CheckoutPage({
   cart,
@@ -234,7 +235,9 @@ export default function CheckoutPage({
                     className="rounded-none bg-amber-600 hover:bg-amber-700 text-stone-50 uppercase tracking-widest text-xs px-6 py-5 gap-2"
                   >
                     {loading ? (
-                      "Placing Order…"
+                      <>
+                        <Spinner size={14} /> Placing Order…
+                      </>
                     ) : (
                       <>
                         <Check size={14} /> Place Order
