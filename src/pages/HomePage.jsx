@@ -85,18 +85,18 @@ export default function HomePage({
 
   useEffect(() => {
     setProductsLoading(true);
-    const timer = setTimeout(() => setProductsLoading(false), 600);
+    const timer = setTimeout(() => setProductsLoading(false), 200);
     return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
-    const timer = setTimeout(() => setAppLoading(false), 800);
+    const timer = setTimeout(() => setAppLoading(false), 200);
     return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
     setProductsLoading(true);
-    const timer = setTimeout(() => setProductsLoading(false), 400);
+    const timer = setTimeout(() => setProductsLoading(false), 200);
     return () => clearTimeout(timer);
   }, [search, category, sortBy, badgeFilter]);
 

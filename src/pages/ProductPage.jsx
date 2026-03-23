@@ -69,7 +69,7 @@ export default function ProductPage({
 
   useEffect(() => {
     setPageLoading(true);
-    const timer = setTimeout(() => setPageLoading(false), 500);
+    const timer = setTimeout(() => setPageLoading(false), 200);
     return () => clearTimeout(timer);
   }, [id]);
 
