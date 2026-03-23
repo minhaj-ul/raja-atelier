@@ -1,0 +1,164 @@
+import { useNavigate } from "react-router-dom";
+import { Heart, ShoppingBag, Trash2, ArrowRight, Star } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { useState } from "react";
+import ConfirmDialog from "../shared/ConfirmDialog";
+import Badge from "../shared/Badge";
+
+export default function WishlistTab({
+  wishlist,
+  onRemoveFromWishlist,
+  onAddToCart,
+}) {
+  const navigate = useNavigate();
+  const [pendingDelete, setPendingDelete] = useState(null);
+
+  return (
+    <div>
+      {/* Header */}
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="font-display font-light text-2xl text-stone-950">
+          My Wishlist
+        </h2>
+        {wishlist.length > 0 && (
+          <p className="text-xs text-stone-400">
+            {wishlist.length} {wishlist.length === 1 ? "piece" : "pieces"}
+          </p>
+        )}
+      </div>
+
+      {/* Empty state */}
+      {wishlist.length === 0 ? (
+        <div className="bg-stone-50 border border-stone-300 p-10 flex flex-col items-center gap-4 text-stone-400">
+          <Heart size={40} strokeWidth={1} />
+          <p className="font-display text-lg italic">Your wishlist is empty</p>
+          <p className="text-xs font-light text-center">
+            Save pieces you love by clicking the heart icon on any product.
+          </p>
+          <Button
+            onClick={() => navigate("/")}
+            className="rounded-none bg-stone-950 hover:bg-amber-600 text-stone-50 uppercase tracking-widest text-xs px-8 py-5 mt-2 gap-2"
+          >
+            <ArrowRight size={13} />
+            Explore Collection
+          </Button>
+        </div>
+      ) : (
+        <>
+          {/* Wishlist grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {wishlist.map((product) => (
+              <div
+                key={product.id}
+                className="bg-stone-50 border border-stone-300 group"
+              >
+                {/* Image */}
+                <div
+                  className="relative overflow-hidden cursor-pointer"
+                  onClick={() => navigate(`/product/${product.id}`)}
+                >
+                  {product.badge && <Badge text={product.badge} />}
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full aspect-3/4 object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+
+                {/* Info */}
+                <div className="p-4">
+                  <p className="text-[10px] tracking-[0.15em] uppercase text-amber-600 mb-1">
+                    {product.category}
+                  </p>
+                  <h3
+                    className="font-display font-normal text-lg leading-snug mb-1.5 text-stone-950 cursor-pointer hover:text-amber-600 transition-colors"
+                    onClick={() => navigate(`/product/${product.id}`)}
+                  >
+                    {product.name}
+                  </h3>
+
+                  {/* Stars */}
+                  <div className="flex items-center gap-1.5 mb-3">
+                    <div className="flex items-center gap-0.5">
+                      {[1, 2, 3, 4, 5].map((i) => (
+                        <Star
+                          key={i}
+                          size={11}
+                          className={
+                            i <= Math.round(product.rating)
+                              ? "fill-amber-600 stroke-amber-600"
+                              : "fill-stone-200 stroke-stone-200"
+                          }
+                        />
+                      ))}
+                    </div>
+                    <span className="text-[11px] text-stone-500">
+                      ({product.reviews})
+                    </span>
+                  </div>
+
+                  <p className="text-xl font-medium text-stone-950 mb-4">
+                    ৳{product.price.toLocaleString()}
+                  </p>
+
+                  <Separator className="bg-stone-200 mb-4" />
+
+                  {/* Actions */}
+                  <div className="flex gap-2">
+                    <Button
+                      className="flex-1 rounded-none bg-stone-950 hover:bg-amber-600 text-stone-50 uppercase tracking-widest text-[11px] h-9 gap-1.5"
+                      onClick={() => onAddToCart(product)}
+                    >
+                      <ShoppingBag size={13} />
+                      Add to Bag
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="rounded-none border-stone-300 hover:bg-red-50 hover:text-red-500 hover:border-red-200 h-9 w-9 transition-colors"
+                      onClick={() => setPendingDelete(product)}
+                    >
+                      <Trash2 size={14} />
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom CTA */}
+          <div className="text-center mt-8">
+            <Button
+              variant="outline"
+              onClick={() => navigate("/")}
+              className="rounded-none border-stone-950 text-stone-950 hover:bg-stone-950 hover:text-stone-50 uppercase tracking-widest text-xs px-8 py-5 gap-2"
+            >
+              Keep Exploring
+              <ArrowRight size={13} />
+            </Button>
+          </div>
+        </>
+      )}
+
+      {/* Delete confirmation */}
+      <ConfirmDialog
+        open={!!pendingDelete}
+        onOpenChange={(open) => !open && setPendingDelete(null)}
+        title="Remove from wishlist?"
+        description={
+          pendingDelete
+            ? `Are you sure you want to remove ${pendingDelete.name} from your wishlist?`
+            : ""
+        }
+        confirmLabel="Remove"
+        cancelLabel="Keep it"
+        variant="danger"
+        onConfirm={() => {
+          onRemoveFromWishlist(pendingDelete.id);
+          setPendingDelete(null);
+        }}
+      />
+    </div>
+  );
+}
