@@ -3,6 +3,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import Badge from "./Badge";
+import ImageLoader from "./ImageLoader";
 
 export default function ProductCard({
   product,
@@ -21,11 +22,10 @@ export default function ProductCard({
       {/* Image */}
       <div className="relative overflow-hidden">
         {product.badge && <Badge text={product.badge} />}
-        <img
+        <ImageLoader
           src={product.image}
           alt={product.name}
           className="w-full aspect-3/4 object-cover transition-transform duration-700 group-hover:scale-103"
-          loading="lazy"
         />
       </div>
 
