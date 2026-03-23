@@ -61,6 +61,7 @@ export default function AccountPage({
                 activeTab={activeTab}
                 setActiveTab={setActiveTab}
                 orderCount={userOrders.length}
+                wishlistCount={wishlist?.length || 0}
                 onLogout={handleLogout}
               />
             </div>

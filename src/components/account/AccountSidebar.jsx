@@ -12,6 +12,7 @@ export default function AccountSidebar({
   activeTab,
   setActiveTab,
   orderCount,
+  wishlistCount,
   onLogout,
 }) {
   return (
@@ -42,6 +43,11 @@ export default function AccountSidebar({
                   {orderCount}
                 </span>
               )}
+              {tab.id === "wishlist" && wishlistCount > 0 && (
+                <span className="absolute top-1.5 right-1.5 bg-amber-600 text-stone-50 w-4 h-4 rounded-full text-[9px] flex items-center justify-center">
+                  {wishlistCount}
+                </span>
+              )}
             </button>
           );
         })}
@@ -70,6 +76,11 @@ export default function AccountSidebar({
               {tab.id === "orders" && orderCount > 0 && (
                 <span className="ml-auto bg-amber-600 text-stone-50 w-5 h-5 rounded-full text-[10px] flex items-center justify-center shrink-0">
                   {orderCount}
+                </span>
+              )}
+              {tab.id === "wishlist" && wishlistCount > 0 && (
+                <span className="ml-auto bg-amber-600 text-stone-50 w-5 h-5 rounded-full text-[10px] flex items-center justify-center shrink-0">
+                  {wishlistCount}
                 </span>
               )}
             </button>
