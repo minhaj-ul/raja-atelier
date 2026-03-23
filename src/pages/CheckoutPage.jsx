@@ -10,7 +10,12 @@ import PaymentStep from "../components/checkout/PaymentStep";
 import ReviewStep from "../components/checkout/ReviewStep";
 import OrderSummary from "../components/checkout/OrderSummary";
 
-export default function CheckoutPage({ cart, onClearCart }) {
+export default function CheckoutPage({
+  cart,
+  onClearCart,
+  onPlaceOrder,
+  user,
+}) {
   const navigate = useNavigate();
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -115,6 +120,17 @@ export default function CheckoutPage({ cart, onClearCart }) {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
+      onPlaceOrder({
+        cart,
+        shipping,
+        payment,
+        selectedShipping,
+        subtotal,
+        shippingCost,
+        discount,
+        total,
+        userId: user?.id,
+      });
       onClearCart();
       navigate("/order-confirmation");
     }, 1500);
