@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useRef } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Search, X, SlidersHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -46,7 +46,7 @@ export default function HomePage({
   const [visibleCount, setVisibleCount] = useState(12);
   const [badgeFilter, setBadgeFilter] = useState(null);
   const [appLoading, setAppLoading] = useState(true);
-  const [productsLoading, setProductsLoading] = useState(true);
+  const [productsLoading, setProductsLoading] = useState(false);
 
   const filtered = useMemo(() => {
     let list = PRODUCTS;
@@ -82,12 +82,6 @@ export default function HomePage({
   useEffect(() => {
     setVisibleCount(12);
   }, [search, category, sortBy, badgeFilter]);
-
-  useEffect(() => {
-    setProductsLoading(true);
-    const timer = setTimeout(() => setProductsLoading(false), 200);
-    return () => clearTimeout(timer);
-  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setAppLoading(false), 200);

@@ -14,7 +14,7 @@ export default function ProtectedRoute({ isLoggedIn, children }) {
         sessionStorage.setItem("raja_redirect_after_login", location.pathname);
         navigate("/login");
       }
-    }, 300);
+    }, 200);
     return () => clearTimeout(timer);
   }, [isLoggedIn]);
 
