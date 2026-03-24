@@ -17,6 +17,7 @@ import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import AccountPage from "./pages/AccountPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import ProtectedRoute from "./components/shared/ProtectedRoute";
+import DemoModal from "./components/shared/DemoModal";
 
 export default function App() {
   const { cart, cartCount, addToCart, updateQty, removeItem, clearCart } =
@@ -41,159 +42,162 @@ export default function App() {
   const { placeOrder, getUserOrders } = useOrders();
 
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <HomePage
-            cart={cart}
-            cartCount={cartCount}
-            onAddToCart={addToCart}
-            onUpdateQty={updateQty}
-            onRemove={removeItem}
-            onToggleWishlist={toggleWishlist}
-            isWished={isWished}
-            wishlistCount={wishlistCount}
-            user={user}
-            onLogout={logout}
-          />
-        }
-      />
-      <Route
-        path="/about"
-        element={
-          <AboutPage
-            user={user}
-            onLogout={logout}
-            cart={cart}
-            cartCount={cartCount}
-            onUpdateQty={updateQty}
-            onRemove={removeItem}
-            wishlistCount={wishlistCount}
-          />
-        }
-      />
-      <Route
-        path="/contact"
-        element={
-          <ContactPage
-            user={user}
-            onLogout={logout}
-            cart={cart}
-            cartCount={cartCount}
-            onUpdateQty={updateQty}
-            onRemove={removeItem}
-            wishlistCount={wishlistCount}
-          />
-        }
-      />
-      <Route
-        path="/faq"
-        element={
-          <FAQPage
-            user={user}
-            onLogout={logout}
-            cart={cart}
-            cartCount={cartCount}
-            onUpdateQty={updateQty}
-            onRemove={removeItem}
-            wishlistCount={wishlistCount}
-          />
-        }
-      />
-      <Route
-        path="/product/:id"
-        element={
-          <ProductPage
-            onAddToCart={addToCart}
-            user={user}
-            onLogout={logout}
-            cart={cart}
-            cartCount={cartCount}
-            onUpdateQty={updateQty}
-            onRemove={removeItem}
-            wishlistCount={wishlistCount}
-          />
-        }
-      />
-      <Route
-        path="/wishlist"
-        element={
-          <WishlistPage
-            wishlist={wishlist}
-            onRemoveFromWishlist={removeFromWishlist}
-            onAddToCart={addToCart}
-            user={user}
-            onLogout={logout}
-            cart={cart}
-            cartCount={cartCount}
-            onUpdateQty={updateQty}
-            onRemove={removeItem}
-            wishlistCount={wishlistCount}
-          />
-        }
-      />
-      <Route
-        path="/checkout"
-        element={
-          <ProtectedRoute isLoggedIn={isLoggedIn}>
-            <CheckoutPage
+    <>
+      <DemoModal />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <HomePage
               cart={cart}
-              onClearCart={clearCart}
-              onPlaceOrder={placeOrder}
+              cartCount={cartCount}
+              onAddToCart={addToCart}
+              onUpdateQty={updateQty}
+              onRemove={removeItem}
+              onToggleWishlist={toggleWishlist}
+              isWished={isWished}
+              wishlistCount={wishlistCount}
               user={user}
               onLogout={logout}
             />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/order-confirmation"
-        element={
-          <OrderConfirmationPage
-            cart={cart}
-            onClearCart={clearCart}
-            user={user}
-            onLogout={logout}
-            cartCount={cartCount}
-            onUpdateQty={updateQty}
-            onRemove={removeItem}
-            wishlistCount={wishlistCount}
-          />
-        }
-      />
-      <Route
-        path="/account"
-        element={
-          <ProtectedRoute isLoggedIn={isLoggedIn}>
-            <AccountPage
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <AboutPage
               user={user}
               onLogout={logout}
-              onUpdateProfile={updateProfile}
-              onChangePassword={changePassword}
-              getUserOrders={getUserOrders}
-              wishlist={wishlist}
-              onRemoveFromWishlist={removeFromWishlist}
-              onAddToCart={addToCart}
               cart={cart}
               cartCount={cartCount}
               onUpdateQty={updateQty}
               onRemove={removeItem}
               wishlistCount={wishlistCount}
             />
-          </ProtectedRoute>
-        }
-      />
-      <Route path="/login" element={<LoginPage onLogin={login} />} />
-      <Route
-        path="/register"
-        element={<RegisterPage onRegister={register} />}
-      />
-      <Route
-        path="/forgot-password"
-        element={<ForgotPasswordPage onForgotPassword={forgotPassword} />}
-      />
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <ContactPage
+              user={user}
+              onLogout={logout}
+              cart={cart}
+              cartCount={cartCount}
+              onUpdateQty={updateQty}
+              onRemove={removeItem}
+              wishlistCount={wishlistCount}
+            />
+          }
+        />
+        <Route
+          path="/faq"
+          element={
+            <FAQPage
+              user={user}
+              onLogout={logout}
+              cart={cart}
+              cartCount={cartCount}
+              onUpdateQty={updateQty}
+              onRemove={removeItem}
+              wishlistCount={wishlistCount}
+            />
+          }
+        />
+        <Route
+          path="/product/:id"
+          element={
+            <ProductPage
+              onAddToCart={addToCart}
+              user={user}
+              onLogout={logout}
+              cart={cart}
+              cartCount={cartCount}
+              onUpdateQty={updateQty}
+              onRemove={removeItem}
+              wishlistCount={wishlistCount}
+            />
+          }
+        />
+        <Route
+          path="/wishlist"
+          element={
+            <WishlistPage
+              wishlist={wishlist}
+              onRemoveFromWishlist={removeFromWishlist}
+              onAddToCart={addToCart}
+              user={user}
+              onLogout={logout}
+              cart={cart}
+              cartCount={cartCount}
+              onUpdateQty={updateQty}
+              onRemove={removeItem}
+              wishlistCount={wishlistCount}
+            />
+          }
+        />
+        <Route
+          path="/checkout"
+          element={
+            <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <CheckoutPage
+                cart={cart}
+                onClearCart={clearCart}
+                onPlaceOrder={placeOrder}
+                user={user}
+                onLogout={logout}
+              />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/order-confirmation"
+          element={
+            <OrderConfirmationPage
+              cart={cart}
+              onClearCart={clearCart}
+              user={user}
+              onLogout={logout}
+              cartCount={cartCount}
+              onUpdateQty={updateQty}
+              onRemove={removeItem}
+              wishlistCount={wishlistCount}
+            />
+          }
+        />
+        <Route
+          path="/account"
+          element={
+            <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <AccountPage
+                user={user}
+                onLogout={logout}
+                onUpdateProfile={updateProfile}
+                onChangePassword={changePassword}
+                getUserOrders={getUserOrders}
+                wishlist={wishlist}
+                onRemoveFromWishlist={removeFromWishlist}
+                onAddToCart={addToCart}
+                cart={cart}
+                cartCount={cartCount}
+                onUpdateQty={updateQty}
+                onRemove={removeItem}
+                wishlistCount={wishlistCount}
+              />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/login" element={<LoginPage onLogin={login} />} />
+        <Route
+          path="/register"
+          element={<RegisterPage onRegister={register} />}
+        />
+        <Route
+          path="/forgot-password"
+          element={<ForgotPasswordPage onForgotPassword={forgotPassword} />}
+        />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </>
   );
 }
