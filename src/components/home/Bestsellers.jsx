@@ -55,7 +55,7 @@ export default function Bestsellers({ onAddToCart }) {
                 onClick={() => navigate(`/product/${product.id}`)}
               >
                 {/* Number */}
-                <span className="font-display text-3xl md:text-4xl font-light text-stone-200 w-8 shrink-0 select-none">
+                <span className="font-display text-3xl md:text-4xl font-light text-stone-400 w-8 shrink-0 select-none">
                   {String(index + 1).padStart(2, "0")}
                 </span>
 
