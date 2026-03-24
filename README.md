@@ -1,6 +1,6 @@
 # RAJA Atelier — Luxury Menswear E-Commerce
 
-A fully functional luxury menswear e-commerce demo, built with React and modern frontend tooling. No backend — all data is persisted in the browser via localStorage.
+A functional luxury menswear e-commerce frontend demo, built with React and modern frontend tooling. No backend — all data is persisted in the browser via localStorage.
 
 ---
 
