@@ -113,10 +113,9 @@ export default function DemoModal() {
               </h3>
             </div>
             <p className="text-sm text-stone-600 font-light leading-relaxed">
-              RAJA Atelier is a fully functional luxury menswear e-commerce demo
-              for Bangladesh. It includes a complete shopping experience — from
-              browsing products to checkout — with all data stored locally in
-              your browser. No backend required.
+              RAJA Atelier is a functional luxury menswear e-commerce demo. It
+              includes a shopping experience — from browsing products to
+              checkout — with all data stored locally in browser. No backend.
             </p>
           </div>
 
@@ -144,19 +143,19 @@ export default function DemoModal() {
                 </span>
               </p>
               <p className="text-[10px] text-amber-600 mt-1">
-                Or register a new account — it will be saved in your browser.
+                Or register a new account — it will be saved in browser.
               </p>
             </div>
           </div>
 
           <Separator className="bg-stone-200" />
 
-          {/* What you can do */}
+          {/* What can do */}
           <div>
             <div className="flex items-center gap-2 mb-3">
               <ShoppingBag size={14} className="text-amber-600" />
               <h3 className="text-[10px] tracking-widests uppercase text-amber-600">
-                What You Can Do
+                What Can Do
               </h3>
             </div>
             <ul className="flex flex-col gap-2">
@@ -166,8 +165,8 @@ export default function DemoModal() {
                 "Filter by category, sort by price or rating, search products",
                 "Complete a full checkout with shipping and payment steps",
                 "Use promo codes: RAJA10, WELCOME20, FREESHIP",
-                "View order history in your account",
-                "Edit your profile and change your password",
+                "View order history in account",
+                "Edit profile and change password",
                 "Register a new account or use demo credentials",
               ].map((item) => (
                 <li
