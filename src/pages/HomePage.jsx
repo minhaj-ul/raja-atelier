@@ -45,7 +45,9 @@ export default function HomePage({
   const [filterOpen, setFilterOpen] = useState(false);
   const [visibleCount, setVisibleCount] = useState(12);
   const [badgeFilter, setBadgeFilter] = useState(null);
-  const [appLoading, setAppLoading] = useState(true);
+  const [appLoading, setAppLoading] = useState(
+    () => !sessionStorage.getItem("raja_home_loaded"),
+  );
   const [productsLoading, setProductsLoading] = useState(true);
 
   const filtered = useMemo(() => {
@@ -84,8 +86,13 @@ export default function HomePage({
   }, [search, category, sortBy, badgeFilter]);
 
   useEffect(() => {
-    const timer = setTimeout(() => setAppLoading(false), 200);
-    return () => clearTimeout(timer);
+    if (!sessionStorage.getItem("raja_home_loaded")) {
+      const timer = setTimeout(() => {
+        setAppLoading(false);
+        sessionStorage.setItem("raja_home_loaded", "1");
+      }, 200);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   useEffect(() => {
