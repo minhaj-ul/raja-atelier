@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { ShoppingBag, Heart, Menu, User, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -35,6 +35,7 @@ export default function Header({
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const location = useLocation();
   const navigate = useNavigate();
 
   return (
@@ -62,15 +63,28 @@ export default function Header({
           {/* Desktop nav links */}
           {!isMobile && (
             <nav className="flex items-center gap-6">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  className="text-xs uppercase tracking-widest text-stone-600 hover:text-amber-600 transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {NAV_LINKS.map((link) => {
+                const isActive =
+                  link.to === "/"
+                    ? location.pathname === "/"
+                    : location.pathname.startsWith(link.to);
+                return (
+                  <Link
+                    key={link.to}
+                    to={link.to}
+                    className={`
+          text-xs uppercase tracking-widest transition-colors relative
+          ${
+            isActive
+              ? "text-amber-600 after:absolute after:-bottom-0.5 after:left-0 after:w-full after:h-px after:bg-amber-600"
+              : "text-stone-600 hover:text-amber-600"
+          }
+        `}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
             </nav>
           )}
 
