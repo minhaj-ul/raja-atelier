@@ -123,31 +123,31 @@ src/
 
 ## Getting Started
 
-# Clone the repository
+### Clone the repository
 
 ```bash
 git clone https://github.com/minhaj-ul/raja-atelier.git
 ```
 
-# Navigate into the project
+### Navigate into the project
 
 ```bash
 cd raja-atelier
 ```
 
-# Install dependencies
+### Install dependencies
 
 ```bash
 npm install
 ```
 
-# Start development server
+### Start development server
 
 ```bash
 npm run dev
 ```
 
-# Open your browser at
+### Open your browser at
 
 ```bash
 http://localhost:5173
