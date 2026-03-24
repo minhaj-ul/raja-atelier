@@ -142,6 +142,15 @@ export default function DemoModal() {
                   {DEMO_CREDS.password}
                 </span>
               </p>
+
+              <p className="text-xs text-stone-600">
+                <span className="text-stone-400 font-light">Promo Codes: </span>
+                <span className="font-medium text-stone-950">RAJA10</span>
+                {", "}
+                <span className="font-medium text-stone-950">WELCOME20</span>
+                {", "}
+                <span className="font-medium text-stone-950">FREESHIP</span>
+              </p>
               <p className="text-[10px] text-amber-600 mt-1">
                 Or register a new account — it will be saved in browser.
               </p>
@@ -163,8 +172,8 @@ export default function DemoModal() {
                 "Browse 52 luxury menswear products across 10 categories",
                 "Add items to cart and wishlist — persisted in browser",
                 "Filter by category, sort by price or rating, search products",
-                "Complete a full checkout with shipping and payment steps",
-                "Use promo codes: RAJA10, WELCOME20, FREESHIP",
+                "A full checkout with shipping and payment steps",
+                "Use promo codes",
                 "View order history in account",
                 "Edit profile and change password",
                 "Register a new account or use demo credentials",
