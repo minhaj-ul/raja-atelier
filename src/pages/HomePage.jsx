@@ -46,7 +46,7 @@ export default function HomePage({
   const [visibleCount, setVisibleCount] = useState(12);
   const [badgeFilter, setBadgeFilter] = useState(null);
   const [appLoading, setAppLoading] = useState(true);
-  const [productsLoading, setProductsLoading] = useState(false);
+  const [productsLoading, setProductsLoading] = useState(true);
 
   const filtered = useMemo(() => {
     let list = PRODUCTS;
