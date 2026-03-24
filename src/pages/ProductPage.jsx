@@ -171,69 +171,72 @@ export default function ProductPage({
                   </div>
 
                   {/* Qty + Add */}
-                  <div className="flex items-center gap-3 mb-4 flex-wrap">
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-4">
                     {/* Qty selector */}
-                    <div className="flex items-center border border-stone-300">
+                    <div className="flex items-center border border-stone-300 w-full sm:w-auto">
                       <Button
                         variant="ghost"
                         size="icon"
-                        className="h-10 w-10 rounded-none hover:bg-stone-200"
+                        className="h-10 w-10 rounded-none hover:bg-stone-200 shrink-0"
                         onClick={() => setQty((q) => Math.max(1, q - 1))}
                       >
                         <Minus size={14} />
                       </Button>
-                      <span className="text-sm px-3 min-w-10 text-center">
+                      <span className="text-sm flex-1 sm:flex-none sm:px-3 sm:min-w-10 text-center">
                         {qty}
                       </span>
                       <Button
                         variant="ghost"
                         size="icon"
-                        className="h-10 w-10 rounded-none hover:bg-stone-200"
+                        className="h-10 w-10 rounded-none hover:bg-stone-200 shrink-0"
                         onClick={() => setQty((q) => q + 1)}
                       >
                         <Plus size={14} />
                       </Button>
                     </div>
 
-                    {/* Add to bag */}
-                    <Button
-                      className="flex-1 rounded-none bg-stone-950 hover:bg-stone-800 text-stone-50 uppercase tracking-widest text-xs py-5 gap-2 min-w-36"
-                      onClick={handleAdd}
-                    >
-                      {added ? (
-                        <>
-                          <Check size={14} /> Added!
-                        </>
-                      ) : (
-                        <>
-                          <ShoppingBag size={14} /> Add to Bag
-                        </>
-                      )}
-                    </Button>
+                    {/* Add to bag + Wishlist — side by side on mobile */}
+                    <div className="flex items-center gap-3 w-full sm:w-auto sm:contents">
+                      {/* Add to bag */}
+                      <Button
+                        className="flex-1 rounded-none bg-stone-950 hover:bg-stone-800 text-stone-50 uppercase tracking-widest text-xs py-5 gap-2"
+                        onClick={handleAdd}
+                      >
+                        {added ? (
+                          <>
+                            <Check size={14} /> Added!
+                          </>
+                        ) : (
+                          <>
+                            <ShoppingBag size={14} /> Add to Bag
+                          </>
+                        )}
+                      </Button>
 
-                    {/* Wishlist */}
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Button
-                          variant="outline"
-                          size="icon"
-                          className="h-10 w-10 rounded-none border-stone-300 hover:bg-stone-200"
-                          onClick={() => setWished((w) => !w)}
-                        >
-                          <Heart
-                            size={16}
-                            className={
-                              wished
-                                ? "fill-amber-600 stroke-amber-600"
-                                : "fill-none stroke-stone-950"
-                            }
-                          />
-                        </Button>
-                      </TooltipTrigger>
-                      <TooltipContent className="rounded-none text-xs">
-                        {wished ? "Remove from wishlist" : "Add to wishlist"}
-                      </TooltipContent>
-                    </Tooltip>
+                      {/* Wishlist */}
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Button
+                            variant="outline"
+                            size="icon"
+                            className="h-10 w-10 rounded-none border-stone-300 hover:bg-stone-200 shrink-0"
+                            onClick={() => setWished((w) => !w)}
+                          >
+                            <Heart
+                              size={16}
+                              className={
+                                wished
+                                  ? "fill-amber-600 stroke-amber-600"
+                                  : "fill-none stroke-stone-950"
+                              }
+                            />
+                          </Button>
+                        </TooltipTrigger>
+                        <TooltipContent className="rounded-none text-xs">
+                          {wished ? "Remove from wishlist" : "Add to wishlist"}
+                        </TooltipContent>
+                      </Tooltip>
+                    </div>
                   </div>
 
                   {/* Buy Now button */}
