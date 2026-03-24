@@ -71,7 +71,7 @@ export const INSTAGRAM_POSTS = [
   {
     id: 1,
     image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
+      "https://images.unsplash.com/photo-1765614766502-26d28a5ed2d4?w=400&q=80",
     likes: 842,
   },
   {
@@ -89,13 +89,13 @@ export const INSTAGRAM_POSTS = [
   {
     id: 4,
     image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80",
+      "https://plus.unsplash.com/premium_photo-1733701621462-a74d3d408319?w=400&q=80",
     likes: 957,
   },
   {
     id: 5,
     image:
-      "https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?w=400&q=80",
+      "https://images.unsplash.com/photo-1627637454030-5ddd536e06e5?w=400&q=80",
     likes: 723,
   },
   {
