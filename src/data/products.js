@@ -686,7 +686,7 @@ export const PRODUCTS = [
     reviews: 47,
     badge: "Bestseller",
     image:
-      "https://images.unsplash.com/photo-1600364768584-adefe419431a?w=600&q=80",
+      "https://images.unsplash.com/photo-1610047402714-307d99a677db?w=600&q=80",
     description:
       "An exquisitely crafted ivory sherwani in fine brocade silk. Intricate gold thread embroidery on the collar and cuffs. Paired with matching churidar trousers. The pinnacle of South Asian formal dressing.",
     tags: ["sherwani", "ivory", "brocade", "wedding"],
