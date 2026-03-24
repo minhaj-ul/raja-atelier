@@ -62,7 +62,9 @@ export default function Newsletter() {
               className="rounded-none bg-amber-600 hover:bg-amber-700 text-stone-50 uppercase tracking-widest text-xs px-6 gap-2 shrink-0"
             >
               {loading ? (
-                "Subscribing…"
+                <>
+                  <Spinner size={14} className="text-stone-50" /> Subscribing…
+                </>
               ) : (
                 <>
                   <ArrowRight size={13} /> Subscribe

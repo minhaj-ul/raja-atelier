@@ -17,7 +17,7 @@ export default function ProfileTab({ user, onUpdateProfile }) {
 
   const handleSave = async () => {
     setSaving(true);
-    await new Promise((r) => setTimeout(r, 600));
+    await new Promise((r) => setTimeout(r, 200));
     onUpdateProfile(form);
     setSaving(false);
     setEditing(false);
