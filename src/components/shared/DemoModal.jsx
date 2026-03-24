@@ -1,22 +1,8 @@
 import { useState, useEffect } from "react";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import {
-  ShoppingBag,
-  User,
-  Heart,
-  Package,
-  Code,
-  Layers,
-  Globe,
-  X,
-} from "lucide-react";
+import { ShoppingBag, User, Code, Layers, Globe, X } from "lucide-react";
 
 const DEMO_KEY = "raja_demo_seen";
 
@@ -24,7 +10,7 @@ const ROUTES = [
   {
     path: "/",
     label: "Home",
-    desc: "Hero, New Arrivals, Categories, Bestsellers, Testimonials",
+    desc: "Hero, New Arrivals, Categories, Bestsellers, Testimonials, Instagram, Newsletter",
   },
   {
     path: "/product/:id",
