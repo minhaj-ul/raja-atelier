@@ -9,7 +9,7 @@ export const PRODUCTS = [
     reviews: 87,
     badge: "Bestseller",
     image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
+      "https://images.unsplash.com/photo-1552571933-a7cf95629dc7?w=600&q=80",
     description:
       "A masterfully tailored two-piece suit in deep midnight navy. Crafted from premium Bengali wool-blend fabric with a slim silhouette, notch lapel, and hand-finished buttonholes. The definitive suit for the modern Bangladeshi gentleman.",
     tags: ["suit", "formal", "navy", "slim-fit"],
@@ -51,7 +51,7 @@ export const PRODUCTS = [
     reviews: 51,
     badge: null,
     image:
-      "https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?w=600&q=80",
+      "https://images.unsplash.com/photo-1621335829175-95f437384d7c?w=600&q=80",
     description:
       "A lightweight linen blazer in natural ecru — perfect for the Bangladeshi climate. Unstructured construction for effortless drape, with patch pockets and a relaxed fit. Wear it over a kurta or a crisp white shirt.",
     tags: ["blazer", "linen", "summer", "casual"],
@@ -65,7 +65,7 @@ export const PRODUCTS = [
     reviews: 29,
     badge: "Editor's Pick",
     image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80",
+      "https://images.unsplash.com/photo-1697811599461-38124b3decc9?w=600&q=80",
     description:
       "The pinnacle of Bangladeshi tailoring. A three-piece suit in rich burgundy with a matching waistcoat. Hand-stitched lapels, mother-of-pearl buttons, and a full silk lining. Made to measure on request.",
     tags: ["suit", "three-piece", "burgundy", "luxury"],
@@ -95,7 +95,7 @@ export const PRODUCTS = [
     reviews: 142,
     badge: "Bestseller",
     image:
-      "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&q=80",
+      "https://images.unsplash.com/photo-1634476542932-eebf84bd61d9?w=600&q=80",
     description:
       "Crafted from the finest Dhaka muslin — the legendary fabric that made Bengal famous. An impeccably white dress shirt with a spread collar, French cuffs, and mother-of-pearl buttons. A wardrobe essential.",
     tags: ["shirt", "muslin", "white", "formal"],
@@ -123,7 +123,7 @@ export const PRODUCTS = [
     reviews: 56,
     badge: "New",
     image:
-      "https://images.unsplash.com/photo-1603252109303-2751441dd157?w=600&q=80",
+      "https://plus.unsplash.com/premium_photo-1723770023600-8083358720aa?w=600&q=80",
     description:
       "A luxurious evening shirt in pure Rajshahi silk. The fabric has a natural lustre that catches the light beautifully. French cuffs, a pleated bib front, and a hidden placket make this the definitive formal shirt.",
     tags: ["shirt", "silk", "evening", "formal"],
@@ -151,7 +151,7 @@ export const PRODUCTS = [
     reviews: 89,
     badge: "Popular",
     image:
-      "https://images.unsplash.com/photo-1610652492500-ded49ceeb378?w=600&q=80",
+      "https://images.unsplash.com/photo-1754263428292-d97e5d14eb4d?w=600&q=80",
     description:
       "A contemporary luxury kurta shirt in ivory linen. Mandarin collar, subtle pintuck detailing on the placket, and a relaxed silhouette. The perfect bridge between traditional and modern dressing.",
     tags: ["kurta", "linen", "ivory", "fusion"],
@@ -165,7 +165,7 @@ export const PRODUCTS = [
     reviews: 44,
     badge: null,
     image:
-      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=80",
+      "https://images.unsplash.com/photo-1717724162644-75f624f413ca?w=600&q=80",
     description:
       "A striking black tuxedo shirt in fine Egyptian cotton. Pleated front, spread collar, and polished onyx cufflinks included. For the man who redefines black-tie.",
     tags: ["shirt", "tuxedo", "black", "formal"],
@@ -181,7 +181,7 @@ export const PRODUCTS = [
     reviews: 73,
     badge: null,
     image:
-      "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=600&q=80",
+      "https://images.unsplash.com/photo-1719473448126-eb1159ec5242?w=600&q=80",
     description:
       "Impeccably cut dress trousers in charcoal wool. Flat front, slim leg, and a mid-rise waist. Hand-finished side seams and a full lining for the finest drape. The cornerstone of a gentleman's wardrobe.",
     tags: ["trousers", "wool", "charcoal", "formal"],
@@ -195,7 +195,7 @@ export const PRODUCTS = [
     reviews: 108,
     badge: "Bestseller",
     image:
-      "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600&q=80",
+      "https://images.unsplash.com/photo-1719473442915-016f3ebda79a?w=600&q=80",
     description:
       "The perfect chino in warm khaki. A slim straight cut that works from the office to an evening out. Crafted from a premium cotton twill with a subtle sheen and four-pocket design.",
     tags: ["chinos", "khaki", "casual", "smart"],
@@ -223,7 +223,7 @@ export const PRODUCTS = [
     reviews: 92,
     badge: null,
     image:
-      "https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=600&q=80",
+      "https://images.unsplash.com/photo-1721637222188-fa7bf56ceaf5?w=600&q=80",
     description:
       "Versatile slim chinos in muted olive. A cotton-stretch blend for comfort and ease of movement. Suitable for smart-casual occasions — pair with a blazer or a linen shirt.",
     tags: ["chinos", "olive", "slim", "casual"],
@@ -237,7 +237,7 @@ export const PRODUCTS = [
     reviews: 61,
     badge: "New",
     image:
-      "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&q=80",
+      "https://images.unsplash.com/photo-1719473442938-c605886ba1c3?w=600&q=80",
     description:
       "Relaxed wide-leg linen trousers in warm cream. Ideal for the Bangladeshi heat. An elasticated waistband with a drawstring and deep side pockets make these as comfortable as they are stylish.",
     tags: ["trousers", "linen", "cream", "summer"],
@@ -253,7 +253,7 @@ export const PRODUCTS = [
     reviews: 39,
     badge: "Limited",
     image:
-      "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=600&q=80",
+      "https://images.unsplash.com/photo-1669575903350-9a349b411810?w=600&q=80",
     description:
       "A sweeping double-breasted overcoat in charcoal wool. Structured shoulders, a belted back, and deep pockets. For the cool Dhaka winter evenings when only the finest will do.",
     tags: ["overcoat", "wool", "charcoal", "winter"],
@@ -267,7 +267,7 @@ export const PRODUCTS = [
     reviews: 55,
     badge: "Bestseller",
     image:
-      "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600&q=80",
+      "https://images.unsplash.com/photo-1627637454030-5ddd536e06e5?w=600&q=80",
     description:
       "The quintessential trench coat in warm camel. Water-resistant gabardine, storm flap, gun flap, and a belted waist. A perennial investment piece that anchors any wardrobe.",
     tags: ["trench", "camel", "classic", "outerwear"],
@@ -281,7 +281,7 @@ export const PRODUCTS = [
     reviews: 42,
     badge: null,
     image:
-      "https://images.unsplash.com/photo-1520975954732-35dd22299614?w=600&q=80",
+      "https://images.unsplash.com/photo-1553640662-9ab20b8fa2ea?w=600&q=80",
     description:
       "A luxurious bomber jacket in full-grain dark brown leather. Ribbed collar, cuffs, and hem. Quilted lining for warmth. A modern classic that only gets better with age.",
     tags: ["bomber", "leather", "brown", "casual"],
@@ -295,7 +295,7 @@ export const PRODUCTS = [
     reviews: 67,
     badge: "New",
     image:
-      "https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=600&q=80",
+      "https://images.unsplash.com/photo-1557418669-db3f781a58c0?w=600&q=80",
     description:
       "A lightweight quilted jacket in midnight navy. Packable and versatile — ideal for transitional weather. Stand collar, two-way zip, and interior phone pocket.",
     tags: ["jacket", "quilted", "navy", "lightweight"],
@@ -353,7 +353,7 @@ export const PRODUCTS = [
     reviews: 59,
     badge: null,
     image:
-      "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&q=80",
+      "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=600&q=80",
     description:
       "Sleek Chelsea boots in deep noir leather. Elastic side panels, a pull tab, and a block heel. Resolable leather sole. The most versatile boot in a gentleman's collection.",
     tags: ["boots", "chelsea", "black", "leather"],
@@ -411,7 +411,7 @@ export const PRODUCTS = [
     reviews: 156,
     badge: "Bestseller",
     image:
-      "https://images.unsplash.com/photo-1627123424574-724758594785?w=600&q=80",
+      "https://images.unsplash.com/photo-1765446904833-6431fecb1706?w=600&q=80",
     description:
       "A slim bifold wallet in vegetable-tanned dark brown leather. Six card slots, two note compartments, and a coin pocket. Crafted by hand in Dhaka by master leather artisans.",
     tags: ["wallet", "leather", "brown", "slim"],
@@ -439,7 +439,7 @@ export const PRODUCTS = [
     reviews: 67,
     badge: null,
     image:
-      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80",
+      "https://images.unsplash.com/photo-1742402512243-d077e1c5214f?w=600&q=80",
     description:
       "Polished sterling silver cufflinks with an engraved geometric pattern. Presented in a luxury RAJA Atelier gift box. The perfect finishing touch for a formal ensemble.",
     tags: ["cufflinks", "silver", "formal", "gift"],
@@ -453,7 +453,7 @@ export const PRODUCTS = [
     reviews: 124,
     badge: "New",
     image:
-      "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=600&q=80",
+      "https://images.unsplash.com/photo-1689757322241-72ee12442155?w=600&q=80",
     description:
       "An ultra-slim card holder in smooth black leather. Holds up to 6 cards and features a central slip pocket for folded notes. Minimalist elegance at its finest.",
     tags: ["card-holder", "leather", "black", "minimal"],
@@ -497,7 +497,7 @@ export const PRODUCTS = [
     reviews: 93,
     badge: null,
     image:
-      "https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=600&q=80",
+      "https://images.unsplash.com/photo-1769868800959-533a3f907d60?w=600&sq=80",
     description:
       "A hand-rolled silk pocket square with a traditional Bengali paisley pattern in gold and cream on a navy ground. The perfect accent for a suit or blazer.",
     tags: ["pocket-square", "silk", "paisley", "formal"],
@@ -525,7 +525,7 @@ export const PRODUCTS = [
     reviews: 62,
     badge: "Popular",
     image:
-      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=80",
+      "https://images.unsplash.com/photo-1724245190409-97f3415a7d78?w=600&q=80",
     description:
       "A matched set of a pure silk tie and pocket square in rich burgundy. The tie features a classic diagonal ribbed weave and the pocket square has hand-rolled edges. Presented in a gift box.",
     tags: ["tie", "pocket-square", "set", "burgundy"],
@@ -541,7 +541,7 @@ export const PRODUCTS = [
     reviews: 71,
     badge: "Bestseller",
     image:
-      "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&q=80",
+      "https://plus.unsplash.com/premium_photo-1669850858893-068d0a6bf144?w=600&q=80",
     description:
       "Grade-A Mongolian cashmere in warm camel. A classic crewneck with ribbed cuffs and hem. Impossibly soft, endlessly versatile — the cornerstone of a luxury winter wardrobe.",
     tags: ["cashmere", "crewneck", "camel", "winter"],
@@ -555,7 +555,8 @@ export const PRODUCTS = [
     reviews: 84,
     badge: null,
     image:
-      "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&q=80",
+      "https://plus.unsplash.com/premium_photo-1733701621462-a74d3d408319?w=600&q=80",
+
     description:
       "A fine-gauge merino wool V-neck in deep charcoal. Lightweight enough to layer under a suit jacket, warm enough to wear alone. Ribbed collar, cuffs, and hem.",
     tags: ["merino", "v-neck", "charcoal", "layering"],
@@ -569,7 +570,7 @@ export const PRODUCTS = [
     reviews: 53,
     badge: "New",
     image:
-      "https://images.unsplash.com/photo-1516826957135-700dedea698c?w=600&q=80",
+      "https://plus.unsplash.com/premium_photo-1708274144449-02d6fc8bf234?w=600&q=80",
     description:
       "A substantial cable-knit rollneck in ecru. Chunky construction in a wool-alpaca blend. The ultimate cold-weather luxury piece — wear it with chinos or under an overcoat.",
     tags: ["cable-knit", "rollneck", "ecru", "winter"],
@@ -583,7 +584,7 @@ export const PRODUCTS = [
     reviews: 66,
     badge: null,
     image:
-      "https://images.unsplash.com/photo-1559563458-527698bf5295?w=600&q=80",
+      "https://images.unsplash.com/photo-1769467701168-848ead6e15ef?w=600&q=80",
     description:
       "A fine-knit polo sweater in a silk-cotton blend in midnight navy. Three-button placket and a ribbed collar. Light enough for the cooler Dhaka evenings.",
     tags: ["polo-sweater", "silk-cotton", "navy", "smart"],
@@ -613,7 +614,7 @@ export const PRODUCTS = [
     reviews: 74,
     badge: null,
     image:
-      "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&q=80",
+      "https://images.unsplash.com/photo-1600574691453-499962cc0611?w=600&q=80",
     description:
       "Japanese selvedge denim in deep indigo. Straight leg, mid-rise cut. Raw hem finish. Designed to develop a unique fade pattern unique to the wearer over time. A luxury denim experience.",
     tags: ["denim", "selvedge", "indigo", "casual"],
@@ -627,7 +628,7 @@ export const PRODUCTS = [
     reviews: 96,
     badge: null,
     image:
-      "https://images.unsplash.com/photo-1625910513591-fc75462cf5c3?w=600&q=80",
+      "https://images.unsplash.com/photo-1654507517159-5dcd62622b93?w=600&q=80",
     description:
       "A classic polo shirt in rich racing green. Piqué cotton construction, three-button placket, and a ribbed collar and cuffs. A staple of refined casual dressing.",
     tags: ["polo", "cotton", "green", "casual"],
@@ -641,7 +642,7 @@ export const PRODUCTS = [
     reviews: 58,
     badge: "New",
     image:
-      "https://images.unsplash.com/photo-1591195853828-11db59a44f43?w=600&q=80",
+      "https://images.unsplash.com/photo-1696238250459-d99f9522a0e8?w=600&q=80",
     description:
       "Tailored linen shorts in warm stone. Mid-thigh length, two side pockets, and a button-fly. The luxury approach to warm-weather dressing.",
     tags: ["shorts", "linen", "stone", "summer"],
@@ -655,7 +656,7 @@ export const PRODUCTS = [
     reviews: 82,
     badge: null,
     image:
-      "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=600&q=80",
+      "https://images.unsplash.com/photo-1640989818014-b4363bd44443?w=600&q=80",
     description:
       "A premium French terry sweatshirt in faded slate. Raglan sleeves, a ribbed hem and cuffs, and a garment-washed finish for a lived-in feel from day one.",
     tags: ["sweatshirt", "cotton", "slate", "casual"],
@@ -671,7 +672,7 @@ export const PRODUCTS = [
     reviews: 28,
     badge: "Editor's Pick",
     image:
-      "https://images.unsplash.com/photo-1611898872015-0571a9e38375?w=600&q=80",
+      "https://plus.unsplash.com/premium_photo-1661425828618-f48a8beb4f6c?w=600&q=80",
     description:
       "The ultimate evening statement. A midnight black tuxedo with silk peak lapels, a covered placket, and a single satin button. Paired with slim-cut matching trousers with a satin stripe. Perfection personified.",
     tags: ["tuxedo", "black", "formal", "black-tie"],
@@ -685,7 +686,7 @@ export const PRODUCTS = [
     reviews: 47,
     badge: "Bestseller",
     image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
+      "https://images.unsplash.com/photo-1600364768584-adefe419431a?w=600&q=80",
     description:
       "An exquisitely crafted ivory sherwani in fine brocade silk. Intricate gold thread embroidery on the collar and cuffs. Paired with matching churidar trousers. The pinnacle of South Asian formal dressing.",
     tags: ["sherwani", "ivory", "brocade", "wedding"],
@@ -699,7 +700,7 @@ export const PRODUCTS = [
     reviews: 36,
     badge: null,
     image:
-      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=80",
+      "https://plus.unsplash.com/premium_photo-1682090774051-77cdd6b1e7cd?w=600&q=80",
     description:
       "A majestic achkan in royal blue raw silk. Mandarin collar, seven-button front, and subtle self-fabric piping. An elegant choice for formal occasions and celebrations.",
     tags: ["achkan", "silk", "blue", "formal"],
@@ -713,7 +714,7 @@ export const PRODUCTS = [
     reviews: 31,
     badge: "Limited",
     image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80",
+      "https://images.unsplash.com/photo-1765614766502-26d28a5ed2d4?w=600&q=80",
     description:
       "A sumptuous velvet dinner jacket in deep black. Shawl lapel, two-button front, and a single vent. Wear it with black dress trousers and a white tuxedo shirt for an unforgettable evening look.",
     tags: ["dinner-jacket", "velvet", "black", "formal"],
@@ -727,7 +728,7 @@ export const PRODUCTS = [
     reviews: 24,
     badge: "New",
     image:
-      "https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600&q=80",
+      "https://images.unsplash.com/photo-1770582071587-dbbb4b09c2a9?w=600&q=80",
     description:
       "A contemporary bandhgala suit in champagne silk. A mandarin collar and a clean single-button closure give this a modern, architectural feel. Paired with slim matching trousers.",
     tags: ["bandhgala", "silk", "champagne", "wedding"],
@@ -741,7 +742,7 @@ export const PRODUCTS = [
     reviews: 19,
     badge: null,
     image:
-      "https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?w=600&q=80",
+      "https://images.unsplash.com/photo-1765614766433-13379d8faea8?w=600&q=80",
     description:
       "A traditional morning suit in charcoal with subtle grey striping. Features a single-button cutaway coat, matching waistcoat, and formal striped trousers. The height of daytime formal elegance.",
     tags: ["morning-suit", "charcoal", "formal", "traditional"],
