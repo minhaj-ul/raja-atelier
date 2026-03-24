@@ -252,7 +252,7 @@ export default function ProductPage({
                   </Button>
 
                   <p className="text-[11px] text-stone-500 tracking-wide">
-                    Free shipping on orders over ৳250 · Easy returns
+                    Free shipping on orders over ৳5,000 · Easy returns
                   </p>
                 </div>
               </div>
