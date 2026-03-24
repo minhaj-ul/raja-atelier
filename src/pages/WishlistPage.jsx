@@ -23,8 +23,9 @@ export default function WishlistPage({
 }) {
   const navigate = useNavigate();
   const [pendingDelete, setPendingDelete] = useState(null);
-
+  const [visibleCount, setVisibleCount] = useState(12);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 200);
     return () => clearTimeout(timer);
@@ -86,7 +87,7 @@ export default function WishlistPage({
             <>
               {/* Wishlist grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {wishlist.map((product) => (
+                {wishlist.slice(0, visibleCount).map((product) => (
                   <div
                     key={product.id}
                     className="bg-stone-50 border border-stone-300 group"
@@ -161,6 +162,22 @@ export default function WishlistPage({
                   </div>
                 ))}
               </div>
+
+              {/* Load more */}
+              {visibleCount < wishlist.length && (
+                <div className="flex flex-col items-center gap-3 mt-10">
+                  <p className="text-xs text-stone-400 tracking-wide">
+                    Showing {visibleCount} of {wishlist.length} pieces
+                  </p>
+                  <Button
+                    variant="outline"
+                    className="rounded-none border-stone-300 text-stone-950 hover:bg-stone-950 hover:text-stone-50 uppercase tracking-widest text-xs px-10 py-5 gap-2"
+                    onClick={() => setVisibleCount((c) => c + 12)}
+                  >
+                    Load More
+                  </Button>
+                </div>
+              )}
 
               <Separator className="bg-stone-300 my-12" />
 
