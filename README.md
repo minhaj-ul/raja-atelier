@@ -149,9 +149,7 @@ npm run dev
 
 ### Open your browser at
 
-```bash
-http://localhost:5173
-```
+[localhost:5173](http://localhost:5173)
 
 ---
 
