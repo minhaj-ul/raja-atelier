@@ -113,9 +113,9 @@ export default function DemoModal() {
               </h3>
             </div>
             <p className="text-sm text-stone-600 font-light leading-relaxed">
-              RAJA Atelier is a functional luxury menswear e-commerce demo. It
-              includes a shopping experience — from browsing products to
-              checkout — with all data stored locally in browser. No backend.
+              RAJA Atelier is a functional luxury menswear e-commerce frontend
+              demo. It includes a shopping experience — from browsing products
+              to checkout — with all data stored locally in browser. No backend.
             </p>
           </div>
 
