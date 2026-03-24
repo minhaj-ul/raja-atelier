@@ -42,6 +42,12 @@ export default function ProductPage({
   const [wished, setWished] = useState(false);
   const [pageLoading, setPageLoading] = useState(true);
 
+  useEffect(() => {
+    setPageLoading(true);
+    const timer = setTimeout(() => setPageLoading(false), 200);
+    return () => clearTimeout(timer);
+  }, [id]);
+
   if (!product) {
     return (
       <div className="min-h-screen bg-stone-100 flex flex-col items-center justify-center gap-4 text-stone-500">
@@ -66,12 +72,6 @@ export default function ProductPage({
   const related = PRODUCTS.filter(
     (p) => p.category === product.category && p.id !== product.id,
   ).slice(0, 4);
-
-  useEffect(() => {
-    setPageLoading(true);
-    const timer = setTimeout(() => setPageLoading(false), 200);
-    return () => clearTimeout(timer);
-  }, [id]);
 
   return (
     <Layout
