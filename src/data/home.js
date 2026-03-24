@@ -8,7 +8,7 @@ export const TESTIMONIALS = [
       "The Dhaka Midnight Suit is absolutely exceptional. The tailoring is impeccable and the fabric quality is unlike anything I've found in Bangladesh before. Wore it to a wedding in Gulshan and received compliments all evening.",
     product: "Dhaka Midnight Suit",
     avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80",
+      "https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=100&q=80",
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ export const TESTIMONIALS = [
       "I ordered the Rajshahi Silk Evening Shirt for Eid and it exceeded every expectation. The silk is incredibly soft and the finish is truly world-class. RAJA Atelier has set a new standard for luxury menswear in Bangladesh.",
     product: "Rajshahi Silk Evening Shirt",
     avatar:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80",
+      "https://images.unsplash.com/photo-1545167622-3a6ac756afa4?w=100&q=80",
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ export const TESTIMONIALS = [
       "The Ivory Sherwani I purchased for my wedding was breathtaking. The gold embroidery is intricate and the brocade silk is of the finest quality. My guests couldn't believe it was a Bangladeshi brand.",
     product: "Ivory Sherwani",
     avatar:
-      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&q=80",
+      "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=100&q=80",
   },
   {
     id: 4,
@@ -41,7 +41,7 @@ export const TESTIMONIALS = [
       "The Bengal Leather Bifold Wallet is slim, elegant and extremely well made. The vegetable-tanned leather has already developed a beautiful patina after just two months of use. Excellent craftsmanship.",
     product: "Bengal Leather Bifold Wallet",
     avatar:
-      "https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?w=100&q=80",
+      "https://plus.unsplash.com/premium_photo-1675080431524-3e7c85323972?w=100&q=80",
   },
   {
     id: 5,
@@ -52,7 +52,7 @@ export const TESTIMONIALS = [
       "Finally a Bangladeshi brand that truly understands luxury menswear. The Cashmere Crewneck is impossibly soft and the camel colour is exactly as shown. Delivery to Rajshahi was fast and the packaging was beautiful.",
     product: "Cashmere Crewneck - Camel",
     avatar:
-      "https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=100&q=80",
+      "https://images.unsplash.com/photo-1542211295-d5bf730e56cd?w=100&q=80",
   },
   {
     id: 6,
@@ -63,7 +63,7 @@ export const TESTIMONIALS = [
       "The Dhaka Oxford Shoes are handcrafted to perfection. Goodyear welted construction means they will last for years and can be resoled. Worth every taka — the best dress shoes I have ever owned.",
     product: "Dhaka Oxford Shoes",
     avatar:
-      "https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=100&q=80",
+      "https://images.unsplash.com/photo-1755140302411-9a7a9f523c1e?w=100&q=80",
   },
 ];
 
