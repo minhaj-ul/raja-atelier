@@ -12,8 +12,7 @@ A functional luxury menswear e-commerce frontend demo, built with React and mode
 
 - Email: `abdur.rahman@gmail.com`
 - Password: `demo1234`
-
-**Demo promo codes:** `RAJA10` · `WELCOME20` · `FREESHIP`
+- Promo Codes: `RAJA10` · `WELCOME20` · `FREESHIP`
 
 ---
 
