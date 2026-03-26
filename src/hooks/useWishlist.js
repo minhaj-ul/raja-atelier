@@ -41,6 +41,11 @@ export function useWishlist() {
     setWishlist((prev) => prev.filter((item) => item.id !== productId));
   };
 
+  const clearWishlist = () => {
+    setWishlist([]);
+    toast.success("Wishlist cleared");
+  };
+
   const wishlistCount = wishlist.length;
 
   return {
@@ -49,5 +54,6 @@ export function useWishlist() {
     isWished,
     toggleWishlist,
     removeFromWishlist,
+    clearWishlist,
   };
 }
