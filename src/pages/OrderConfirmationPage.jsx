@@ -22,7 +22,6 @@ const ESTIMATED_DELIVERY = new Date(
 
 export default function OrderConfirmationPage({
   cart,
-  onClearCart,
   user,
   onLogout,
   cartCount,
