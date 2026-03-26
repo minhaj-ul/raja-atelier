@@ -28,6 +28,7 @@ export default function App() {
     isWished,
     toggleWishlist,
     removeFromWishlist,
+    clearWishlist,
   } = useWishlist();
   const {
     user,
@@ -125,6 +126,7 @@ export default function App() {
             <WishlistPage
               wishlist={wishlist}
               onRemoveFromWishlist={removeFromWishlist}
+              onClearWishlist={clearWishlist}
               onAddToCart={addToCart}
               user={user}
               onLogout={logout}
@@ -174,6 +176,8 @@ export default function App() {
                 onLogout={logout}
                 onUpdateProfile={updateProfile}
                 onChangePassword={changePassword}
+                onClearWishlist={clearWishlist}
+                onClearCart={clearCart}
                 getUserOrders={getUserOrders}
                 wishlist={wishlist}
                 onRemoveFromWishlist={removeFromWishlist}
