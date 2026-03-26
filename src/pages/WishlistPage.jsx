@@ -12,6 +12,7 @@ import Spinner from "../components/shared/Spinner";
 export default function WishlistPage({
   wishlist,
   onRemoveFromWishlist,
+  onClearWishlist,
   onAddToCart,
   user,
   onLogout,
@@ -19,12 +20,14 @@ export default function WishlistPage({
   cartCount,
   onUpdateQty,
   onRemove,
+  onClearCart,
   wishlistCount,
 }) {
   const navigate = useNavigate();
   const [pendingDelete, setPendingDelete] = useState(null);
   const [visibleCount, setVisibleCount] = useState(12);
   const [loading, setLoading] = useState(true);
+  const [clearPending, setClearPending] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 200);
@@ -86,6 +89,18 @@ export default function WishlistPage({
             </div>
           ) : (
             <>
+              {/* Clear all button */}
+              <div className="flex justify-end mb-4">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setClearPending(true)}
+                  className="rounded-none text-[10px] uppercase tracking-widest text-red-500 hover:text-red-600 hover:bg-red-50 gap-1.5"
+                >
+                  <Trash2 size={12} /> Clear All
+                </Button>
+              </div>
+
               {/* Wishlist grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {wishlist.slice(0, visibleCount).map((product) => (
@@ -219,6 +234,21 @@ export default function WishlistPage({
           }}
         />
       </div>
+
+      {/* Clear All confirmation */}
+      <ConfirmDialog
+        open={clearPending}
+        onOpenChange={(open) => !open && setClearPending(false)}
+        title="Clear your wishlist?"
+        description="Are you sure you want to remove all saved pieces?"
+        confirmLabel="Clear All"
+        cancelLabel="Keep it"
+        variant="danger"
+        onConfirm={() => {
+          onClearWishlist();
+          setClearPending(false);
+        }}
+      />
     </Layout>
   );
 }
