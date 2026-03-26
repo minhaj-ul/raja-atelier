@@ -11,10 +11,12 @@ export default function WishlistTab({
   wishlist,
   onRemoveFromWishlist,
   onAddToCart,
+  onClearWishlist,
 }) {
   const navigate = useNavigate();
   const [pendingDelete, setPendingDelete] = useState(null);
   const [visibleCount, setVisibleCount] = useState(VISIBLE_STEP);
+  const [clearPending, setClearPending] = useState(false);
 
   return (
     <div>
@@ -24,9 +26,19 @@ export default function WishlistTab({
           My Wishlist
         </h2>
         {wishlist.length > 0 && (
-          <p className="text-xs text-stone-400">
-            {wishlist.length} {wishlist.length === 1 ? "piece" : "pieces"}
-          </p>
+          <div className="flex items-center gap-3">
+            <p className="text-xs text-stone-400">
+              {wishlist.length} {wishlist.length === 1 ? "piece" : "pieces"}
+            </p>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setClearPending(true)}
+              className="rounded-none text-[10px] uppercase tracking-widest text-red-500 hover:text-red-600 hover:bg-red-50 gap-1.5"
+            >
+              <Trash2 size={12} /> Clear All
+            </Button>
+          </div>
         )}
       </div>
 
@@ -157,6 +169,21 @@ export default function WishlistTab({
         onConfirm={() => {
           onRemoveFromWishlist(pendingDelete.id);
           setPendingDelete(null);
+        }}
+      />
+
+      {/* Clear All confirmation */}
+      <ConfirmDialog
+        open={clearPending}
+        onOpenChange={(open) => !open && setClearPending(false)}
+        title="Clear your wishlist?"
+        description="Are you sure you want to remove all saved pieces?"
+        confirmLabel="Clear All"
+        cancelLabel="Keep it"
+        variant="danger"
+        onConfirm={() => {
+          onClearWishlist();
+          setClearPending(false);
         }}
       />
     </div>

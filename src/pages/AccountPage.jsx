@@ -18,11 +18,13 @@ export default function AccountPage({
   getUserOrders,
   wishlist,
   onRemoveFromWishlist,
+  onClearWishlist,
   onAddToCart,
   cart,
   cartCount,
   onUpdateQty,
   onRemove,
+  onClearCart,
   wishlistCount,
 }) {
   const navigate = useNavigate();
@@ -113,6 +115,7 @@ export default function AccountPage({
                   wishlist={wishlist}
                   onRemoveFromWishlist={onRemoveFromWishlist}
                   onAddToCart={onAddToCart}
+                  onClearWishlist={onClearWishlist}
                 />
               )}
 
