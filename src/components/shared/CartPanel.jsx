@@ -39,9 +39,9 @@ export default function CartPanel({
         <SheetContent
           side={isMobile ? "bottom" : "right"}
           className={`
-            flex flex-col p-0 bg-stone-50 border-stone-300
-            ${isMobile ? "h-[88vh] rounded-t-2xl" : "w-full max-w-md"}
-          `}
+    flex flex-col p-0 bg-stone-50 border-stone-300 overflow-hidden
+    ${isMobile ? "h-[88vh] rounded-t-2xl" : "w-full max-w-md h-full"}
+  `}
         >
           {/* Header */}
           <SheetHeader className="px-5 md:px-7 pt-5 pb-4 border-b border-stone-300 shrink-0">
@@ -68,7 +68,7 @@ export default function CartPanel({
           </SheetHeader>
 
           {/* Items */}
-          <ScrollArea className="flex-1">
+          <ScrollArea className="flex-1 min-h-0">
             {cart.length === 0 ? (
               <div className="flex flex-col items-center justify-center h-48 gap-3 text-stone-500">
                 <ShoppingBag size={38} strokeWidth={1} />
