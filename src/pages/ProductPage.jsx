@@ -56,9 +56,9 @@ export default function ProductPage({
         <Button
           variant="outline"
           className="rounded-none uppercase tracking-widest text-xs border-stone-950 text-stone-950 hover:bg-stone-950 hover:text-stone-50"
-          onClick={() => navigate("/")}
+          onClick={() => navigate(-1)}
         >
-          <ArrowLeft size={14} /> Back to Shop
+          <ArrowLeft size={14} /> Back
         </Button>
       </div>
     );
@@ -103,10 +103,10 @@ export default function ProductPage({
               <Button
                 variant="ghost"
                 className="rounded-none text-xs uppercase tracking-widest text-stone-500 hover:text-stone-950 hover:bg-transparent gap-1.5 px-0"
-                onClick={() => navigate("/")}
+                onClick={() => navigate(-1)}
               >
                 <ArrowLeft size={14} />
-                Back to Shop
+                Back
               </Button>
             </div>
 
