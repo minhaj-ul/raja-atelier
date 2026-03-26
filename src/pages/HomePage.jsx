@@ -27,6 +27,7 @@ export default function HomePage({
   onAddToCart,
   onUpdateQty,
   onRemove,
+  onClearCart,
   onToggleWishlist,
   isWished,
   wishlistCount,
@@ -413,6 +414,7 @@ export default function HomePage({
           onClose={() => setCartOpen(false)}
           onUpdateQty={onUpdateQty}
           onRemove={onRemove}
+          onClearCart={onClearCart}
         />
       )}
 

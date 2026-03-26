@@ -54,6 +54,7 @@ export default function ContactPage({
       onUpdateQty={onUpdateQty}
       onRemove={onRemove}
       wishlistCount={wishlistCount}
+      onClearCart={onClearCart}
     >
       <div className="bg-stone-100">
         <PageTitle title="Contact Us" />

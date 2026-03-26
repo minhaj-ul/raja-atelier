@@ -82,6 +82,7 @@ export default function ProductPage({
       onUpdateQty={onUpdateQty}
       onRemove={onRemove}
       wishlistCount={wishlistCount}
+      onClearCart={onClearCart}
     >
       <div className="min-h-screen bg-stone-100">
         <PageTitle title={product.name} />

@@ -26,6 +26,7 @@ export default function AboutPage({
       onUpdateQty={onUpdateQty}
       onRemove={onRemove}
       wishlistCount={wishlistCount}
+      onClearCart={onClearCart}
     >
       <div className="bg-stone-100">
         <PageTitle title="About Us" />

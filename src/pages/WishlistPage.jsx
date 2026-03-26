@@ -40,6 +40,7 @@ export default function WishlistPage({
       onUpdateQty={onUpdateQty}
       onRemove={onRemove}
       wishlistCount={wishlistCount}
+      onClearCart={onClearCart}
     >
       <div className="bg-stone-100 min-h-screen">
         <PageTitle title="Wishlist" />

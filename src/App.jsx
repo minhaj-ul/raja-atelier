@@ -56,6 +56,7 @@ export default function App() {
               onUpdateQty={updateQty}
               onRemove={removeItem}
               onToggleWishlist={toggleWishlist}
+              onClearCart={clearCart}
               isWished={isWished}
               wishlistCount={wishlistCount}
               user={user}

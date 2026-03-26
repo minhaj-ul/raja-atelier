@@ -51,6 +51,7 @@ export default function AccountPage({
       onUpdateQty={onUpdateQty}
       onRemove={onRemove}
       wishlistCount={wishlistCount}
+      onClearCart={onClearCart}
     >
       <div className="min-h-screen bg-stone-100">
         <PageTitle title="My Account" />
