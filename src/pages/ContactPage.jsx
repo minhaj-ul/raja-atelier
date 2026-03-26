@@ -17,6 +17,7 @@ export default function ContactPage({
   cartCount,
   onUpdateQty,
   onRemove,
+  onClearCart,
   wishlistCount,
 }) {
   const [form, setForm] = useState({

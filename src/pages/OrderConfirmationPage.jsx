@@ -28,6 +28,7 @@ export default function OrderConfirmationPage({
   cartCount,
   onUpdateQty,
   onRemove,
+  onClearCart,
   wishlistCount,
 }) {
   const navigate = useNavigate();

@@ -20,6 +20,7 @@ export default function FAQPage({
   cartCount,
   onUpdateQty,
   onRemove,
+  onClearCart,
   wishlistCount,
 }) {
   const navigate = useNavigate();

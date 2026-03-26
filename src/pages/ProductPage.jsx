@@ -32,6 +32,7 @@ export default function ProductPage({
   cartCount,
   onUpdateQty,
   onRemove,
+  onClearCart,
   wishlistCount,
 }) {
   const { id } = useParams();
