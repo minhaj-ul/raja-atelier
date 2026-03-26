@@ -10,6 +10,7 @@ export default function Layout({
   cartCount,
   onUpdateQty,
   onRemove,
+  onClearCart,
   wishlistCount,
   user,
   onLogout,
@@ -46,6 +47,7 @@ export default function Layout({
           onClose={() => setCartOpen(false)}
           onUpdateQty={onUpdateQty}
           onRemove={onRemove}
+          onClearCart={onClearCart}
         />
       )}
     </div>

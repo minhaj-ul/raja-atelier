@@ -18,11 +18,13 @@ export default function CartPanel({
   onClose,
   onUpdateQty,
   onRemove,
+  onClearCart,
 }) {
   const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
   const count = cart.reduce((s, i) => s + i.qty, 0);
 
   const [pendingDelete, setPendingDelete] = useState(null);
+  const [clearPending, setClearPending] = useState(false);
 
   const handleDeleteConfirm = () => {
     onRemove(pendingDelete.id);
@@ -52,6 +54,16 @@ export default function CartPanel({
                   {count} {count === 1 ? "item" : "items"}
                 </p>
               </div>
+              {cart.length > 0 && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setClearPending(true)}
+                  className="rounded-none text-[10px] uppercase tracking-widest text-red-500 hover:text-red-600 hover:bg-red-50 gap-1.5"
+                >
+                  <Trash2 size={12} /> Clear All
+                </Button>
+              )}
             </div>
           </SheetHeader>
 
@@ -150,6 +162,21 @@ export default function CartPanel({
           )}
         </SheetContent>
       </Sheet>
+
+      {/* Clear all confirmation */}
+      <ConfirmDialog
+        open={clearPending}
+        onOpenChange={(open) => !open && setClearPending(false)}
+        title="Clear your bag?"
+        description="Are you sure you want to remove all items from your bag?"
+        confirmLabel="Clear All"
+        cancelLabel="Keep it"
+        variant="danger"
+        onConfirm={() => {
+          onClearCart();
+          setClearPending(false);
+        }}
+      />
 
       {/* Delete confirmation modal */}
       <ConfirmDialog
